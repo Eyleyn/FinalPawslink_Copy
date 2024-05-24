@@ -242,7 +242,7 @@ const CatDatabaseScreen = () =>{
                                                             <div style = {styles.DisplayContent}>
                                                                 <div style={styles.neutxtDetails}> {cat.neuterspayDate} </div>
                                                             </div>
-                                                            <div style = {styles.DisplayContent}>
+                                                            <div style = {styles.DisplayContent} onClick={goToEdit}>
                                                                 <button style={styles.editButton} onClick={goToEdit}>
                                                                     Edit
                                                                 </button>
@@ -419,15 +419,16 @@ const styles = {
         backgroundColor: Color.colorGray_200,
     },
     editButton: {
-        width: '35px',
-        height: '39px',
+        width: '40px',
+        height: '29px',
         fontSize: 12,
         textAlign: 'center',
-        color: Color.colorPalevioletred,
+        color: Color.colorWhite,
         marginLeft: '100px',
         justifyContent: 'space-evenly',
         borderColor: 'white',
-        backgroundColor: 'transparent',
+        borderRadius: '5px',
+        backgroundColor: Color.colorPalevioletred,
         border: 'none',
         cursor: 'pointer',
     },
