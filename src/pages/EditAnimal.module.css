@@ -30,8 +30,8 @@
 }
 .dataUploadIcon {
   position: absolute;
-  top: calc(50% - 8px);
-  left: calc(50% - 63.5px);
+  margin-top: 7px;
+  margin-left: 20px;
   width: 16px;
   height: 16px;
   overflow: hidden;
@@ -101,21 +101,25 @@
 .textbox151,
 .textbox16 {
   position: absolute;
-  top: 154px;
-  left: 550px;
-  background-color: var(--color-gray-200);
+  margin-top: 124px;
+  margin-left: 330px;
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-lightslategray);
+  box-sizing: border-box;
   width: 200px;
-  height: 80px;
+  height: 40px;
   color: var(--color-gray-100);
 }
+
 .textbox151,
 .textbox16 {
-  top: 152.67px;
-  left: 330px;
+  margin-top: 125px;
+  margin-left: 540px;
 }
 .textbox151 {
-  top: 154px;
-  left: 780px;
+  margin-top: 125px;
+  margin-left: 750px;
 }
 .traitsAndPersonality {
   position: absolute;
@@ -159,18 +163,18 @@
 }
 .textarea1,
 .textarea11 {
-  left: 330px;
+  margin-left: 330px;
   background-color: var(--color-gray-200);
-  width: 650px;
+  width: 630px;
   font-size: var(--font-size-sm);
 }
 .textarea1 {
   position: absolute;
-  top: 250px;
+  margin-top: 200px;
   height: 213px;
 }
 .textarea11 {
-  top: 480px;
+  margin-top: 430px;
   height: 121px;
 }
 .button22,
@@ -232,12 +236,10 @@
   left: 12px;
 }
 .textfield5 {
-  height: calc(100% - 26px);
-  width: calc(100% + 1px);
-  top: 26px;
-  right: 0;
-  bottom: 0;
-  left: -1px;
+  height: 40px;
+  width: 100px;
+  margin-top: 44px;
+  margin-left: 787px;
   border-radius: var(--br-9xs);
   background-color: var(--color-white);
   border: 1px solid var(--color-lightslategray);
@@ -251,18 +253,24 @@
   position: absolute;
 }
 .textbox13 {
-  top: 44px;
-  left: 330px;
-  background-color: var(--color-gray-200);
+  margin-top: 44px;
+  margin-left: 330px;
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-lightslategray);
+  box-sizing: border-box;
   width: 150px;
-  height: 80px;
+  height: 40px;
 }
 .textboxLocation {
   top: 44px;
   left: 490px;
-  background-color: var(--color-gray-200);
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-lightslategray);
+  box-sizing: border-box;
   width: 120px;
-  height: 80px;
+  height: 40px;
 }
 .f {
   width: calc(100% - 30px);
@@ -301,9 +309,12 @@
   position: absolute;
   top: 44px;
   left: 700px;
-  background-color: var(--color-gray-200);
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-lightslategray);
+  box-sizing: border-box;
   width: 85px;
-  height: 80px;
+  height: 40px;
 }
 .dropdownButton11,
 .dropdownButton12,

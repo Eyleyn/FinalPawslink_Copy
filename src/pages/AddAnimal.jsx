@@ -1,18 +1,54 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import styles from "./EditAnimal.module.css";
 
 const AddAnimal = () => {
-  const [imageSrc, setImageSrc] = useState("/image-38@2x.png");
+  const [imageSrc, setImageSrc] = useState("/image-26@3x.png");
+  const [imageFile, setImageFile] = useState(null);
+  const [formData, setFormData] = useState({
+    sex: "",
+    vaccinationDate: "",
+    neuterSpayDate: "",
+    dewormingDate: "",
+    traitsAndPersonality: "",
+    notes: "",
+    name: "",
+    location: "",
+    status: "",
+    age: "",
+    specie: "",
+  });
   const [showSavedMessage, setShowSavedMessage] = useState(false);
-  const [vaccinationDate, setVaccinationDate] = useState(""); // Corrected state variable name
-  const [neuterSpayDate, setNeuterSpayDate] = useState(""); // Corrected state variable name
-  const [dewormingDate, setDewormingDate] = useState(""); // Corrected state variable name
   const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const data = new FormData();
+    data.append("image", imageFile);
+    Object.keys(formData).forEach((key) => {
+      data.append(key, formData[key]);
+    });
+
+    try {
+      const response = await axios.post("YOUR_API_ENDPOINT", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("Form Data:", response.data);
+      setShowSavedMessage(true);
+      setTimeout(() => setShowSavedMessage(false), 3000);
+    } catch (error) {
+      console.error("Error uploading data:", error);
+    }
+  };
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
+      setImageFile(file);
       const reader = new FileReader();
       reader.onload = function (e) {
         setImageSrc(e.target.result);
@@ -21,13 +57,12 @@ const AddAnimal = () => {
     }
   };
 
-  const handleSave = () => {
-    console.log("Data saved");
-    console.log("Vaccination Date:", vaccinationDate);
-    console.log("Neuter/Spay Date:", neuterSpayDate);
-    console.log("Deworming Date:", dewormingDate);
-    setShowSavedMessage(true); // Display the saved message
-    setTimeout(() => setShowSavedMessage(false), 3000); // Hide the message after 3 seconds
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   const handleCancel = () => {
@@ -35,130 +70,142 @@ const AddAnimal = () => {
   };
 
   return (
-    <div className={styles.editAnimal}>
-      <div className={styles.container3}>
-        <b className={styles.animalInfo}>Animal Info</b>
-        <img
-          className={styles.keyboardBackspace1}
-          onClick={handleCancel}
-          alt=""
-          src="/keyboard-backspace-1@2x.png"
-        />
-        <div className={styles.container31}>
-          <img className={styles.image38Icon} alt="" src={imageSrc} />
-          <div className={styles.button19}>
-            <label htmlFor="photo-upload" className={styles.chooseAPhoto}>
-              Choose a Photo
-            </label>
-            <input
-              type="file"
-              id="photo-upload"
-              style={{ display: "none" }}
-              onChange={handleImageChange}
-              accept="image/*"
-            />
-            <img
-              className={styles.dataUploadIcon}
-              alt=""
-              src="/data-upload@2x.png"
-            />
-          </div>
-          <div className={styles.dropdownButton12}>
-            <b className={styles.name}>Sex</b>
-            <select className={styles.textfield5}>
+    <form onSubmit={handleSubmit}>
+      <div className={styles.editAnimal}>
+        <div className={styles.container3}>
+          <b className={styles.animalInfo}>Add Animal</b>
+          <img
+            className={styles.keyboardBackspace1}
+            onClick={handleCancel}
+            alt=""
+            src="/keyboard-backspace-1@2x.png"
+          />
+          <div className={styles.container31}>
+            <img className={styles.image38Icon} alt="" src={imageSrc} />
+            <div className={styles.button19}>
+              <label htmlFor="photo-upload" className={styles.chooseAPhoto}>
+                
+              </label>
+              <input
+                type="file"
+                id="photo-upload"
+                onChange={handleImageChange}
+                accept="image/*"
+                className={styles.chooseAPhoto}
+              />
+              <img
+                className={styles.dataUploadIcon}
+                alt=""
+                src="/data-upload@2x.png"
+              />
+            </div>
+            <select
+              name="sex"
+              className={styles.textfield5}
+              value={formData.sex}
+              onChange={handleChange}
+            >
               <option value="M">Male</option>
               <option value="F">Female</option>
             </select>
-          </div>
-          <div className={styles.textbox15}>
-            <input type="date" className={styles.textfield} value={vaccinationDate}
-              onChange={(e) => setVaccinationDate(e.target.value)}/>
-            <b className={styles.vaccinationDate}>Vaccination Date</b>
-          </div>
-          <div className={styles.textbox16}>
-            <input type="date" className={styles.textfield} value={neuterSpayDate}
-              onChange={(e) => setNeuterSpayDate(e.target.value)}/>
-            <b className={styles.vaccinationDate}>Neuter/Spay Date</b>
-          </div>
-          <div className={styles.textbox151}>
-            <input type="date" className={styles.textfield} value={dewormingDate}
-              onChange={(e) => setDewormingDate(e.target.value)} />
-            <b className={styles.vaccinationDate}>Deworming Date</b>
-          </div>
-          <div className={styles.textarea1}>
-            <b className={styles.traitsAndPersonality}>
-              Traits and Personality
-            </b>
-            <textarea
-              className={styles.textfield3}
-              defaultValue={`
-
-              `}
-            />
-          </div>
-          <div className={styles.textarea11}>
-            <b className={styles.traitsAndPersonality}>Notes</b>
-            <textarea
-              className={styles.textfield3}
-              defaultValue={`
-
-              `}
-            />
-          </div>
-          <div className={styles.textbox13}>
-            <b className={styles.name}>Name</b>
+            
             <input
-              type="text"
-              className={styles.textfield5}
-              defaultValue=" "
+              name="vaccinationDate"
+              type="date"
+              className={styles.textbox15}
+              value={formData.vaccinationDate}
+              onChange={handleChange}
             />
-          </div>
-          <div className={styles.textboxLocation}>
-            <b className={styles.name}>Location</b>
             <input
-              type="text"
-              className={styles.textfield5}
-              defaultValue=" "
+              name="neuterSpayDate"
+              type="date"
+              placeholder="Neuter/Spay Date"
+              className={styles.textbox16}
+              value={formData.neuterSpayDate}
+              onChange={handleChange}
             />
-          </div>
-          <div className={styles.dropdownButton1}>
-            <b className={styles.name}>Status</b>
-            <select className={styles.textfield6}>
+            <input
+              name="dewormingDate"
+              type="date"
+              className={styles.textbox151}
+              value={formData.dewormingDate}
+              onChange={handleChange}
+            />
+            <textarea
+              name="traitsAndPersonality"
+              placeholder="Traits and Personality"
+              className={styles.textarea1}
+              value={formData.traitsAndPersonality}
+              onChange={handleChange}
+            />
+            <textarea
+              name="Notes"
+              placeholder="Notes"
+              className={styles.textarea11}
+              value={formData.notes}
+              onChange={handleChange}
+            />
+            <input
+              name="name"
+              placeholder="Name"
+              type="text"
+              className={styles.textbox13}
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <input
+              name="location"
+              type="text"
+              placeholder="Location"
+              className={styles.textboxLocation}
+              value={formData.location}
+              onChange={handleChange}
+            />
+            <select
+              name="status"
+              className={styles.dropdownButton1}
+              value={formData.status}
+              onChange={handleChange}
+            >
               <option value="Owned">Owned</option>
               <option value="On-Campus">On Campus</option>
               <option value="Adopted">Adopted</option>
             </select>
-          </div>
-          <div className={styles.textbox131}>
-            <b className={styles.name}>Age</b>
-            <input type="text" className={styles.textfield5} defaultValue="" />
-          </div>
-          <div className={styles.dropdownButton11}>
-            <b className={styles.name}>Specie</b>
-            <select className={styles.textfield5}>
+            <input
+              name="age"
+              type="text"
+              placeholder="Age"
+              className={styles.textbox131}
+              value={formData.age}
+              onChange={handleChange}
+            />
+            <select
+              name="specie"
+              className={styles.dropdownButton11}
+              value={formData.specie}
+              onChange={handleChange}
+            >
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
             </select>
-          </div>
-          {/* Save and Cancel Buttons */}
-          <div className={styles.button22}>
-            <div className={styles.save} onClick={handleSave}>
-              Save
+            <div className={styles.button22}>
+              <button type="submit" styles={styles.button22}>
+                Save
+              </button>
             </div>
-          </div>
-          <div className={styles.button221}>
-            <div className={styles.cancel} onClick={handleCancel}>
-              Cancel
+            <div className={styles.button221}>
+              <div className={styles.cancel} onClick={handleCancel}>
+                Cancel
+              </div>
             </div>
+            {showSavedMessage && (
+              <div className={styles.savedNotification}>Saved!</div>
+            )}
           </div>
-          {showSavedMessage && (
-            <div className={styles.savedNotification}>Saved!</div>
-          )}
         </div>
+        <img className={styles.image23Icon} alt="" src="/image-23@2x.png" />
       </div>
-      <img className={styles.image23Icon} alt="" src="/image-23@2x.png" />
-    </div>
+    </form>
   );
 };
-
 export default AddAnimal;
