@@ -139,7 +139,7 @@ const AddAnimal = () => {
               onChange={handleChange}
             />
             <textarea
-              name="Notes"
+              name="notes"
               placeholder="Notes"
               className={styles.textarea11}
               value={formData.notes}
