@@ -1,0 +1,879 @@
+.image23Icon {
+    width: 240px;
+    height: 106px;
+    position: relative;
+    object-fit: cover;
+  }
+  .keyboardBackspace1 {
+    width: 54px;
+    height: 54px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .keyboardBackspace {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2px 0 0;
+  }
+  .events {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    line-height: 56px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+  .keyboardBackspaceParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 27px;
+  }
+  .image45Icon {
+    height: 181px;
+    width: 279px;
+    position: relative;
+    object-fit: cover;
+  }
+  .emotionalSupportFurries1 {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    line-height: 56px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+  .emotionalSupportFurriesWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 var(--padding-5xs) 0 0;
+    box-sizing: border-box;
+    max-width: calc(100% - 174px);
+  }
+  .editIcon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .editWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-10xs) 0 0;
+  }
+  .edit {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-white);
+    text-align: left;
+    display: inline-block;
+    min-width: 26px;
+  }
+  .button21,
+  .mayPMCDH {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .button21 {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-6xs) var(--padding-2xs) var(--padding-6xs)
+      var(--padding-xs);
+    background-color: var(--color-palevioletred);
+    border-radius: var(--br-9xs);
+    overflow: hidden;
+    flex-direction: row;
+    gap: var(--gap-7xs);
+  }
+  .mayPMCDH {
+    flex-direction: column;
+    padding: var(--padding-3xs) 0 0;
+  }
+  .eDeleteIcon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .eDeleteWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-10xs) 0 0;
+  }
+  .delete {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-palevioletred);
+    text-align: left;
+    display: inline-block;
+    min-width: 43px;
+  }
+  .button22 {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-6xs) var(--padding-xs);
+    background-color: var(--color-lavenderblush);
+    border-radius: var(--br-9xs);
+    overflow: hidden;
+    flex-direction: row;
+    gap: var(--gap-7xs);
+  }
+  .button22,
+  .button22Wrapper,
+  .emotionalSupportFurries {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .button22Wrapper {
+    flex-direction: column;
+    padding: var(--padding-3xs) 0 0;
+  }
+  .emotionalSupportFurries {
+    flex-direction: row;
+    gap: var(--gap-6xs);
+    max-width: 100%;
+  }
+  .may282024 {
+    position: relative;
+    font-size: var(--font-size-base);
+    line-height: 26px;
+    font-family: var(--font-inter);
+    color: var(--color-gray);
+    white-space: nowrap;
+  }
+  .emotionalSupportFurriesParent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .emotionalSupportFurries2 {
+    align-self: stretch;
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-gray);
+  }
+  .container35,
+  .frameParent {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .frameParent {
+    flex: 1;
+    flex-direction: column;
+    gap: 21px;
+    min-width: 474px;
+  }
+  .container35 {
+    align-self: stretch;
+    box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+    border-radius: var(--br-7xs);
+    background-color: var(--color-white);
+    flex-direction: row;
+    padding: var(--padding-lg) var(--padding-lg) var(--padding-2xl);
+    box-sizing: border-box;
+    gap: var(--gap-13xl);
+  }
+  .image45Icon1 {
+    height: 181px;
+    width: 279px;
+    position: relative;
+    object-fit: cover;
+    min-height: 181px;
+  }
+  .pawsRelax {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    line-height: 56px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+  .may212024 {
+    position: relative;
+    font-size: var(--font-size-base);
+    line-height: 26px;
+    font-family: var(--font-inter);
+    color: var(--color-gray);
+    white-space: nowrap;
+  }
+  .pawsRelaxParent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .editIcon1 {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .editContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-10xs) 0 0;
+  }
+  .edit1 {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-white);
+    text-align: left;
+    display: inline-block;
+    min-width: 26px;
+  }
+  .button211 {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-6xs) var(--padding-2xs) var(--padding-6xs)
+      var(--padding-xs);
+    background-color: var(--color-palevioletred);
+    border-radius: var(--br-9xs);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-7xs);
+  }
+  .eDeleteIcon1 {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .eDeleteContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-10xs) 0 0;
+  }
+  .delete1 {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-palevioletred);
+    text-align: left;
+    display: inline-block;
+    min-width: 43px;
+  }
+  .button21Parent,
+  .button221 {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .button221 {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-6xs) var(--padding-xs);
+    background-color: var(--color-lavenderblush);
+    border-radius: var(--br-9xs);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-7xs);
+  }
+  .button21Parent {
+    gap: var(--gap-6xs);
+  }
+  .button21Parent,
+  .frameContainer,
+  .frameWrapper {
+    display: flex;
+    align-items: flex-start;
+  }
+  .frameWrapper {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--padding-3xs) 0 0;
+  }
+  .frameContainer {
+    width: 716px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--gap-xl);
+    max-width: 100%;
+  }
+  .takeAPaws {
+    align-self: stretch;
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-gray);
+  }
+  .container351,
+  .frameGroup {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .frameGroup {
+    flex: 1;
+    flex-direction: column;
+    gap: 11px;
+    min-width: 474px;
+  }
+  .container351 {
+    align-self: stretch;
+    box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+    border-radius: var(--br-7xs);
+    background-color: var(--color-white);
+    flex-direction: row;
+    padding: var(--padding-lg) var(--padding-lg) var(--padding-2xl);
+    box-sizing: border-box;
+    gap: var(--gap-13xl);
+  }
+  .image45Icon2 {
+    height: 181px;
+    width: 279px;
+    position: relative;
+    object-fit: cover;
+    min-height: 181px;
+  }
+  .kittyCuddleCorner {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    line-height: 56px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+  .april292024 {
+    position: relative;
+    font-size: var(--font-size-base);
+    line-height: 26px;
+    font-family: var(--font-inter);
+    color: var(--color-gray);
+    white-space: nowrap;
+  }
+  .kittyCuddleCornerParent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+  }
+  .editIcon2 {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .editFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-10xs) 0 0;
+  }
+  .edit2 {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-white);
+    text-align: left;
+    display: inline-block;
+    min-width: 26px;
+  }
+  .button212 {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-6xs) var(--padding-2xs) var(--padding-6xs)
+      var(--padding-xs);
+    background-color: var(--color-palevioletred);
+    border-radius: var(--br-9xs);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-7xs);
+  }
+  .eDeleteIcon2 {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .eDeleteFrame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-10xs) 0 0;
+  }
+  .delete2 {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-palevioletred);
+    text-align: left;
+    display: inline-block;
+    min-width: 43px;
+  }
+  .button21Group,
+  .button222 {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+  .button222 {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-6xs) var(--padding-xs);
+    background-color: var(--color-lavenderblush);
+    border-radius: var(--br-9xs);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-7xs);
+  }
+  .button21Group {
+    gap: var(--gap-6xs);
+  }
+  .button21Group,
+  .frameParent1,
+  .frameWrapper1 {
+    display: flex;
+    align-items: flex-start;
+  }
+  .frameWrapper1 {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: var(--padding-3xs) 0 0;
+  }
+  .frameParent1 {
+    width: 716px;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 100%;
+    gap: var(--gap-xl);
+  }
+  .thisDelightfulEvent {
+    align-self: stretch;
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-gray);
+  }
+  .frameDiv {
+    flex: 1;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 474px;
+    max-width: 100%;
+  }
+  .container352,
+  .container35Parent,
+  .container3Inner,
+  .frameDiv {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .container352 {
+    align-self: stretch;
+    box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+    border-radius: var(--br-7xs);
+    background-color: var(--color-white);
+    flex-direction: row;
+    padding: var(--padding-lg) var(--padding-lg) var(--padding-2xl);
+    box-sizing: border-box;
+    gap: var(--gap-13xl);
+    max-width: 100%;
+  }
+  .container35Parent,
+  .container3Inner {
+    flex-direction: column;
+  }
+  .container35Parent {
+    align-self: stretch;
+    gap: 23px;
+    max-width: 100%;
+  }
+  .container3Inner {
+    flex: 1;
+    padding: 50px 0 0;
+    box-sizing: border-box;
+    max-width: calc(100% - 50px);
+  }
+  .container22Child {
+    align-self: stretch;
+    width: 10px;
+    position: relative;
+    border-radius: 5px;
+    background-color: #bdc1ca;
+  }
+  .container22,
+  .container31,
+  .container3Container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+  .container22 {
+    height: 848px;
+    background-color: var(--color-white);
+    overflow: hidden;
+    padding: var(--padding-6xs) 4px 284px;
+  }
+  .container31,
+  .container3Container {
+    max-width: 100%;
+  }
+  .container31 {
+    flex: 1;
+    border-radius: var(--br-5xl);
+    background-color: var(--color-white);
+    padding: 0 16px 17px 58px;
+    gap: var(--gap-13xl);
+  }
+  .container3Container {
+    align-self: stretch;
+    padding: 0 var(--padding-20xl);
+    color: var(--color-darkslateblue);
+  }
+  .container3 {
+    flex: 1;
+    border-radius: var(--br-5xl);
+    background-color: #f3f4f6;
+    flex-direction: column;
+    padding: 36px var(--padding-10xl) var(--padding-20xl);
+    gap: 48px;
+    max-width: 100%;
+    text-align: left;
+    font-size: var(--font-size-21xl);
+    color: var(--color-palevioletred);
+    font-family: var(--font-epilogue);
+  }
+  .container3,
+  .container3Wrapper,
+  .viewEvents {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+  }
+  .container3Wrapper {
+    align-self: stretch;
+    flex-direction: row;
+    padding: 0 var(--padding-5xs) 0 37px;
+    max-width: 100%;
+  }
+  .viewEvents {
+    width: 100%;
+    position: relative;
+    box-shadow: 0 3px 6px rgba(18, 15, 40, 0.12);
+    background-color: var(--color-white);
+    overflow: hidden;
+    flex-direction: column;
+    padding: 42px 24px var(--padding-13xl);
+    gap: 12px;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+  @media screen and (max-width: 1200px) {
+    .image45Icon {
+      flex: 1;
+    }
+    .container35 {
+      flex-wrap: wrap;
+    }
+    .image45Icon1 {
+      flex: 1;
+    }
+    .container351 {
+      flex-wrap: wrap;
+    }
+    .image45Icon2 {
+      flex: 1;
+    }
+    .container352 {
+      flex-wrap: wrap;
+    }
+    .container31 {
+      padding-left: var(--padding-10xl);
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 1050px) {
+    .emotionalSupportFurries1,
+    .events {
+      font-size: var(--font-size-13xl);
+      line-height: 45px;
+    }
+    .frameParent {
+      min-width: 100%;
+    }
+    .pawsRelax {
+      font-size: var(--font-size-13xl);
+      line-height: 45px;
+    }
+    .frameGroup {
+      min-width: 100%;
+    }
+    .kittyCuddleCorner {
+      font-size: var(--font-size-13xl);
+      line-height: 45px;
+    }
+    .frameParent1 {
+      flex-wrap: wrap;
+    }
+    .frameDiv {
+      min-width: 100%;
+    }
+    .container22 {
+      padding-top: var(--padding-xl);
+      padding-bottom: 185px;
+      box-sizing: border-box;
+    }
+    .container3 {
+      padding-top: 23px;
+      padding-bottom: 25px;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 750px) {
+    .container35 {
+      gap: var(--gap-base);
+    }
+    .button21Parent,
+    .frameContainer {
+      flex-wrap: wrap;
+    }
+    .container351 {
+      gap: var(--gap-base);
+    }
+    .button21Group {
+      flex-wrap: wrap;
+    }
+    .container352 {
+      gap: var(--gap-base);
+    }
+    .container3Inner {
+      padding-top: var(--padding-13xl);
+      box-sizing: border-box;
+    }
+    .container31 {
+      gap: var(--gap-base);
+    }
+    .container3 {
+      gap: 24px;
+      padding-top: var(--padding-xl);
+      padding-bottom: var(--padding-xl);
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .emotionalSupportFurries1,
+    .events,
+    .kittyCuddleCorner,
+    .pawsRelax {
+      font-size: var(--font-size-5xl);
+      line-height: 34px;
+    }
+    .container22 {
+      padding-bottom: 120px;
+      box-sizing: border-box;
+    }
+  }
+
+  .image23Icon {
+    width: 240px;
+    height: 106px;
+    position: relative;
+    object-fit: cover;
+  }
+  
+  .keyboardBackspace1 {
+    width: 54px;
+    height: 54px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .keyboardBackspace {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2px 0 0;
+  }
+  
+  .events {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    line-height: 56px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+  
+  .keyboardBackspaceParent {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 27px;
+  }
+  
+  .image45Icon {
+    height: 181px;
+    width: 279px;
+    position: relative;
+    object-fit: cover;
+  }
+  
+  .emotionalSupportFurries1 {
+    margin: 0;
+    position: relative;
+    font-size: inherit;
+    line-height: 56px;
+    font-weight: 700;
+    font-family: inherit;
+  }
+  
+  .emotionalSupportFurriesWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0 var(--padding-5xs) 0 0;
+    box-sizing: border-box;
+    max-width: calc(100% - 174px);
+  }
+  
+  .editIcon, .eDeleteIcon {
+    width: 16px;
+    height: 16px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  
+  .editWrapper, .eDeleteWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: var(--padding-10xs) 0 0;
+  }
+  
+  .edit, .delete {
+    position: relative;
+    font-size: var(--font-size-sm);
+    line-height: 22px;
+    font-family: var(--font-inter);
+    color: var(--color-white);
+    text-align: left;
+    display: inline-block;
+    min-width: 26px;
+  }
+  
+  .button21, .button22 {
+    cursor: pointer;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    margin-right: 10px; /* space between buttons */
+  }
+  
+  .button21 {
+    background-color: #E91E63; /* Pink color */
+    color: white;
+    transition: background-color 0.3s;
+  }
+  
+  .button21:hover {
+    background-color: #C2185B; /* Slightly darker pink on hover */
+  }
+  
+  .button22 {
+    background-color: #F8BBD0; /* Light pink color */
+    color: #E91E63; /* Pink text */
+    transition: background-color 0.3s;
+  }
+  
+  .button22:hover {
+    background-color: #E1BDCD; /* Slightly darker light pink on hover */
+  }
+  
+  .emotionalSupportFurries {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures buttons align to the right */
+    max-width: 100%;
+  }
+  
+  .may282024, .may212024, .april292024 {
+    position: relative;
+    font-size: var(--font-size-base);
+    line-height: 26px;
+    font-family: var(--font-inter);
+    color: var(--color-gray);
+    white-space: nowrap;
+  }
+  
+  .container35, .frameParent, .container35Parent, .frameDiv, .container352 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Aligns content and buttons to opposite ends */
+    max-width: 100%;
+  }
+  
+  .container35, .container351, .container352 {
+    align-self: stretch;
+    box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+    border-radius: var(--br-7xs);
+    background-color: var(--color-white);
+    flex-direction: row;
+    padding: var(--padding-lg) var(--padding-lg) var(--padding-2xl);
+    box-sizing: border-box;
+    gap: var(--gap-13xl);
+  }
+  
+  

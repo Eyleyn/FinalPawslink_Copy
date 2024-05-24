@@ -1,0 +1,137 @@
+.sopepayysApprovalForm {
+  position: absolute;
+  top: 36px;
+  left: calc(50% - 563.5px);
+  line-height: 56px;
+}
+.keyboardBackspace1 {
+  position: absolute;
+  top: 38px;
+  left: 29px;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+}
+.inputText {
+  position: absolute;
+  top: calc(50% - 12.5px);
+  left: 12px;
+  line-height: 26px;
+}
+.textfield {
+  position: absolute;
+  height: calc(100% - 26px);
+  width: calc(100% + 1px);
+  top: 26px;
+  right: 0;
+  bottom: 0;
+  left: -1px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #9095a1;
+  box-sizing: border-box;
+}
+.newNameOf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 26px;
+  color: #424856;
+}
+.textbox149,
+.textbox1491 {
+  left: 455px;
+  background-color: transparent;
+  width: 301px;
+  height: 88px;
+}
+.textbox149 {
+  position: absolute;
+  top: 284px;
+}
+.textbox1491 {
+  top: 406px;
+}
+.button41,
+.save,
+.textbox1491 {
+  position: absolute;
+}
+.save {
+  top: calc(50% - 13px);
+  left: calc(50% - 18px);
+  line-height: 26px;
+}
+.button41 {
+  top: 539px;
+  left: 610px;
+  border-radius: 4px;
+  background-color: #d2628a;
+  width: 126px;
+  height: 43px;
+  overflow: hidden;
+  color: #fff;
+}
+.cancel {
+  position: absolute;
+  top: calc(50% - 13px);
+  left: calc(50% - 24.5px);
+  line-height: 26px;
+}
+.button411 {
+  position: absolute;
+  top: 539px;
+  left: 476px;
+  border-radius: 4px;
+  background-color: #fff;
+  border: 1px solid #d2628a;
+  box-sizing: border-box;
+  width: 126px;
+  height: 43px;
+  overflow: hidden;
+  color: #d2628a;
+}
+.container3,
+.container31 {
+  position: absolute;
+  border-radius: 24px;
+}
+.container31 {
+  top: 140px;
+  left: 68px;
+  background-color: #fff;
+  width: 1211px;
+  height: 865px;
+  font-size: 16px;
+  color: #171a1f;
+  font-family: Inter;
+}
+.container3 {
+  height: calc(100% - 192px);
+  width: calc(100% - 93px);
+  top: 160px;
+  right: 32px;
+  bottom: 32px;
+  left: 61px;
+  background-color: #f3f4f6;
+}
+.image23Icon {
+  position: absolute;
+  top: 42px;
+  left: 24px;
+  width: 240px;
+  height: 106px;
+  object-fit: cover;
+}
+.viewFormApprovalForm {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(18, 15, 40, 0.12);
+  background-color: #fff;
+  height: 1236px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 40px;
+  color: #d2628a;
+  font-family: Epilogue;
+}

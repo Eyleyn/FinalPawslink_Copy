@@ -1,0 +1,108 @@
+.adoptedAnimals1 {
+  position: absolute;
+  top: 36px;
+  left: calc(50% - 563.5px);
+  line-height: 56px;
+}
+.keyboardBackspace1 {
+  position: absolute;
+  top: 38px;
+  left: 29px;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+}
+.image78Icon {
+  position: absolute;
+  height: calc(100% - 74px);
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 74px;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.adoptedCats {
+  position: absolute;
+  bottom: 32px;
+  left: 12px;
+}
+.container96 {
+  position: absolute;
+  top: 148px;
+  left: 146px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  border-radius: var(--br-7xs);
+  background-color: var(--color-white);
+  width: 435px;
+  height: 570px;
+  cursor: pointer;
+}
+.image79Icon {
+  position: absolute;
+  height: calc(100% - 74px);
+  width: calc(100% + 1px);
+  top: 0;
+  right: -1px;
+  bottom: 74px;
+  left: 0;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.container97 {
+  position: absolute;
+  top: 148px;
+  left: 641px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  border-radius: var(--br-7xs);
+  background-color: var(--color-white);
+  width: 435px;
+  height: 570px;
+  cursor: pointer;
+}
+.container3,
+.container31 {
+  position: absolute;
+  border-radius: var(--br-5xl);
+}
+.container31 {
+  top: 140px;
+  left: 68px;
+  background-color: var(--color-white);
+  width: 1211px;
+  height: 865px;
+}
+.container3 {
+  height: calc(100% - 192px);
+  width: calc(100% - 93px);
+  top: 160px;
+  right: 32px;
+  bottom: 32px;
+  left: 61px;
+  background-color: #f3f4f6;
+}
+.image23Icon {
+  position: absolute;
+  top: 42px;
+  left: 24px;
+  width: 240px;
+  height: 106px;
+  object-fit: cover;
+}
+.adoptedAnimals {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(18, 15, 40, 0.12);
+  background-color: var(--color-white);
+  height: 1236px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 40px;
+  color: #d2628a;
+  font-family: var(--font-epilogue);
+}

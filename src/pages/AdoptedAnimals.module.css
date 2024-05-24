@@ -1,0 +1,101 @@
+.adoptedAnimals {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container4 {
+  background-color: whitesmoke;
+}
+
+.image23Icon {
+  width: 250px;
+  height: 150px;
+  margin-left: 150px;
+  object-fit: cover;
+}
+
+.container4 {
+  width: 80%;
+  height: 100%;
+  margin-left: 150px;
+  margin-top: -10px;
+}
+
+.container31 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  margin-top: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  height: 500px;
+  border-radius: 10px;
+}
+
+.image78Icon {
+  width: 100%;
+}
+
+.imagecontainer {
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-left: 50px;
+  height: 60vh;
+  width: 70%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: var(--br-5xl);
+}
+
+.container96{
+  width: 500px;
+  height: 60vh;
+  display: inline-block;
+  margin-left: 50px;
+  margin-top: -50px;
+}
+
+.keyboardBackspace1 {
+  width: 44px;
+  height: 44px;
+  margin-top: 40px;
+}
+
+.keyboardBackspace7 {
+  display: flex;
+  align-items: center;
+  
+}
+.adoptedAnimals1{
+  font-size: 32px;
+  color: palevioletred;
+  margin-left: 5px;
+  margin-top: 40px;
+}
+
+.adoptedCats{
+  margin-left: 50px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 300px) {
+  .container31 {
+    flex-direction: column;
+  }
+
+  .adoptedAnimals {
+    padding: 0px 20px;
+  }
+  .container4 {
+    padding: 40px;
+  }
+  .image23Icon {
+    width: 30%;
+  }
+}

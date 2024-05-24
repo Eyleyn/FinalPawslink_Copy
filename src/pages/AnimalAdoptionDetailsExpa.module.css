@@ -1,0 +1,220 @@
+.mimisMonthlyUpdate {
+  position: absolute;
+  top: 36px;
+  left: calc(50% - 563.5px);
+  line-height: 56px;
+}
+.keyboardBackspace1 {
+  position: absolute;
+  top: 38px;
+  left: 29px;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+}
+.image80Icon,
+.mimi {
+  position: absolute;
+  top: 16px;
+}
+.image80Icon {
+  height: calc(100% - 30px);
+  bottom: 14px;
+  left: 16px;
+  border-radius: 3px;
+  max-height: 100%;
+  width: 150px;
+  object-fit: cover;
+}
+.mimi {
+  left: 186px;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: Epilogue;
+  display: inline-block;
+  width: 189px;
+}
+.adopted04042024ByContainer {
+  position: absolute;
+  top: 50px;
+  left: 186px;
+  line-height: 22px;
+}
+.alive {
+  position: absolute;
+  top: calc(50% - 9px);
+  left: calc(50% - 15.5px);
+  line-height: 18px;
+}
+.frame,
+.tag28 {
+  position: absolute;
+  width: 47px;
+  height: 24px;
+}
+.frame {
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  background-color: #eefdf3;
+  overflow: hidden;
+}
+.tag28 {
+  top: 79px;
+  left: 186px;
+  background-color: transparent;
+  font-size: 11px;
+  color: #117b34;
+}
+.viewRequest {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 31.5px);
+  line-height: 22px;
+}
+.button84,
+.viewIcon {
+  position: absolute;
+  overflow: hidden;
+}
+.viewIcon {
+  top: calc(50% - 8px);
+  left: calc(50% - 53.5px);
+  width: 16px;
+  height: 16px;
+}
+.button84 {
+  top: 110px;
+  left: 186px;
+  border-radius: 4px;
+  background-color: #d2628a;
+  width: 131px;
+  height: 36px;
+  color: #fff;
+}
+.message {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 19px);
+  line-height: 22px;
+}
+.sendMessageIcon {
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 41px);
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+.button91,
+.container98 {
+  position: absolute;
+  border-radius: 4px;
+}
+.button91 {
+  top: 110px;
+  left: 322px;
+  background-color: #d2628a;
+  width: 106px;
+  height: 36px;
+  overflow: hidden;
+  color: #fff;
+}
+.container98 {
+  top: 29px;
+  left: 42px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  background-color: #fff;
+  width: 473px;
+  height: 180px;
+}
+.may2024 {
+  position: absolute;
+  top: 18px;
+  left: 71px;
+  line-height: 50px;
+}
+.image81Icon {
+  position: absolute;
+  top: 100px;
+  left: 26px;
+  width: 572px;
+  height: 338px;
+  object-fit: cover;
+}
+.cillumLaborisAd {
+  position: absolute;
+  top: 473px;
+  left: 32px;
+  font-size: 14px;
+  line-height: 22px;
+  font-family: Inter;
+  color: #171a1f;
+  display: inline-block;
+  width: 566px;
+}
+.keyboardBackspace11 {
+  position: absolute;
+  top: 25px;
+  left: 26px;
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+}
+.container100 {
+  position: absolute;
+  top: 29px;
+  left: 544px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  border-radius: 4px;
+  background-color: #fff;
+  width: 627px;
+  height: 818px;
+  font-size: 35px;
+  color: #774a7f;
+  font-family: Epilogue;
+}
+.container3,
+.container31 {
+  position: absolute;
+  border-radius: 24px;
+}
+.container31 {
+  top: 140px;
+  left: 68px;
+  background-color: #fff;
+  width: 1211px;
+  height: 865px;
+  font-size: 14px;
+  color: #171a1f;
+  font-family: Inter;
+}
+.container3 {
+  height: calc(100% - 192px);
+  width: calc(100% - 93px);
+  top: 160px;
+  right: 32px;
+  bottom: 32px;
+  left: 61px;
+  background-color: #f3f4f6;
+}
+.image23Icon {
+  position: absolute;
+  top: 42px;
+  left: 24px;
+  width: 240px;
+  height: 106px;
+  object-fit: cover;
+}
+.animalAdoptionDetailsExpa {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(18, 15, 40, 0.12);
+  background-color: #fff;
+  height: 1236px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 40px;
+  color: #d2628a;
+  font-family: Epilogue;
+}

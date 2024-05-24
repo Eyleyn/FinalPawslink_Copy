@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-inter: Inter;
+  --font-epilogue: Epilogue;
+
+  /* font sizes */
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-gray-100: #171a1f;
+  --color-gray-200: rgba(0, 0, 0, 0);
+  --color-lightslategray: #9095a1;
+  --color-darkslategray: #424856;
+  --color-palevioletred-100: #d2628a;
+  --color-palevioletred-200: rgba(210, 98, 138, 0.2);
+
+  /* Border radiuses */
+  --br-5xl: 24px;
+  --br-9xs: 4px;
+}

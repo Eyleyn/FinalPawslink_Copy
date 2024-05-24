@@ -1,0 +1,375 @@
+.animalInfo {
+  position: absolute;
+  top: 36px;
+  left: 80px;
+  line-height: 56px;
+}
+.image38Icon,
+.keyboardBackspace1 {
+  position: absolute;
+  object-fit: cover;
+}
+.keyboardBackspace1 {
+  top: 38px;
+  left: 29px;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+}
+.image38Icon {
+  top: 44px;
+  left: 42px;
+  width: 250px;
+  height: 250px;
+}
+.chooseAPhoto {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 41.5px);
+  line-height: 22px;
+}
+.dataUploadIcon {
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 63.5px);
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.button19,
+.rectangle {
+  position: absolute;
+  border-radius: var(--br-9xs);
+}
+.button19 {
+  top: 295px;
+  left: 42px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  background-color: var(--color-palevioletred-100);
+  width: 250px;
+  height: 36px;
+  overflow: hidden;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+}
+.rectangle {
+  top: calc(50% - 30px);
+  left: calc(50% - 99.5px);
+  background-color: var(--color-gray-200);
+  border: 5px solid var(--color-palevioletred-200);
+  box-sizing: border-box;
+  width: 199px;
+  height: 60px;
+}
+.feb2021 {
+  position: absolute;
+  top: calc(50% - 12.5px);
+  left: 34px;
+  line-height: 26px;
+}
+.calendarIcon {
+  position: absolute;
+  top: calc(50% - 7.5px);
+  left: 12px;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.textfield {
+  position: absolute;
+  height: calc(100% - 26px);
+  width: calc(100% + 1px);
+  top: 26px;
+  right: 0;
+  bottom: 0;
+  left: -1px;
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-palevioletred-100);
+  box-sizing: border-box;
+}
+.vaccinationDate {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 26px;
+  color: var(--color-darkslategray);
+}
+.textbox15,
+.textbox151,
+.textbox16 {
+  position: absolute;
+  top: 154px;
+  left: 550px;
+  background-color: var(--color-gray-200);
+  width: 200px;
+  height: 80px;
+  color: var(--color-gray-100);
+}
+.textbox151,
+.textbox16 {
+  top: 152.67px;
+  left: 330px;
+}
+.textbox151 {
+  top: 154px;
+  left: 780px;
+}
+.traitsAndPersonality {
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 22px;
+}
+.likesPeople {
+  margin: 0;
+}
+.likesPeopleContainer {
+  position: absolute;
+  width: calc(100% - 29px);
+  top: 7px;
+  left: 12px;
+  line-height: 22px;
+  display: inline-block;
+}
+.resizingHandleIcon {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.textfield3 {
+  position: absolute;
+  height: calc(100% - 22px);
+  width: calc(100% + 1px);
+  top: 22px;
+  right: 0;
+  bottom: 0;
+  left: -1px;
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-lightslategray);
+  box-sizing: border-box;
+  color: var(--color-gray-100);
+}
+.textarea1,
+.textarea11 {
+  left: 330px;
+  background-color: var(--color-gray-200);
+  width: 650px;
+  font-size: var(--font-size-sm);
+}
+.textarea1 {
+  position: absolute;
+  top: 250px;
+  height: 213px;
+}
+.textarea11 {
+  top: 480px;
+  height: 121px;
+}
+.button22,
+.save,
+.textarea11 {
+  position: absolute;
+}
+.save {
+  top: calc(50% - 11px);
+  left: calc(50% - 16.5px);
+  line-height: 22px;
+}
+.button22 {
+  cursor: pointer;
+  top: 630px;
+  left: 842px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  border-radius: var(--br-9xs);
+  background-color: var(--color-palevioletred-100);
+  width: 146px;
+  height: 38px;
+  overflow: hidden;
+  font-size: var(--font-size-sm);
+  color: var(--color-white);
+}
+.cancel {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 23px);
+  line-height: 22px;
+}
+.button221 {
+  cursor: pointer;
+  position: absolute;
+  top: 630px;
+  left: 690px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-palevioletred-100);
+  box-sizing: border-box;
+  width: 146px;
+  height: 38px;
+  overflow: hidden;
+  font-size: var(--font-size-sm);
+  color: var(--color-palevioletred-100);
+}
+.butterscotch,
+.name {
+  position: absolute;
+  line-height: 26px;
+}
+.name {
+  top: 0;
+  left: 0;
+}
+.butterscotch {
+  top: calc(50% - 12.5px);
+  left: 12px;
+}
+.textfield5 {
+  height: calc(100% - 26px);
+  width: calc(100% + 1px);
+  top: 26px;
+  right: 0;
+  bottom: 0;
+  left: -1px;
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-lightslategray);
+  box-sizing: border-box;
+  color: var(--color-gray-100);
+}
+.f,
+.textbox13,
+.textboxLocation,
+.textfield5 {
+  position: absolute;
+}
+.textbox13 {
+  top: 44px;
+  left: 330px;
+  background-color: var(--color-gray-200);
+  width: 150px;
+  height: 80px;
+}
+.textboxLocation {
+  top: 44px;
+  left: 490px;
+  background-color: var(--color-gray-200);
+  width: 120px;
+  height: 80px;
+}
+.f {
+  width: calc(100% - 30px);
+  top: calc(50% - 12.5px);
+  left: 12px;
+  line-height: 26px;
+  display: inline-block;
+}
+.chevronDownLarge {
+  position: absolute;
+  top: calc(50% - 7.5px);
+  right: 11px;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+  object-fit: cover;
+}
+.textfield6 {
+  position: absolute;
+  height: calc(100% - 26px);
+  width: calc(100% + 10px);
+  top: 25.67px;
+  right: -9px;
+  bottom: 0.33px;
+  left: -1px;
+  border-radius: var(--br-9xs);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-lightslategray);
+  box-sizing: border-box;
+  color: var(--color-gray-100);
+}
+.dropdownButton1,
+.dropdownButton11,
+.dropdownButton12,
+.textbox131 {
+  position: absolute;
+  top: 44px;
+  left: 700px;
+  background-color: var(--color-gray-200);
+  width: 85px;
+  height: 80px;
+}
+.dropdownButton11,
+.dropdownButton12,
+.textbox131 {
+  left: 620px;
+  width: 69px;
+}
+.dropdownButton11,
+.dropdownButton12 {
+  left: 890px;
+  width: 90px;
+}
+.dropdownButton12 {
+  left: 805px;
+  width: 77px;
+}
+.container3,
+.container31 {
+  position: absolute;
+  border-radius: var(--br-5xl);
+}
+.container31 {
+  top: 100px;
+  left: 40px;
+  background-color: var(--color-white);
+  width: 1000px;
+  height: 865px;
+  font-size: var(--font-size-base);
+  color: var(--color-darkslategray);
+  font-family: var(--font-inter);
+}
+.container3 {
+  height: 150%;
+  width: 80%;
+  top: 100px;
+  left: 150px;
+  background-color: #f3f4f6;
+}
+.image23Icon {
+  position: absolute;
+  top: 6px;
+  left: 140px;
+  width: 240px;
+  height: 106px;
+  object-fit: cover;
+}
+.editAnimal {
+  width: 100vw;
+  height: 100%;
+  box-shadow: 0 3px 6px rgba(18, 15, 40, 0.12);
+  background-color: var(--color-white);
+  overflow: hidden;
+  text-align: left;
+  font-size: 30px;
+  color: var(--color-palevioletred-100);
+  font-family: var(--font-epilogue);
+}
+
+.savedNotification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: green;
+  color: white;
+  padding: 10px;
+  z-index: 1000;
+}
+
+

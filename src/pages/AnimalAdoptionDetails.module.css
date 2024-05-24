@@ -1,0 +1,363 @@
+.mimisAdoptionDetails {
+  position: absolute;
+  top: 36px;
+  left: calc(50% - 563.5px);
+  line-height: 56px;
+}
+.keyboardBackspace1 {
+  position: absolute;
+  top: 38px;
+  left: 29px;
+  width: 54px;
+  height: 54px;
+  overflow: hidden;
+}
+.image80Icon,
+.mimi {
+  position: absolute;
+  top: 16px;
+}
+.image80Icon {
+  height: calc(100% - 30px);
+  bottom: 14px;
+  left: 16px;
+  border-radius: 3px;
+  max-height: 100%;
+  width: 150px;
+  object-fit: cover;
+}
+.mimi {
+  left: 186px;
+  font-size: 20px;
+  line-height: 30px;
+  font-family: Epilogue;
+  display: inline-block;
+  width: 189px;
+}
+.adopted04042024ByContainer {
+  position: absolute;
+  top: 50px;
+  left: 186px;
+  line-height: 22px;
+}
+.alive {
+  position: absolute;
+  top: calc(50% - 9px);
+  left: calc(50% - 15.5px);
+  line-height: 18px;
+}
+.frame,
+.tag28 {
+  position: absolute;
+  width: 47px;
+  height: 24px;
+}
+.frame {
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  background-color: #eefdf3;
+  overflow: hidden;
+}
+.tag28 {
+  top: 79px;
+  left: 186px;
+  background-color: transparent;
+  font-size: 11px;
+  color: #117b34;
+}
+.viewRequest {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 31.5px);
+  line-height: 22px;
+}
+.button84,
+.viewIcon {
+  position: absolute;
+  overflow: hidden;
+}
+.viewIcon {
+  top: calc(50% - 8px);
+  left: calc(50% - 53.5px);
+  width: 16px;
+  height: 16px;
+}
+.button84 {
+  top: 110px;
+  left: 186px;
+  border-radius: 4px;
+  background-color: #d2628a;
+  width: 131px;
+  height: 36px;
+  color: #fff;
+}
+.message {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 19px);
+  line-height: 22px;
+}
+.sendMessageIcon {
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 41px);
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+.button91,
+.container98 {
+  position: absolute;
+  border-radius: 4px;
+}
+.button91 {
+  top: 110px;
+  left: 322px;
+  background-color: #d2628a;
+  width: 106px;
+  height: 36px;
+  overflow: hidden;
+  color: #fff;
+}
+.container98 {
+  top: 29px;
+  left: 42px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  background-color: #fff;
+  width: 473px;
+  height: 180px;
+}
+.monthlyUpdate {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: 16px;
+  line-height: 22px;
+  display: inline-block;
+  width: 320px;
+}
+.frame1 {
+  height: 102.17%;
+  width: 56.13%;
+  top: -1.09%;
+  right: -0.01%;
+  bottom: -1.09%;
+  left: 43.87%;
+  background-color: #fafafb;
+  border-top: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.frame1,
+.frame2,
+.month {
+  position: absolute;
+}
+.month {
+  top: calc(50% - 11px);
+  left: 16px;
+  line-height: 22px;
+  display: inline-block;
+  width: 243.1px;
+}
+.frame2 {
+  height: 102.17%;
+  width: 43.87%;
+  top: -1.09%;
+  right: 56.13%;
+  bottom: -1.09%;
+  left: 0;
+  background-color: #fafafb;
+  border-top: 1px solid #f3f4f6;
+  border-bottom: 1px solid #f3f4f6;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.frame3,
+.frame4,
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.header {
+  height: 16.08%;
+  width: 100%;
+  right: 0;
+  bottom: 83.92%;
+  background-color: transparent;
+  color: #565d6d;
+  font-family: Epilogue;
+}
+.frame3,
+.frame4 {
+  height: 100%;
+  width: 43.87%;
+  right: 56.13%;
+  bottom: 0;
+  background-color: #fff;
+  overflow: hidden;
+}
+.frame4 {
+  width: 56.13%;
+  right: -0.01%;
+  left: 43.87%;
+}
+.frame5,
+.frame6,
+.row {
+  position: absolute;
+  height: 20.98%;
+  width: 100%;
+  top: 16.08%;
+  right: 0;
+  bottom: 62.94%;
+  left: 0;
+  background-color: transparent;
+}
+.frame5,
+.frame6 {
+  height: 100%;
+  width: 43.87%;
+  top: 0;
+  right: 56.13%;
+  bottom: 0;
+  background-color: #fafafb;
+  overflow: hidden;
+}
+.frame6 {
+  width: 56.13%;
+  right: -0.01%;
+  left: 43.87%;
+}
+.row1,
+.row2,
+.row3 {
+  position: absolute;
+  height: 20.98%;
+  width: 100%;
+  top: 37.06%;
+  right: 0;
+  bottom: 41.96%;
+  left: 0;
+  background-color: transparent;
+}
+.row2,
+.row3 {
+  top: 58.04%;
+  bottom: 20.98%;
+}
+.row3 {
+  top: 79.02%;
+  bottom: 0;
+}
+.viewUpdate {
+  position: absolute;
+  top: calc(50% - 11px);
+  left: calc(50% - 40.5px);
+  line-height: 22px;
+}
+.button90,
+.button901 {
+  position: absolute;
+  border-radius: 4px;
+}
+.button90 {
+  top: 237px;
+  left: 288px;
+  background-color: transparent;
+  width: 105px;
+  height: 36px;
+  overflow: hidden;
+  color: #d2628a;
+}
+.button901 {
+  top: 115px;
+}
+.button901,
+.button902,
+.button903 {
+  left: 288px;
+  background-color: transparent;
+  width: 105px;
+  height: 36px;
+  overflow: hidden;
+  color: #d2628a;
+}
+.button902 {
+  position: absolute;
+  top: 176px;
+  border-radius: 4px;
+}
+.button903 {
+  top: 54px;
+}
+.button903,
+.container100,
+.table6 {
+  position: absolute;
+  border-radius: 4px;
+}
+.table6 {
+  top: -0.5px;
+  left: -0.5px;
+  background-color: transparent;
+  border: 1px solid #f3f4f6;
+  box-sizing: border-box;
+  width: 628.1px;
+  height: 287px;
+  overflow: hidden;
+}
+.container100 {
+  top: 29px;
+  left: 544px;
+  box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+  background-color: #fff;
+  width: 627px;
+  height: 818px;
+}
+.container3,
+.container31 {
+  position: absolute;
+  border-radius: 24px;
+}
+.container31 {
+  top: 140px;
+  left: 68px;
+  background-color: #fff;
+  width: 1211px;
+  height: 865px;
+  font-size: 14px;
+  color: #171a1f;
+  font-family: Inter;
+}
+.container3 {
+  height: calc(100% - 192px);
+  width: calc(100% - 93px);
+  top: 160px;
+  right: 32px;
+  bottom: 32px;
+  left: 61px;
+  background-color: #f3f4f6;
+}
+.image23Icon {
+  position: absolute;
+  top: 42px;
+  left: 24px;
+  width: 240px;
+  height: 106px;
+  object-fit: cover;
+}
+.animalAdoptionDetails {
+  width: 100%;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(18, 15, 40, 0.12);
+  background-color: #fff;
+  height: 1236px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 40px;
+  color: #d2628a;
+  font-family: Epilogue;
+}

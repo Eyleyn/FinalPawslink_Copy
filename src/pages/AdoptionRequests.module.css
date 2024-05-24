@@ -1,0 +1,183 @@
+.adoptionRequests1 {
+    margin-left: 90px;
+    margin-top: 50px;
+    font-size: 26px;
+    color: palevioletred;
+  }
+  .keyboardBackspace1 {
+    position: absolute;
+    top: 38px;
+    left: 29px;
+    width: 54px;
+    height: 54px;
+    overflow: hidden;
+  }
+  .nameWantsToContainer {
+    position: absolute;
+    top: 39px;
+    left: 101px;
+    line-height: 22px;
+    color: var(--color-gray-100);
+  }
+  .viewRequest {
+    position: absolute;
+    top: calc(50% - 11px);
+    left: calc(50% - 31.5px);
+    line-height: 22px;
+  }
+  .button47,
+  .viewIcon {
+    position: absolute;
+    overflow: hidden;
+  }
+  .viewIcon {
+    top: calc(50% - 8px);
+    left: calc(50% - 53.5px);
+    width: 16px;
+    height: 16px;
+  }
+  .button47 {
+    top: 32px;
+    left: 726px;
+    border-radius: var(--br-9xs);
+    background-color: var(--color-palevioletred);
+    width: 131px;
+    height: 36px;
+  }
+  .rectangleIcon {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+  }
+  .frame,
+  .rectangleIcon,
+  .text {
+    position: absolute;
+  }
+  .text {
+    top: calc(50% - 5.75px);
+    left: calc(50% + 0.75px);
+    line-height: 12px;
+  }
+  .frame {
+    right: 0.74px;
+    bottom: 0.74px;
+    border-radius: var(--br-7xs);
+    background-color: var(--color-limegreen);
+    border: 1.5px solid var(--color-white);
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+  }
+  .avatar15 {
+    position: absolute;
+    top: 27px;
+    left: 24px;
+    border-radius: var(--br-4xl);
+    background-color: var(--color-thistle);
+    width: 46px;
+    height: 46px;
+    overflow: hidden;
+    font-size: var(--font-size-xs);
+    font-family: var(--font-manrope);
+  }
+  .container63,
+  .container631 {
+    box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
+    border-radius: var(--br-9xs);
+    background-color: green;
+    width: 95%;
+    height: 100px;
+    margin-top: 30px;
+    margin-left: 20px;
+  }
+  .container631 {
+    top: 172px;
+  }
+  .archive,
+  .container31 {
+    top: 123px;
+  }
+  .container31 {
+    border-radius: var(--br-5xl);
+    background-color: var(--color-white);
+    width: 65%;
+    height: 70%;
+    overflow: auto;
+    max-height: 100%;
+    margin-top: 20px;
+    margin-left: 50px;
+    font-size: var(--font-size-sm);
+    color: var(--color-white);
+    font-family: var(--font-inter);
+  }
+  .archive {
+    left: 1089px;
+    line-height: 56px;
+    color: #774a7f;
+  }
+  .approvedRequests {
+    position: absolute;
+    top: calc(50% - 19px);
+    left: calc(50% - 111.5px);
+  }
+  .button87 {
+    position: absolute;
+    top: 191px;
+    left: 1086px;
+    border-radius: var(--br-9xs);
+    background-color: var(--color-gray-200);
+    width: 247px;
+    height: 38px;
+    overflow: hidden;
+  }
+  .declinedRequests {
+    position: absolute;
+    top: calc(50% - 19px);
+    left: calc(50% - 105.5px);
+  }
+  .button88 {
+    position: absolute;
+    top: 245px;
+    left: 1086px;
+    border-radius: var(--br-9xs);
+    background-color: var(--color-gray-200);
+    width: 235px;
+    height: 38px;
+    overflow: hidden;
+  }
+  .container3 {
+    position: absolute;
+    width: 85%;
+    height: 100%;
+    overflow: auto;
+    max-height: 100%;
+    margin-top: 110px;
+    margin-left: 100px;
+    border-radius: var(--br-5xl);
+    background-color:whitesmoke;
+  }
+  .image23Icon {
+    margin-left: 100px;
+    width: 200px;
+    height: 100px;
+    object-fit: cover;
+  }
+  .adoptionRequests {
+    width: 100%;
+    box-shadow: 0 3px 6px rgba(18, 15, 40, 0.12);
+    background-color: var(--color-palevioletred);
+    height: 70%;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-21xl);
+    color: var(--color-palevioletred);
+    font-family: var(--font-epilogue);
+  }
