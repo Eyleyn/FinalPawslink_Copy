@@ -11,312 +11,347 @@ import { toPng } from 'html-to-image';
 
 const dogsData = [
     {
-      name: "Ampon",
+      mainName: "Ampon",
       age: "3",
+      sex: 'F',
+      species: 'Dog',
       location: 'CDH',
-      vaccinationDate: "08/01/2021",
-      dewormDate: "12/11/2022",
+      sterilizationDate: "08/01/2021",
+      dewormingDate: "12/11/2022",
       status: "ON CAMPUS",
-      neuterspayDate: "30/01/2023"
+      neuterspayDate: "30/01/2023",
+      traitsAndPersonality: "None",
+      notes: "None"
     },
     {
-      name: "Bella",
+      mainName: "Bella",
       age: "1",
+      species: 'Dog',
       location: 'CUB',
-      vaccinationDate: "26/08/2020",
-      dewormDate: "14/08/2022",
+      sterilizationDate: "26/08/2020",
+      dewormingDate: "14/08/2022",
       status: "ON CAMPUS",
       neuterspayDate: "28/10/2021"
     },
     {
-        name: "Betty",
+        mainName: "Betty",
         age: "2",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Blythe",
+        mainName: "Blythe",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Box 1",
+        mainName: "Box 1",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Brownie",
+        mainName: "Brownie",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Butterscotch",
+        mainName: "Butterscotch",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Carrot Cake",
+        mainName: "Carrot Cake",
         age: "1",
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
+        status: "ON CAMPUS",
+        neuterspayDate: "28/10/2021",
+        species: 'Dog',
+    },
+    {
+        mainName: "CM",
+        age: "1",
+        location: 'CDH',
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
+        status: "ON CAMPUS",
+        species: 'Dog',
+        neuterspayDate: "28/10/2021"
+    },
+    {
+        mainName: "Data",
+        age: "1",
+        species: 'Dog',
+        location: 'CDH',
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "CM",
+        mainName: "Ducky",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Data",
+        mainName: "Four",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Ducky",
+        mainName: "Iska",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Four",
+        mainName: "Jewel",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Iska",
+        mainName: "Cassy",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Jewel",
+        mainName: "Saki",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Cassy",
+        mainName: "Ligaya",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Saki",
+        mainName: "Maan",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Ligaya",
+        mainName: "Mama Caramel",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Maan",
+        mainName: "Mathilda",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Mama Caramel",
+        mainName: "Mikay",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Mathilda",
+        mainName: "Milo",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Mikay",
+        mainName: "Mimi",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Milo",
+        mainName: "Molly",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Mimi",
+        mainName: "Odette",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Molly",
+        mainName: "Oliver",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Odette",
+        mainName: "Paquito Sr.",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Oliver",
+        mainName: "Isko",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Paquito Sr.",
+        mainName: "Puppy",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Isko",
+        mainName: "Putot",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Puppy",
+        mainName: "Scar",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Putot",
+        mainName: "Caramel",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Scar",
+        mainName: "Trixie",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
     },
     {
-        name: "Caramel",
+        mainName: "Yeye",
         age: "1",
+        species: 'Dog',
         location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
+        sterilizationDate: "26/08/2020",
+        dewormingDate: "14/08/2022",
         status: "ON CAMPUS",
         neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Trixie",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Yeye",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-
-        //ENCODE ALL ANIMALS HERE
     },
   ];
   const DogDatabaseScreen = () => {
@@ -326,8 +361,8 @@ const dogsData = [
         navigate('/dashboard'); // This will navigate to Dashboard when called
     };
 
-    const goToEdit = () => {
-        navigate('/edit-animal'); // Navigate to the login route on logout
+    const handleEdit = (dog) => {
+        navigate('/edit-animal', { state: { ...dog } }); // Navigate to the edit-animal route with dog data
     };
 
     return (
@@ -380,13 +415,13 @@ const dogsData = [
                                             <div style={styles.DogTableContent}>
                                                 {dogsData.map((dog, index) => {
                                                     return (
-                                                        <div key={index}>
+                                                        <div key={dog.id}>
                                                             <div style={styles.imgFrame}>
                                                                 <img style={styles.imageIcon} src={dog_image} />
                                                             </div>
                                                             <div style={styles.DogDetails}>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.txtDetails}> {dog.name} </div>
+                                                                    <div style={styles.txtDetails}> {dog.mainName} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
                                                                     <div style={styles.statusTxtDetails}> {dog.status} </div>
@@ -398,16 +433,16 @@ const dogsData = [
                                                                     <div style={styles.agetxtDetails}> {dog.age} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.dewormtxtDetails}> {dog.dewormDate} </div>
+                                                                    <div style={styles.dewormtxtDetails}> {dog.dewormingDate} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.vaxtxtDetails}> {dog.vaccinationDate} </div>
+                                                                    <div style={styles.vaxtxtDetails}> {dog.sterilizationDate} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
                                                                     <div style={styles.neutxtDetails}> {dog.neuterspayDate} </div>
                                                                 </div>
-                                                                <div style={styles.DisplayContent} onClick={goToEdit}>
-                                                                    <button style={styles.editButton} onClick={goToEdit}>
+                                                                <div style={styles.DisplayContent} onClick={() => handleEdit(dog)}>
+                                                                    <button style={styles.editButton} onClick={() => handleEdit(dog)}>
                                                                         Edit
                                                                     </button>
                                                                 </div>

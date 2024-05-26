@@ -8,42 +8,46 @@ const AddAnimal = () => {
   const [imageFile, setImageFile] = useState(null);
   const [formData, setFormData] = useState({
     sex: "",
-    vaccinationDate: "",
-    neuterSpayDate: "",
+    sterilizationDate: "",
+    sterilizationDate: "",
     dewormingDate: "",
     traitsAndPersonality: "",
     notes: "",
-    name: "",
+    mainName: "",
     location: "",
     status: "",
     age: "",
-    specie: "",
+    species: "",
   });
   const [showSavedMessage, setShowSavedMessage] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const data = new FormData();
     data.append("image", imageFile);
     Object.keys(formData).forEach((key) => {
       data.append(key, formData[key]);
     });
-
+  
+    // Log the form data to the console
+    console.log("Form Data Entries:", Object.fromEntries(data.entries()));
+  
     try {
-      const response = await axios.post("YOUR_API_ENDPOINT", data, {
+      const response = await axios.post("http://localhost:3030/api/addAnimal", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log("Form Data:", response.data);
+      console.log("Response Data:", response.data);
       setShowSavedMessage(true);
       setTimeout(() => setShowSavedMessage(false), 3000);
     } catch (error) {
       console.error("Error uploading data:", error);
     }
   };
+  
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -105,6 +109,7 @@ const AddAnimal = () => {
               value={formData.sex}
               onChange={handleChange}
             >
+              <option value="">Unknown</option>
               <option value="M">Male</option>
               <option value="F">Female</option>
             </select>
@@ -117,7 +122,7 @@ const AddAnimal = () => {
               onChange={handleChange}
             />
             <input
-              name="neuterSpayDate"
+              name="traitsAndPersonality"
               type="date"
               placeholder="Neuter/Spay Date"
               className={styles.textbox16}
@@ -139,18 +144,18 @@ const AddAnimal = () => {
               onChange={handleChange}
             />
             <textarea
-              name="Notes"
+              name="notes"
               placeholder="Notes"
               className={styles.textarea11}
               value={formData.notes}
               onChange={handleChange}
             />
             <input
-              name="name"
+              name="mainName"
               placeholder="Name"
               type="text"
               className={styles.textbox13}
-              value={formData.name}
+              value={formData.mainName}
               onChange={handleChange}
             />
             <input
@@ -170,6 +175,7 @@ const AddAnimal = () => {
               <option value="Owned">Owned</option>
               <option value="On-Campus">On Campus</option>
               <option value="Adopted">Adopted</option>
+              <option value="Transient">Adopted</option>
             </select>
             <input
               name="age"
@@ -180,11 +186,12 @@ const AddAnimal = () => {
               onChange={handleChange}
             />
             <select
-              name="specie"
+              name="species"
               className={styles.dropdownButton11}
-              value={formData.specie}
+              value={formData.species}
               onChange={handleChange}
             >
+              <option value="Unknown">Unknown</option>
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
             </select>

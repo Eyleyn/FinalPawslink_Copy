@@ -184,13 +184,17 @@
 }
 .save {
   top: calc(50% - 11px);
-  left: calc(50% - 16.5px);
+  left: calc(50% - 23px);
   line-height: 22px;
+  background-color: transparent;
+  border: palevioletred;
+  color: white;
 }
+
 .button22 {
   cursor: pointer;
-  top: 630px;
-  left: 842px;
+  margin-top: 630px;
+  margin-left: 842px;
   box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
   border-radius: var(--br-9xs);
   background-color: var(--color-palevioletred-100);

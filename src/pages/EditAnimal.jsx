@@ -1,43 +1,46 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./EditAnimal.module.css";
 
-const AddAnimal = () => {
-  const [imageSrc, setImageSrc] = useState("/image-26@3x.png");
+const EditAnimal = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const dog = location.state;
+
+  const [imageSrc, setImageSrc] = useState(dog.image || "/image-26@3x.png");
   const [imageFile, setImageFile] = useState(null);
   const [formData, setFormData] = useState({
-    sex: "",
-    vaccinationDate: "",
-    neuterSpayDate: "",
-    dewormingDate: "",
-    traitsAndPersonality: "",
-    notes: "",
-    name: "",
-    location: "",
-    status: "",
-    age: "",
-    specie: "",
+    sex: dog.sex || "",
+    sterilizationDate: dog.sterilizationDate || "",
+    dewormingDate: dog.dewormingDate || "",
+    traitsAndPersonality: dog.traitsAndPersonality || "",
+    notes: dog.notes || "",
+    mainName: dog.mainName || "",
+    location: dog.location || "",
+    status: dog.status || "",
+    age: dog.age || "",
+    species: dog.species || "",
+    vaccinationDate: dog.vaccinationDate || "",
   });
   const [showSavedMessage, setShowSavedMessage] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const data = new FormData();
-    data.append("image", imageFile);
+    if (imageFile) data.append("image", imageFile);
     Object.keys(formData).forEach((key) => {
       data.append(key, formData[key]);
     });
 
     try {
-      const response = await axios.post("YOUR_API_ENDPOINT", data, {
+      const response = await axios.put(`http://localhost:3030/api/addAnimal/${dog.id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      console.log("Form Data:", response.data);
+      console.log("Response Data:", response.data);
       setShowSavedMessage(true);
       setTimeout(() => setShowSavedMessage(false), 3000);
     } catch (error) {
@@ -66,7 +69,7 @@ const AddAnimal = () => {
   };
 
   const handleCancel = () => {
-    navigate("/dashboard");
+    navigate("/dog-database");
   };
 
   return (
@@ -84,7 +87,7 @@ const AddAnimal = () => {
             <img className={styles.image38Icon} alt="" src={imageSrc} />
             <div className={styles.button19}>
               <label htmlFor="photo-upload" className={styles.chooseAPhoto}>
-                
+                Choose a Photo
               </label>
               <input
                 type="file"
@@ -105,10 +108,11 @@ const AddAnimal = () => {
               value={formData.sex}
               onChange={handleChange}
             >
+              <option value="">Unknown</option>
               <option value="M">Male</option>
               <option value="F">Female</option>
             </select>
-            
+
             <input
               name="vaccinationDate"
               type="date"
@@ -117,11 +121,11 @@ const AddAnimal = () => {
               onChange={handleChange}
             />
             <input
-              name="neuterSpayDate"
+              name="sterilizationDate"
               type="date"
               placeholder="Neuter/Spay Date"
               className={styles.textbox16}
-              value={formData.neuterSpayDate}
+              value={formData.sterilizationDate}
               onChange={handleChange}
             />
             <input
@@ -139,18 +143,18 @@ const AddAnimal = () => {
               onChange={handleChange}
             />
             <textarea
-              name="Notes"
+              name="notes"
               placeholder="Notes"
               className={styles.textarea11}
               value={formData.notes}
               onChange={handleChange}
             />
             <input
-              name="name"
+              name="mainName"
               placeholder="Name"
               type="text"
               className={styles.textbox13}
-              value={formData.name}
+              value={formData.mainName}
               onChange={handleChange}
             />
             <input
@@ -170,6 +174,7 @@ const AddAnimal = () => {
               <option value="Owned">Owned</option>
               <option value="On-Campus">On Campus</option>
               <option value="Adopted">Adopted</option>
+              <option value="Transient">Transient</option>
             </select>
             <input
               name="age"
@@ -180,16 +185,17 @@ const AddAnimal = () => {
               onChange={handleChange}
             />
             <select
-              name="specie"
+              name="species"
               className={styles.dropdownButton11}
-              value={formData.specie}
+              value={formData.species}
               onChange={handleChange}
             >
+              <option value="Unknown">Unknown</option>
               <option value="Dog">Dog</option>
               <option value="Cat">Cat</option>
             </select>
             <div className={styles.button22}>
-              <button type="submit" styles={styles.button22}>
+              <button type="submit" className={styles.save}>
                 Save
               </button>
             </div>
@@ -208,4 +214,5 @@ const AddAnimal = () => {
     </form>
   );
 };
-export default AddAnimal;
+
+export default EditAnimal;
