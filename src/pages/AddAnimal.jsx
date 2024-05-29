@@ -43,7 +43,7 @@ const AddAnimal = () => {
       console.log("Response Data:", response.data);
       setShowSavedMessage(true);
       setTimeout(() => setShowSavedMessage(false), 3000);
-      //navigate("/dashboard");
+      navigate("/dogs");
     } catch (error) {
       console.error("Error uploading data:", error);
     }
