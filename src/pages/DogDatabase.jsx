@@ -8,353 +8,31 @@ import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyle
 import QRCode from 'react-qr-code';
 import { toPng } from 'html-to-image';
 
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const dogsData = [
-    {
-      mainName: "Ampon",
-      age: "3",
-      sex: 'F',
-      species: 'Dog',
-      location: 'CDH',
-      sterilizationDate: "08/01/2021",
-      dewormingDate: "12/11/2022",
-      status: "ON CAMPUS",
-      neuterspayDate: "30/01/2023",
-      traitsAndPersonality: "None",
-      notes: "None"
-    },
-    {
-      mainName: "Bella",
-      age: "1",
-      species: 'Dog',
-      location: 'CUB',
-      sterilizationDate: "26/08/2020",
-      dewormingDate: "14/08/2022",
-      status: "ON CAMPUS",
-      neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Betty",
-        age: "2",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Blythe",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Box 1",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Brownie",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Butterscotch",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Carrot Cake",
-        age: "1",
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021",
-        species: 'Dog',
-    },
-    {
-        mainName: "CM",
-        age: "1",
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        species: 'Dog',
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Data",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Ducky",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Four",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Iska",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Jewel",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Cassy",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Saki",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Ligaya",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Maan",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Mama Caramel",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Mathilda",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Mikay",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Milo",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Mimi",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Molly",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Odette",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Oliver",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Paquito Sr.",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Isko",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Puppy",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Putot",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Scar",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Caramel",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Trixie",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        mainName: "Yeye",
-        age: "1",
-        species: 'Dog',
-        location: 'CDH',
-        sterilizationDate: "26/08/2020",
-        dewormingDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-  ];
-  const DogDatabaseScreen = () => {
+const DogDatabaseScreen = () => {
+    const [animalList, setAnimalList] = useState([])
+
+    useEffect(()=>{
+        getAnimalList();
+    }, []);
+
+    const getAnimalList = async () =>{
+        // ?species=dog
+        await axios.get('http://localhost:3030/api/getanimals?all=true')
+        .then(result =>{
+            console.log(result)
+            if(result && result.data){
+                setAnimalList(result.data);
+            }else{
+                throw new Error("No Animal Found")
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
     const navigate = useNavigate(); // Hook for navigation
 
     const handleBack = () => {
@@ -362,8 +40,14 @@ const dogsData = [
     };
 
     const handleEdit = (dog) => {
+        console.log('pressed')
         navigate('/edit-animal', { state: { ...dog } }); // Navigate to the edit-animal route with dog data
     };
+
+    const formatDate = (dateString) => {
+        return new Date(dateString).toLocaleDateString('en-GB');
+    };
+
 
     return (
         <div style={styles.mainContainer}>
@@ -413,12 +97,9 @@ const dogsData = [
                                         </div>
                                         <div style={styles.DogTable}>
                                             <div style={styles.DogTableContent}>
-                                                {dogsData.map((dog, index) => {
+                                                {animalList.map((dog, index) => {
                                                     return (
                                                         <div key={dog.id}>
-                                                            <div style={styles.imgFrame}>
-                                                                <img style={styles.imageIcon} src={dog_image} />
-                                                            </div>
                                                             <div style={styles.DogDetails}>
                                                                 <div style={styles.DisplayContent}>
                                                                     <div style={styles.txtDetails}> {dog.mainName} </div>
@@ -433,23 +114,21 @@ const dogsData = [
                                                                     <div style={styles.agetxtDetails}> {dog.age} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.dewormtxtDetails}> {dog.dewormingDate} </div>
+                                                                    <div style={styles.dewormtxtDetails}> {formatDate(dog.dewormingDate)} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.vaxtxtDetails}> {dog.sterilizationDate} </div>
+                                                                    <div style={styles.vaxtxtDetails}> {formatDate(dog.vaccinationDate)}</div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.neutxtDetails}> {dog.neuterspayDate} </div>
+                                                                    <div style={styles.neutxtDetails}> {formatDate(dog.sterilizationDate)} </div>
                                                                 </div>
-                                                                <div style={styles.DisplayContent} onClick={() => handleEdit(dog)}>
-                                                                    <button style={styles.editButton} onClick={() => handleEdit(dog)}>
-                                                                        Edit
-                                                                    </button>
-                                                                </div>
-                                                                <div style={styles.DisplayContent} onClick={() =>
-                                                                    navigate("/qr-code-download", {state: dog.name})
-                                                                }>
-                                                                    <img style={styles.qrcodeStyle} src={qr_code} />
+                                                                <button style={styles.editButton} onClick={() => handleEdit(dog)}>
+                                                                    Edit
+                                                                </button>
+                                                                <div style={styles.DisplayContent}>
+                                                                    <img style={styles.qrcodeStyle} onClick={() =>
+                                                                    navigate("/qr-code-download", {state: dog._id})
+                                                                } src={qr_code} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -618,7 +297,7 @@ const styles = {
     },
     editButton: {
         width: '40px',
-        height: '29px',
+        height: '20px',
         fontSize: 12,
         textAlign: 'center',
         color: Color.colorWhite,
@@ -771,7 +450,7 @@ const styles = {
     qrcodeStyle: {
         width: '15px',
         height: '15px',
-        marginLeft: '100px',
+        marginLeft: '40px',
         cursor: 'pointer',
     },
     QrCodeHeader: {
@@ -782,3 +461,4 @@ const styles = {
     }
 }
 export default DogDatabaseScreen
+

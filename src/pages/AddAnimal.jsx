@@ -9,7 +9,7 @@ const AddAnimal = () => {
   const [formData, setFormData] = useState({
     sex: "",
     sterilizationDate: "",
-    sterilizationDate: "",
+    vaccinationDate: "",
     dewormingDate: "",
     traitsAndPersonality: "",
     notes: "",
@@ -33,7 +33,7 @@ const AddAnimal = () => {
   
     // Log the form data to the console
     console.log("Form Data Entries:", Object.fromEntries(data.entries()));
-  
+    //addAnimal?id=something&species=value
     try {
       const response = await axios.post("http://localhost:3030/api/addAnimal", data, {
         headers: {
@@ -43,6 +43,7 @@ const AddAnimal = () => {
       console.log("Response Data:", response.data);
       setShowSavedMessage(true);
       setTimeout(() => setShowSavedMessage(false), 3000);
+      //navigate("/dashboard");
     } catch (error) {
       console.error("Error uploading data:", error);
     }
@@ -87,116 +88,165 @@ const AddAnimal = () => {
           <div className={styles.container31}>
             <img className={styles.image38Icon} alt="" src={imageSrc} />
             <div className={styles.button19}>
-              <label htmlFor="photo-upload" className={styles.chooseAPhoto}>
-                
-              </label>
               <input
                 type="file"
                 id="photo-upload"
                 onChange={handleImageChange}
                 accept="image/*"
-                className={styles.chooseAPhoto}
+                className={styles.hiddenFileInput}
               />
               <img
                 className={styles.dataUploadIcon}
                 alt=""
                 src="/data-upload@2x.png"
               />
+              <label
+                htmlFor="photo-upload"
+                className={styles.customFileUpload}
+              >
+                Choose a Photo
+              </label>
             </div>
-            <select
-              name="sex"
-              className={styles.textfield5}
-              value={formData.sex}
-              onChange={handleChange}
-            >
-              <option value="">Unknown</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-            </select>
+
+            <div className={styles.fieldContainerSex}>
+              <label className={styles.fieldLabelSex}>Sex</label>
+              <select
+                name="sex"
+                className={styles.textfield5}
+                value={formData.sex}
+                onChange={handleChange}
+              >
+                <option value="Unknown">N/A</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+              </select>
+            </div>
             
-            <input
-              name="vaccinationDate"
-              type="date"
-              className={styles.textbox15}
-              value={formData.vaccinationDate}
-              onChange={handleChange}
-            />
-            <input
-              name="traitsAndPersonality"
-              type="date"
-              placeholder="Neuter/Spay Date"
-              className={styles.textbox16}
-              value={formData.neuterSpayDate}
-              onChange={handleChange}
-            />
-            <input
-              name="dewormingDate"
-              type="date"
-              className={styles.textbox151}
-              value={formData.dewormingDate}
-              onChange={handleChange}
-            />
-            <textarea
-              name="traitsAndPersonality"
-              placeholder="Traits and Personality"
-              className={styles.textarea1}
-              value={formData.traitsAndPersonality}
-              onChange={handleChange}
-            />
-            <textarea
-              name="notes"
-              placeholder="Notes"
-              className={styles.textarea11}
-              value={formData.notes}
-              onChange={handleChange}
-            />
-            <input
-              name="mainName"
-              placeholder="Name"
-              type="text"
-              className={styles.textbox13}
-              value={formData.mainName}
-              onChange={handleChange}
-            />
-            <input
-              name="location"
-              type="text"
-              placeholder="Location"
-              className={styles.textboxLocation}
-              value={formData.location}
-              onChange={handleChange}
-            />
-            <select
-              name="status"
-              className={styles.dropdownButton1}
-              value={formData.status}
-              onChange={handleChange}
-            >
-              <option value="Owned">Owned</option>
-              <option value="On-Campus">On Campus</option>
-              <option value="Adopted">Adopted</option>
-              <option value="Transient">Adopted</option>
-            </select>
-            <input
-              name="age"
-              type="text"
-              placeholder="Age"
-              className={styles.textbox131}
-              value={formData.age}
-              onChange={handleChange}
-            />
-            <select
-              name="species"
-              className={styles.dropdownButton11}
-              value={formData.species}
-              onChange={handleChange}
-            >
-              <option value="Unknown">Unknown</option>
-              <option value="Dog">Dog</option>
-              <option value="Cat">Cat</option>
-            </select>
+            <div className={styles.fieldContainerVaccination}>
+              <label className={styles.fieldLabelVaccination}>Vaccination Date</label>
+              <input
+                name="vaccinationDate"
+                type="date"
+                className={styles.textbox15}
+                value={formData.vaccinationDate}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerSterilization}>
+              <label className={styles.fieldLabelSterilization}>Neutering/Spay Date</label>
+              <input
+                name="sterilizationDate"
+                type="date"
+                className={styles.textbox16}
+                value={formData.sterilizationDate}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerDeworming}>
+              <label className={styles.fieldLabelDeworming}>Deworming Date</label>
+              <input
+                name="dewormingDate"
+                type="date"
+                className={styles.textbox151}
+                value={formData.dewormingDate}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerTraits}>
+              <label className={styles.fieldLabelTraits}>Traits and Personality</label>
+              <textarea
+                name="traitsAndPersonality"
+                placeholder=""
+                className={styles.textarea1}
+                value={formData.traitsAndPersonality}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerNotes}>
+              <label className={styles.fieldLabelNotes}>Notes</label>
+              <textarea
+                name="notes"
+                placeholder=""
+                className={styles.textarea11}
+                value={formData.notes}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerName}>
+              <label className={styles.fieldLabelName}>Name</label>
+              <input
+                name="mainName"
+                placeholder="Name"
+                type="text"
+                className={styles.textbox13}
+                value={formData.mainName}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerLoc}>
+              <label className={styles.fieldLabelLoc}>Location</label>
+              <input
+                name="location"
+                type="text"
+                placeholder="Location"
+                className={styles.textboxLocation}
+                value={formData.location}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerStatus}>
+              <label className={styles.fieldLabelStatus}>Status</label>
+              <select
+                name="status"
+                className={styles.dropdownButton1}
+                value={formData.status}
+                onChange={handleChange}
+              >
+                <option value="unknown">N/A</option>
+                <option value="owned">Owned</option>
+                <option value="on-campus">On Campus</option>
+                <option value="adopted">Adopted</option>
+                <option value="transient">Transient</option>
+                <option value="rainbow bridge">Rainbow Bridge</option>
+
+              </select>
+            </div>
+
+            <div className={styles.fieldContainerAge}>
+              <label className={styles.fieldLabelAge}>Age</label>
+              <input
+                name="age"
+                type="text"
+                placeholder="Age"
+                className={styles.textbox131}
+                value={formData.age}
+                onChange={handleChange}
+              />
+            </div>
+
+            <div className={styles.fieldContainerSpecies}>
+              <label className={styles.fieldLabelSpecies}>Species</label>
+              <select
+                name="species"
+                className={styles.dropdownButton11}
+                value={formData.species}
+                onChange={handleChange}
+              >
+                <option value="unknown">N/A</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+              </select>
+            </div>
+
             <div className={styles.button22}>
-              <button type="submit" styles={styles.button22}>
+              <button type="submit" className={styles.save}>
                 Save
               </button>
             </div>
@@ -215,4 +265,5 @@ const AddAnimal = () => {
     </form>
   );
 };
+
 export default AddAnimal;

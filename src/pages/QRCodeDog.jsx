@@ -12,7 +12,7 @@ const DownloadQR = () => {
   const qrRef = useRef();
 
   const handleBack = () => {
-    navigate("/dashboard");
+    navigate("/dogs");
   };
 
   const downloadQRCode = () => {
