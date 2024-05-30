@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./EditAnimal.module.css";
+import { localMachineIpAddress } from "./EventFile";
 
 const AddAnimal = () => {
   const [imageSrc, setImageSrc] = useState("/image-26@3x.png");
@@ -35,7 +36,7 @@ const AddAnimal = () => {
     console.log("Form Data Entries:", Object.fromEntries(data.entries()));
     //addAnimal?id=something&species=value
     try {
-      const response = await axios.post("http://localhost:3030/api/addAnimal", data, {
+      const response = await axios.post(`http://${localMachineIpAddress}:3030/api/addAnimal`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -12,6 +12,7 @@ import { borderColor, borderRadius, color, display, fontSize, height, margin, po
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { localMachineIpAddress } from "./EventFile";
 
 const EventScreen = () => {
     const [eventList, setEvList] = useState([]);
@@ -21,8 +22,9 @@ const EventScreen = () => {
     }, []);
 
     const getViewList = async () =>{
-        await axios.get('http://localhost:3030/api/getEvent?all=true')
+        await axios.get(`http://${localMachineIpAddress}:3030/api/getEvent?all=true`)
         .then(result =>{
+            console.log(result)
             if(result && result.data && result.data.data){
                 setEvList(result.data.data);
             }else{
@@ -33,36 +35,13 @@ const EventScreen = () => {
             console.log(err)
         })
     }
+
     const navigate = useNavigate(); // Hook for navigation
-    console.log(eventList);
 
 
     const handleBack = () => {
         navigate('/dashboard'); // This will navigate to Dashboard when called
     };
-
-    const gotoEditEvent = (event) => {
-        navigate('/edit-event'); // This will navigate to Dashboard when called
-    };
-
-    const event = location.state;
-    const { imgUrl, onEditSuccess } = event;
-
-    const getImageUrl = async () => {
-        await axios
-          .get(`http://localhost:3030/api/getImageUrl?objectKey=${event.imgUrl}`)
-          .then((result) => {
-            console.log(result.data);
-            setImageUrl(result.data.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      };
-
-    useEffect(() => {
-        getImageUrl();
-    }, []);   
 
     return (
         <div style={styles.mainContainer}>
@@ -79,39 +58,12 @@ const EventScreen = () => {
                             </b>
                         </div>
                         <div style={styles.MainForumContainer}>
-                            {eventList.map((event, index) => {
+                            {eventList.map((event) => {
                                     return (
-                                    <div key={event.id}> 
-                                        <div style={styles.EventContainer}>
-                                            <div style={styles.ImageUploadFrame}>
-                                                <img className={styles.UploadedPhoto} alt="" src={imgUrl} />
-                                            </div>
-                                            <div style={styles.EventContentContainer}>
-                                                <div style={styles.TitleAndButtonContainer}>
-                                                    <b style={styles.EventTitleTxt}>{event.title}</b>
-                                                    <div style={styles.ButtonContainer}>
-                                                        <button style={styles.EditButtonStyle} onClick={gotoEditEvent}>
-                                                            <img style={styles.editIcon} src = {edit_icon}/>
-                                                            Edit
-                                                        </button>
-                                                        <button style={styles.DeleteButtonStyle}>
-                                                            <img style={styles.deleteIcon} src = {delete_icon}/>
-                                                            Delete
-                                                        </button>
-                                                    </div>
-                                                    <div style={styles.DateTimePlace}>
-                                                        <p>{event.date}</p>
-                                                        <p>{event.location}</p>
-                                                    </div>
-                                                    <div style={styles.EventContent}>
-                                                        <p>{event.content}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                                        <EventComponentBox event = {event}/>
+                                    );
+                            })
+                        }
                         </div>
                     </div>
                 </div>
@@ -119,6 +71,72 @@ const EventScreen = () => {
         </div>
     );
 };
+
+const EventComponentBox = ({event}) =>{
+    const navigate = useNavigate(); // Hook for navigation
+
+    console.log(event);
+    const [imgUrl, setImgUrl] = useState("");
+
+    const gotoEditEvent = () => {
+        navigate('/edit-event'); // This will navigate to Dashboard when called
+    };
+
+    useEffect(() =>{
+        if(event.contentImgUrl){
+            console.log("true")
+            getImageUrl()
+        }
+    },[]);
+    const getImageUrl = async () => {
+    await axios
+      .get(`http://${localMachineIpAddress}:3030/api/getImageUrl?objectKey=${event.contentImgUrl}`)
+      .then((result) => {
+        console.log(result.data.data);
+        if(result && result.data && result.data.data){
+            setImgUrl(result.data.data);
+        }else{
+            setImgUrl(result.data)
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    };
+
+    return (
+        <div key={event.id}> 
+        <div style={styles.EventContainer}>
+            <div style={styles.ImageUploadFrame}>
+                <img style={styles.UploadedPhoto} alt="" src={imgUrl.length?imgUrl:""} />
+            </div>
+            <div style={styles.EventContentContainer}>
+                <div style={styles.TitleAndButtonContainer}>
+                    <b style={styles.EventTitleTxt}>{event.title}</b>
+                    <div style={styles.ButtonContainer}>
+                        <button style={styles.EditButtonStyle} onClick={gotoEditEvent}>
+                            <img style={styles.editIcon} src = {edit_icon}/>
+                            Edit
+                        </button>
+                        <button style={styles.DeleteButtonStyle}>
+                            <img style={styles.deleteIcon} src = {delete_icon}/>
+                            Delete
+                        </button>
+                    </div>
+                    <div style={styles.DateTimePlace}>
+                        <p>{event.date}</p>
+                        <p>{event.location}</p>
+                    </div>
+                    <div style={styles.EventContent}>
+                        <p>{event.content}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    )
+
+}
 
 const styles = {
     mainContainer:{
@@ -230,19 +248,18 @@ const styles = {
         borderRadius: '5px',
         borderColor: Color.colorWhitesmoke,
         backgroundColor: Color.colorWhitesmoke,
-        justifyContent: 'center',
-        alignItems: 'center',
         marginLeft: '20px',
         marginTop: '10px',
-        objectFit: 'cover'
+        overflow: 'hidden',
+        position: 'relative',
     },
     UploadedPhoto: {
-        width: '140px',
-        height: '100px',
-        objectFit: 'cover',
+        width: '100%',
+        height: '100%',
         marginLeft: '10px',
         marginTop: '10px',
-        objectFit: 'cover'
+        position: 'absolute',
+        objectFit: 'cover',
     },  
     EventContentContainer: {
         width: '550px',

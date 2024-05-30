@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import styles from "./EditAnimal.module.css";
 import top_logo from "../assets/image-23@2x.png";
+import { localMachineIpAddress } from "./EventFile";
+
 
 // Loading component
 const Loading = () => (
@@ -45,7 +47,7 @@ const EditAnimal = () => {
 
   const getImageUrl = async () => {
     await axios
-      .get(`http://localhost:3030/api/getImageUrl?objectKey=${animal.imgUrl}`)
+      .get(`http://${localMachineIpAddress}:3030/api/getImageUrl?objectKey=${animal.imgUrl}`)
       .then((result) => {
         console.log(result.data);
         setImageUrl(result.data.data);
@@ -57,7 +59,7 @@ const EditAnimal = () => {
 
   const fetchUpdatedAnimal = async () => {
     try {
-      const response = await axios.get(`http://localhost:3030/api/getanimals?id=${animal.id}`);
+      const response = await axios.get(`http://${localMachineIpAddress}:3030/api/getanimals?id=${animal.id}`);
       setUpdatedAnimal(response.data);
     } catch (error) {
       console.error("Error fetching updated animal data:", error);
@@ -76,7 +78,7 @@ const EditAnimal = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3030/api/updateAnimal`,
+        `http://${localMachineIpAddress}:3030/api/updateAnimal`,
         data,
         {
           headers: {

@@ -6,6 +6,7 @@ import upload_photo from "../assets/image-38@3x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { localMachineIpAddress } from "./EventFile";
 
 const AddEvent = () => {
   const [eventDate, setEventDate] = useState(""); 
@@ -31,7 +32,7 @@ const AddEvent = () => {
     console.log("Form Data Entries:", Object.fromEntries(data.entries()));
 
     try {
-      const response = await axios.post("http://localhost:3030/api/addEvent", data, {
+      const response = await axios.post(`http://${localMachineIpAddress}:3030/api/addEvent`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -109,6 +110,7 @@ const AddEvent = () => {
                       id="photo-upload"
                       onChange={handleImageChange}
                       accept="image/*"
+                      value={formData.contentImgUrl}
                     />
                     <label htmlFor="photo-upload" className={styles.chooseAPhoto}>
                       Choose a Photo

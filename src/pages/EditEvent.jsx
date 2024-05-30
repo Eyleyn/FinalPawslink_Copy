@@ -5,11 +5,11 @@ import styles from "./AddEvent.module.css";
 import upload_photo from "../assets/imageDog.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
-
+import axios from "axios";
 
 const AddEvent = () => {
-
   const navigate = useNavigate(); // Initialize the navigate function
+  const [imageFile, setImageFile] = useState(null);
 
   const handleBack = () => {
     navigate("/dashboard"); // Navigate to the login route on logout
@@ -82,7 +82,6 @@ const AddEvent = () => {
                     <b className={styles.eventName}>Event Name</b>
                     <textarea 
                       className={styles.textfield}
-                      placeholder="Emotional Support Furries"
                       type="text"
                     />
                       
@@ -98,7 +97,7 @@ const AddEvent = () => {
                     <b className={styles.location}>Location</b>
                     <textarea
                       className={styles.textfield2}
-                      placeholder="CDH"
+                      
                       type="text"
                     />
                   </div>
@@ -106,12 +105,7 @@ const AddEvent = () => {
                     <b className={styles.eventDescription}>Event Description</b>
                     <textarea
                       className={styles.textfield3}
-                      placeholder="Emotional Support Furries is a cozy campus event where
-                      students can unwind with campus dogs during exams Its a
-                      pause for cuddles and playtime with furry friends who bring
-                      unconditional love and support Need a stress break or miss
-                      your pet Join us for some pawsitive vibes to boost your exam
-                      spirits"
+                      
                       type="text"
                       rows={6}
                       cols={27}
