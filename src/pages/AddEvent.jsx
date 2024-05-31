@@ -32,7 +32,7 @@ const AddEvent = () => {
     console.log("Form Data Entries:", Object.fromEntries(data.entries()));
 
     try {
-      const response = await axios.post(`http://${localMachineIpAddress}:3030/api/addEvent`, data, {
+      const response = await axios.post(`http://localhost:3030/api/addEvent`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -110,6 +110,7 @@ const AddEvent = () => {
                       id="photo-upload"
                       onChange={handleImageChange}
                       accept="image/*"
+                      style={{ display: 'none' }}
                       value={formData.contentImgUrl}
                     />
                     <label htmlFor="photo-upload" className={styles.chooseAPhoto}>

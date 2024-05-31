@@ -45,13 +45,10 @@ const CatDatabaseScreen = () =>{
     };
 
     const formatDate = (dateString) => {
-        console.log(dateString);
-        if(typeof(dateString)==Object)
-            {
-                return dateString.toLocaleDateString('en-GB');
-            }
-        return new Date(dateString).toLocaleDateString('en-GB');
+        const date = new Date(dateString);
+        return isNaN(date) ? 'N/A' : date.toLocaleDateString('en-GB');
     };
+    
 
     return (
         <div style={styles.mainContainer}>
@@ -120,7 +117,7 @@ const CatDatabaseScreen = () =>{
                                                                 <div style={styles.dewormtxtDetails}> {formatDate(cat.dewormingDate)} </div>
                                                             </div>
                                                             <div style = {styles.DisplayContent}>
-                                                                <div style={styles.vaxtxtDetails}> {cat.vaccinationDate} </div>
+                                                                <div style={styles.vaxtxtDetails}> {formatDate(cat.vaccinationDate)} </div>
                                                             </div>
                                                             <div style = {styles.DisplayContent}>
                                                                 <div style={styles.neutxtDetails}> {formatDate(cat.sterilizationDate)} </div>

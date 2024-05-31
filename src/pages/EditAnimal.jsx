@@ -18,8 +18,8 @@ const EditAnimal = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const animal = location.state;
-  const { imgUrl, onEditSuccess } = animal;
-  const [imageUrl, setImageUrl] = useState(undefined);
+  const { imageUrl, onEditSuccess } = animal;
+  const [imgUrl, setImageUrl] = useState(undefined);
   const [loading, setLoading] = useState(false); // Add loading state
   const [imageSrc, setImageSrc] = useState(animal.image || "/image-26@3x.png");
   const [imageFile, setImageFile] = useState(null);
@@ -47,7 +47,7 @@ const EditAnimal = () => {
 
   const getImageUrl = async () => {
     await axios
-      .get(`http://${localMachineIpAddress}:3030/api/getImageUrl?objectKey=${animal.imgUrl}`)
+      .get(`http://localhost:3030/api/getImageUrl?objectKey=${animal.imgUrl}`)
       .then((result) => {
         console.log(result.data);
         setImageUrl(result.data.data);
@@ -59,7 +59,7 @@ const EditAnimal = () => {
 
   const fetchUpdatedAnimal = async () => {
     try {
-      const response = await axios.get(`http://${localMachineIpAddress}:3030/api/getanimals?id=${animal.id}`);
+      const response = await axios.get(`http://localhost:3030/api/getanimals?id=${animal.id}`);
       setUpdatedAnimal(response.data);
     } catch (error) {
       console.error("Error fetching updated animal data:", error);
@@ -78,7 +78,7 @@ const EditAnimal = () => {
 
     try {
       const response = await axios.put(
-        `http://${localMachineIpAddress}:3030/api/updateAnimal`,
+        `http://localhost:3030/api/updateAnimal`,
         data,
         {
           headers: {
@@ -136,7 +136,7 @@ const EditAnimal = () => {
             src="/keyboard-backspace-1@2x.png"
           />
           <div className={styles.container31}>
-            <img className={styles.image38Icon} alt="" src={imageUrl} />
+            <img className={styles.image38Icon} alt="" src={imageSrc} />
             <div className={styles.button19}>
               <input
                 type="file"

@@ -22,7 +22,7 @@ const EventScreen = () => {
     }, []);
 
     const getViewList = async () =>{
-        await axios.get(`http://${localMachineIpAddress}:3030/api/getEvent?all=true`)
+        await axios.get(`http://localhost:3030/api/getEvent?all=true`)
         .then(result =>{
             console.log(result)
             if(result && result.data && result.data.data){
@@ -90,7 +90,7 @@ const EventComponentBox = ({event}) =>{
     },[]);
     const getImageUrl = async () => {
     await axios
-      .get(`http://${localMachineIpAddress}:3030/api/getImageUrl?objectKey=${event.contentImgUrl}`)
+      .get(`http://localhost:3030/api/getImageUrl?objectKey=${event.contentImgUrl}`)
       .then((result) => {
         console.log(result.data.data);
         if(result && result.data && result.data.data){

@@ -36,7 +36,7 @@ const AddAnimal = () => {
     console.log("Form Data Entries:", Object.fromEntries(data.entries()));
     //addAnimal?id=something&species=value
     try {
-      const response = await axios.post(`http://${localMachineIpAddress}:3030/api/addAnimal`, data, {
+      const response = await axios.post(`http://localhost:3030/api/addAnimal`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

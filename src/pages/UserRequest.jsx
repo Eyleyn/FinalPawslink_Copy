@@ -3,43 +3,15 @@ import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
 import IDupload from "../assets/rectangle-2@2x.png";
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { useLocation, useNavigate } from "react-router-dom"; //Import useNavigate from react-router-dom
 import { color, display, fontSize, height, margin, maxHeight, positions, textAlign, width } from "@mui/system";
 import { grey, pink } from "@mui/material/colors";
 import { Dropdown, Input } from "@mui/base";
+import axios from "axios";
 
-const UserInformation = [
-  {
-    fname: 'Sophia Feona',
-    lname: 'Cantiller',
-    age: 22,
-    student: 'yes',
-    contactNumber: '+639616337842',
-    email: 'socantiller@up.edu.ph',
-    facebookLink: 'fb.com/sphcntllr',
-    completeHomeAddress: 'Centerpoint 1, Brgy. Guinhalaran, Silay City, Negros Occidental',
-    completeCurrentAddress: 'St. Isidores Dormitory, Hollywood St, Brgy. Mat-y, Miagao, Iloilo',
-    noOfPets: 1,
-    yearsOfBeingPetOwner: 1,
-    ageOfOldestLivingPet: 1,
-    AdoptedPetFutureAddress: 'Home Address',
-    neuterOrSpayAwareness: 'yes',
-    neuterOrSpayWillingness: 'yes',
-    regularVetClinin: 'Barkery',
-    indoorOroutdoor: 'indoor',
-    leashORcaged: 'caged',
-    basicNecessities1: 'water',
-    basicNecessities2: 'food',
-    basicNecessities3: 'toys',
-    basicNecessities4: 'clean area for sleeping',
-    basicNecessities5: 'grooming',
-    enrichmentActivity: 'None',
-    hearAboutUs: 'Facebook',
-    photo: [IDupload],
-  }
-];
 const UserViewRequest = () => {
   const navigate = useNavigate();
+  const [userList, setUserList] = useState([])
 
     const goToApproved = () => {
         navigate("/approved-request"); 
@@ -53,6 +25,25 @@ const UserViewRequest = () => {
       navigate('/adoption-requests'); // This will navigate to Dashboard when called
     };
 
+    useEffect(()=>{
+      getUserList();
+    }, []);
+
+    const getUserList = async () =>{
+      // ?species=dog
+      await axios.get(`http://localhost:3030/api/getAdoptionRequest?all=true`)
+      .then(result =>{
+          console.log(result)
+          if(result && result.data){
+            setUserList(result.data);
+          }else{
+              throw new Error("No User Found")
+          }
+      })
+      .catch(err =>{
+          console.log(err)
+      })
+  }
   return (
     <div style={styles.mainContainer}>
       <div style={styles.mainContentContainer}>
@@ -69,8 +60,8 @@ const UserViewRequest = () => {
               </div>
             </div>
             <div style={styles.UserInfomationContainer}>
-              {UserInformation.map((info, index) => (
-                <div key={index}> 
+              {userList.map((info, index) => (
+                <div key={info.id}> 
                   <div style={styles.BasicInfo}>
                     <b style={styles.HeaderStyle}>Basic Info</b>
                   </div>
@@ -79,11 +70,9 @@ const UserViewRequest = () => {
                       <div style={styles.SubHeaderTextStyle}>
                         <b>First name</b>
                         <div style={styles.InputContainer}>
-                          <input
-                              style={styles.textInput}
-                              type="text"
-                              placeholder={info.fname}
-                          />
+                          <div style={styles.textInput}>
+                            {info.fname}
+                          </div>
                         </div>
                       </div>
                       <div style={styles.SubHeaderTextStyle2}>

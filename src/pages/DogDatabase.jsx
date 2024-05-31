@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate from react
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 import QRCode from 'react-qr-code';
 import { toPng } from 'html-to-image';
+import { localMachineIpAddress } from "./EventFile";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -20,7 +21,7 @@ const DogDatabaseScreen = () => {
 
     const getAnimalList = async () =>{
         // ?species=dog
-        await axios.get('http://localhost:3030/api/getanimals?all=true')
+        await axios.get(`http://localhost:3030/api/getanimals?species=dog`)
         .then(result =>{
             console.log(result)
             if(result && result.data){
@@ -45,7 +46,8 @@ const DogDatabaseScreen = () => {
     };
 
     const formatDate = (dateString) => {
-        return new Date(dateString).toLocaleDateString('en-GB');
+        const date = new Date(dateString);
+        return isNaN(date) ? 'N/A' : date.toLocaleDateString('en-GB');
     };
 
 
