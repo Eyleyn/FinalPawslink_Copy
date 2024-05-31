@@ -174,6 +174,27 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
     },
+    bottomContentContainer:{
+        width: '80%',
+        height: '30%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-end'
+    },
+    bottomLeftContent: {
+        display: 'flex',
+        justifyContent: 'flex-start',
+        width: "50%",
+        alignItems: 'center',
+        height: '30%'
+    },
+    bottomRightContent:{
+        display: 'flex',
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        width: '50%',
+        height: '30%',
+    },
     siginButton: {
         cursor: 'pointer',
         border: 'none',
