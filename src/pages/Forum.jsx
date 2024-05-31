@@ -1,10 +1,10 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
 import user_icon from "../assets/rectangle-2@2x.png";
 import comment_icon from "../assets/comment-2.svg";
 import upload_photo from "../assets/image-38@3x.png";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { useNavigate } from 'react-router-dom';
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 
 const PostData = [
@@ -51,29 +51,28 @@ const PostData = [
         comments: '3 comments',
         datePosted: '03-18-2023',
     },
-    
 ];
 
-const ForumScreen = () =>{
-    const navigate = useNavigate(); // Hook for navigation
+const ForumScreen = () => {
+    const navigate = useNavigate();
 
-    const viewForum= () => {
+    const viewForum = () => {
         navigate("/view-forum");
     }
 
     const handleBack = () => {
-        navigate('/dashboard'); // This will navigate to Dashboard when called
+        navigate('/dashboard');
     };
 
     return (
         <div style={styles.mainContainer}>
             <div style={styles.mainContentContainer}>
                 <div style={styles.SecondMContainer}>
-                    <img style={styles.topLogoPawslink} src = {top_logo} />
+                    <img style={styles.topLogoPawslink} src={top_logo} alt="Pawslink Logo" />
                     <div style={styles.ForumScreenContainer}>
-                        <div style = {styles.buttonContainer}>
+                        <div style={styles.buttonContainer}>
                             <button style={styles.BackButton} onClick={handleBack}>
-                                <img style={styles.keyboardBackspace1} src = {back_button}/>
+                                <img style={styles.keyboardBackspace1} src={back_button} alt="Back" />
                             </button>
                             <b style={styles.ForumTextStyle}>
                                 Forum
@@ -81,37 +80,35 @@ const ForumScreen = () =>{
                         </div>
                         <div style={styles.MainForumContainer}>
                             {PostData.map((post, index) => (
-                                <div key={index}> 
-                                    <div style={styles.ForumContainer}>
-                                        <div style={styles.ScrollablePostContainer}>
-                                            <div style={styles.PostContainer}>
-                                                <div style = {styles.imgFrame}>
-                                                    <img style={styles.imageIcon} src={user_icon} />
-                                                    <p style={styles.UsernameTxtStyle}>{post.username}</p>
+                                <div key={index} style={styles.ForumContainer}>
+                                    <div style={styles.ScrollablePostContainer}>
+                                        <div style={styles.PostContainer}>
+                                            <div style={styles.imgFrame}>
+                                                <img style={styles.imageIcon} src={user_icon} alt="User Icon" />
+                                                <p style={styles.UsernameTxtStyle}>{post.username}</p>
+                                            </div>
+                                            <div style={styles.TxtContainer}>
+                                                <div style={styles.TitleStyle}>
+                                                    <b style={styles.TitleText}>{post.postTitle}</b>
                                                 </div>
-                                                <div style={styles.TxtContainer}>
-                                                    <div style={styles.TitleStyle}>
-                                                        <b style={styles.TitleText}>{post.postTitle}</b>
+                                                <div style={styles.PostStyle}>
+                                                    <p style={styles.PostTxtStyle}>{post.postContent}</p>
+                                                </div>
+                                                <div style={styles.ImageUploadFrame}>
+                                                    {post.photo && post.photo.map((photo, idx) => (
+                                                        <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
+                                                    ))}
+                                                </div>
+                                                <div style={styles.BottomPostStyle}>
+                                                    <div style={styles.CommentIconContainer}>
+                                                        <img style={styles.Comment} src={comment_icon} alt="Comment Icon" />
                                                     </div>
-                                                    <div style={styles.PostStyle}>
-                                                        <p style={styles.PostTxtStyle}>{post.postContent}</p>
-                                                    </div>
-                                                    <div style={styles.ImageUploadFrame}>
-                                                        {post.photo && post.photo.map((photo, idx) => (
-                                                            <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
-                                                        ))}
-                                                    </div>
-                                                    <div style={styles.BottomPostStyle}>
-                                                        <div style={styles.CommentIconContainer}>
-                                                            <img style={styles.Comment} src = {comment_icon}/>
-                                                        </div>
-                                                        <p style={styles.CommentText}>{post.comments}</p>
-                                                        <p style={styles.DateText}>{post.datePosted}</p>
-                                                        <div style={styles.ViewButtonContainer} onClick={viewForum}> 
-                                                            <button style={styles.ViewButton}>
-                                                                View
-                                                            </button>
-                                                        </div>
+                                                    <p style={styles.CommentText}>{post.comments}</p>
+                                                    <p style={styles.DateText}>{post.datePosted}</p>
+                                                    <div style={styles.ViewButtonContainer} onClick={viewForum}>
+                                                        <button style={styles.ViewButton}>
+                                                            View
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -128,15 +125,15 @@ const ForumScreen = () =>{
 }
 
 const styles = {
-    mainContainer:{
+    mainContainer: {
         width: '100vw',
         height: '100vh',
         display: 'flex',
-        alignItems : 'center',
+        alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: Color.colorWhitesmoke,
     },
-    mainContentContainer:{
+    mainContentContainer: {
         width: '75vw',
         height: '100vh',
         display: 'flex',
@@ -165,7 +162,7 @@ const styles = {
         marginRight: '150px',
         marginLeft: '50px',
         borderRadius: '12px',
-        backgroundColor:  Color.colorWhitesmoke,
+        backgroundColor: Color.colorWhitesmoke,
         flex: 1,
         alignItems: 'center',
     },
@@ -181,7 +178,7 @@ const styles = {
         display: 'flex',
         flex: 1,
         flexDirection: 'row',
-        width:  '100px',
+        width: '100px',
         height: '30px',
         justifyContent: 'space-evenly',
         alignItems: 'center',
@@ -201,7 +198,7 @@ const styles = {
         borderColor: 'none',
         width: '54px',
         height: '24px',
-        backgroundColor: 'none',    
+        backgroundColor: 'none',
         objectFit: 'cover',
     },
     MainForumContainer: {
@@ -210,49 +207,53 @@ const styles = {
         alignItems: 'center',
         overflow: 'auto',
         maxHeight: '100%',
-        display: 'grid',
-        flex: 1,
-        justifyContent: 'column',
+        display: 'flex',
+        flexDirection: 'column',
         marginLeft: '45px',
         marginTop: '10px',
         backgroundColor: Color.colorWhitesmoke,
-        borderRadius: '6px'
+        borderRadius: '6px',
+        padding: '10px', // Added padding for better spacing
+    },
+    ForumContainer: {
+        width: '100%',
+        backgroundColor: Color.colorWhite,
+        display: 'flex',
+        flexDirection: 'column',
+        marginBottom: '10px', // Added margin for separation
+        padding: '10px', // Added padding inside each container
+        borderRadius: '10px',
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.1)', // Added shadow for better separation
+    },
+    ScrollablePostContainer: {
+        width: '100%',
+        height: 'auto',
+        backgroundColor: 'white',
     },
     PostContainer: {
         width: '100%',
-        height: '250px',
+        height: 'auto',
         backgroundColor: 'white',
         justifyContent: 'center',
         flexDirection: 'row',
         borderRadius: '15px',
-        flexDirection: 'column',
-        display: 'grid',
+        display: 'flex',
+        padding: '10px',
     },
     imgFrame: {
-        width: '10px',
-        height: '10px',
-        marginTop: '20px',
-        marginLeft: '30px',
+        width: '50px',
+        height: '50px',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        display: 'grid'
-    }, 
+        display: 'flex',
+        marginRight: '10px',
+    },
     imageIcon: {
         height: '50px',
         width: '50px',
         backgroundColor: 'pink',
         borderRadius: '60px',
-    },
-    ForumContainer: {
-        width: '800px',
-        height: '70%',
-        marginLeft: '20px',
-        backgroundColor: Color.colorWhite,
-        display: 'flex',
-        flex: 1,
-        justifyContent: 'center',
-
     },
     UsernameTxtStyle: {
         fontSize: 10,
@@ -261,60 +262,47 @@ const styles = {
         lineHeight: '1px',
     },
     TxtContainer: {
-        height: '130px',
-        width: '90%',
+        flex: 1,
         backgroundColor: Color.colorWhite,
-        marginLeft: '80px',
-        marginTop: '-120px',
     },
     TitleStyle: {
-        height: '35px',
-        width: '90%',
+        height: 'auto',
         backgroundColor: 'white',
-        marginLeft: '2px',
-        marginTop: '10px',
-        textAlign: 'left'
+        textAlign: 'left',
+        marginBottom: '5px',
     },
-    PostStyle:{
-        height: '59px',
-        width: '90%',
+    PostStyle: {
+        height: 'auto',
         backgroundColor: 'white',
-        marginLeft: '2px',
-        marginTop: '-10px',
+        marginBottom: '10px',
     },
-    TitleText:{
+    TitleText: {
         fontSize: 18,
-        marginTop: '20px',
     },
     PostTxtStyle: {
         fontSize: 14,
     },
-    BottomPostStyle:{
-        width: '700px',
-        height: '25px',
-        marginLeft: '5px',
-        marginTop: '-5px',
+    BottomPostStyle: {
+        width: '100%',
+        height: 'auto',
         backgroundColor: 'white',
         flexDirection: 'row',
         display: 'flex',
-        flex: 1,
+        alignItems: 'center',
     },
-    CommentText: {  
+    CommentText: {
         fontSize: 11,
         marginLeft: '5px',
-        marginTop: '5px',
     },
     DateText: {
         fontSize: 11,
         marginLeft: '15px',
-        marginTop: '5px',
     },
     CommentIconContainer: {
         width: '20px',
         height: '20px',
         backgroundColor: Color.colorWhite,
         marginLeft: '5px',
-        marginTop: '3px',
     },
     Comment: {
         width: '20px',
@@ -323,8 +311,7 @@ const styles = {
     ViewButtonContainer: {
         width: '50px',
         height: '20px',
-        marginLeft: '450px',
-        marginTop: '3px',
+        marginLeft: 'auto',
     },
     ViewButton: {
         fontSize: 10,
@@ -335,24 +322,17 @@ const styles = {
         border: 'none',
         borderRadius: '3px',
     },
-    ScrollablePostContainer: {
-        width: '99%',
-        height: '70%',
-        backgroundColor: 'white',
-        marginLeft: '3px',
-        marginTop: '4px',
-    },
     UploadedPhoto: {
-        marginTop: '-40px',
+        marginTop: '10px',
         width: '120px',
         height: '120px',
-        objectFit: 'cover'
+        objectFit: 'cover',
     },
     ImageUploadFrame: {
-        width: '120px',
-        width: '120px',
-        objectFit: 'cover'
+        width: '100%',
+        objectFit: 'cover',
+        marginBottom: '10px',
     }
 }
 
-export default ForumScreen
+export default ForumScreen;

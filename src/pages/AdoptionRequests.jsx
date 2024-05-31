@@ -1,14 +1,11 @@
 import { Button } from "@mui/material";
-import React, { forwardRef } from "react";
+import React from "react";
 import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { useNavigate } from 'react-router-dom';
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 import user_icon from "../assets/rectangle-1@2x.png";
 import user_icon2 from "../assets/rectangle-2@2x.png";
-import delete_icon from "../assets/E delete.png";
-import edit_icon from "../assets/Edit.png";
-import { borderColor, borderRadius, color, display, fontSize, height, margin, positions, textAlign } from "@mui/system";
 
 const RequestData = [
   {
@@ -26,159 +23,161 @@ const RequestData = [
     username: 'joannah',
     animalToAdopt: 'Butterscotch',
   },
+];
 
-]
 const AdoptionRequests = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const goToApproved = () => {
-        navigate("/approved-request"); 
-      };
-
-    const goToADeclined = () => {
-        navigate("/declined-request");
-    };
-
-    const viewRequest = () => {
-      navigate("/view-request");
+  const goToApproved = () => {
+    navigate("/approved-request");
   };
 
-    const handleBack = () => {
-        navigate('/dashboard'); // This will navigate to Dashboard when called
-    };
+  const handleBack = () => {
+    navigate('/dashboard');
+  };
+
+  const viewRequest = () => {
+    navigate("/view-request");
+  };
 
   return (
-        <div style={styles.mainContainer}>
-          <div style={styles.mainContentContainer}>
-            <div style={styles.SecondMContainer}>
-              <img style={styles.topLogoPawslink} src = {top_logo} />
-              <div style={styles.EventScreenContainer}>
-                <div style = {styles.buttonContainer}>
-                  <button style={styles.BackButton} onClick={handleBack}>
-                    <img style={styles.keyboardBackspace1} src = {back_button}/>
-                  </button>
-                  <b style={styles.EventTextStyle}>
-                    Adoption Requests
-                  </b>
-                </div>
-                <div style={styles.RequestList}>
-                  {RequestData.map((request, index) => (
-                    <div key={index}> 
-                      <div style={styles.RequestListContainer}>
-                        <div style={styles.RequestContainer}>
-                          {request.photo && request.photo.map((photo, idx) => (
-                            <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
-                          ))}
-                          <div style={styles.RequestDetails}>
-                            <p><b>{request.username}</b> wants to adopt <b>{request.animalToAdopt}</b>
+    <div style={styles.mainContainer}>
+      <div style={styles.mainContentContainer}>
+        <div style={styles.SecondMContainer}>
+          <img style={styles.topLogoPawslink} src={top_logo} />
+          <div style={styles.EventScreenContainer}>
+            <div style={styles.buttonContainer}>
+              <button style={styles.BackButton} onClick={handleBack}>
+                <img style={styles.keyboardBackspace1} src={back_button} />
+              </button>
+              <b style={styles.EventTextStyle}>
+                Adoption Requests
+              </b>
+            </div>
+            <div style={styles.RequestSection}>
+              <div style={styles.RequestList}>
+                {RequestData.map((request, index) => (
+                  <div key={index}>
+                    <div style={styles.RequestListContainer}>
+                      <div style={styles.RequestContainer}>
+                        {request.photo && request.photo.map((photo, idx) => (
+                          <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
+                        ))}
+                        <div style={styles.RequestDetails}>
+                          <p><b>{request.username}</b> wants to adopt <b>{request.animalToAdopt}</b>
                             <div style={styles.ViewButtonContainer}>
                               <button style={styles.ButtonStyle} onClick={viewRequest}>
                                 View Request
                               </button>
                             </div>
-                            </p>
-                          </div>
+                          </p>
                         </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
+                ))}
+              </div>
+              <div style={styles.ArchiveContainer}>
+                <div style={styles.archiveTextContainer}>
+                  <b style={styles.archiveText}>Archive</b>
                 </div>
-                <div style={styles.ArchiveContainer}>
-                  <div style={styles.archiveTextContainer}>
-                    <b style={styles.archiveText}>Archive</b>
-                  </div>
-                  <div style={styles.ArchiveButtons}>
-                    <button style={styles.ArchiveButtonStyle} onClick={goToApproved}>
-                      Approved Requests
-                    </button>
-                    
-                  </div>
+                <div style={styles.ArchiveButtons}>
+                  <button style={styles.ArchiveButtonStyle} onClick={goToApproved}>
+                    Approved Requests
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-  )
-}
+      </div>
+    </div>
+  );
+};
 
 const styles = {
-  mainContainer:{
-      width: '100vw',
-      height: '100vh',
-      display: 'flex',
-      alignItems : 'center',
-      justifyContent: 'center',
-      backgroundColor: Color.colorWhitesmoke,
+  mainContainer: {
+    width: '100vw',
+    height: '100vh',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Color.colorWhitesmoke,
   },
-  mainContentContainer:{
-      width: '75vw',
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'row',
-      borderRadius: '10px',
-      backgroundColor: Color.colorWhitesmoke,
+  mainContentContainer: {
+    width: '75vw',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'row',
+    borderRadius: '10px',
+    backgroundColor: Color.colorWhitesmoke,
   },
   SecondMContainer: {
-      width: '75vw',
-      height: '100vh',
-      display: 'flex',
-      flexDirection: 'row',
-      backgroundColor: Color.colorWhite,
-      flexDirection: 'column',
+    width: '75vw',
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: Color.colorWhite,
+    flexDirection: 'column',
   },
   topLogoPawslink: {
-      width: '200px',
-      height: '80px',
-      objectFit: 'cover',
-      marginLeft: '20px',
+    width: '200px',
+    height: '80px',
+    objectFit: 'cover',
+    marginLeft: '20px',
   },
   EventScreenContainer: {
-      flexDirection: 'row',
-      height: '70%',
-      width: '91%',
-      marginRight: '150px',
-      marginLeft: '50px',
-      borderRadius: '12px',
-      backgroundColor:  Color.colorWhitesmoke,
-      flex: 1,
-      alignItems: 'center',
+    flexDirection: 'column',
+    height: '70%',
+    width: '91%',
+    marginRight: '150px',
+    marginLeft: '50px',
+    borderRadius: '12px',
+    backgroundColor: Color.colorWhitesmoke,
+    flex: 1,
+    alignItems: 'center',
   },
   EventTextStyle: {
-      fontSize: '30px',
-      color: Color.colorPalevioletred,
-      marginLeft: '5px',
-      display: 'inline-block',
-      lineHeight: '90px',
-      FontFamily: FontFamily.epilogueBold,
-      whiteSpace: 'nowrap',
+    fontSize: '30px',
+    color: Color.colorPalevioletred,
+    marginLeft: '5px',
+    display: 'inline-block',
+    lineHeight: '90px',
+    FontFamily: FontFamily.epilogueBold,
+    whiteSpace: 'nowrap',
   },
   buttonContainer: {
-      display: 'flex',
-      flex: 1,
-      flexDirection: 'row',
-      width:  '100px',
-      height: '30px',
-      justifyContent: 'space-evenly',
-      alignItems: 'center',
-      marginTop: '20px',
-      marginLeft: '20px',
-      borderColor: 'none',
-      backgroundColor: Color.colorWhitesmoke,
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'row',
+    width: '100px',
+    height: '30px',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    marginTop: '20px',
+    marginLeft: '20px',
+    borderColor: 'none',
+    backgroundColor: Color.colorWhitesmoke,
   },
   keyboardBackspace1: {
-      width: '44px',
-      height: '34px',
-      borderColor: 'none',
+    width: '44px',
+    height: '34px',
+    borderColor: 'none',
   },
   BackButton: {
-      cursor: 'pointer',
-      border: '0',
-      borderColor: 'none',
-      width: '54px',
-      height: '24px',
-      backgroundColor: 'none',    
-      objectFit: 'cover',
+    cursor: 'pointer',
+    border: '0',
+    borderColor: 'none',
+    width: '54px',
+    height: '24px',
+    backgroundColor: 'none',
+    objectFit: 'cover',
+  },
+  RequestSection: {
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    marginTop: '20px',
   },
   RequestList: {
     width: '65%',
@@ -187,14 +186,18 @@ const styles = {
     maxHeight: '100%',
     backgroundColor: 'white',
     marginLeft: '20px',
-    marginTop:'20px',
   },
   ArchiveContainer: {
     width: '30%',
-    height: '350px',
+    height: 'auto',
     backgroundColor: Color.colorWhitesmoke,
-    marginLeft: '640px',
-    marginTop:'-505px',
+    marginLeft: '20px',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   RequestListContainer: {
     width: '100%',
@@ -246,26 +249,23 @@ const styles = {
     fontSize: 11,
     cursor: 'pointer',
   },
-  archiveTextContainer:{
-    width: '100px',
+  archiveTextContainer: {
+    width: '100%',
     height: '50px',
     alignItems: 'center',
     display: 'flex',
-    flex: 1,
-    marginLeft: '10px',
-    marginTop: '10px',
+    marginBottom: '10px',
   },
   archiveText: {
     fontSize: 30,
     color: 'purple',
   },
-  ArchiveButtons:{
-    width: '250px',
-    height: '100px',
-    marginLeft: '10px',
+  ArchiveButtons: {
+    width: '100%',
+    height: 'auto',
+    display: 'flex',
     flexDirection: 'column',
-    display: 'grid',
-    cursor: 'pointer',
+    alignItems: 'flex-start',
   },
   ArchiveButtonStyle: {
     cursor: 'pointer',
@@ -275,6 +275,8 @@ const styles = {
     color: Color.colorPalevioletred,
     fontSize: 14,
     textAlign: 'left',
+    padding: '5px 0', // Add padding for better spacing
   },
-}
+};
+
 export default AdoptionRequests;

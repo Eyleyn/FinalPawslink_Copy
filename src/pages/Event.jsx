@@ -113,6 +113,11 @@ const EventComponentBox = ({event}) =>{
         navigate("/dashboard");
     };
 
+    const handleEdit = (event) => {
+        console.log('pressed')
+        navigate('/edit-event', { state: { ...event } }); // Navigate to the edit-animal route with dog data
+    };
+
     return (
         <div key={event.id}> 
         <div style={styles.EventContainer}>
@@ -123,7 +128,7 @@ const EventComponentBox = ({event}) =>{
                 <div style={styles.TitleAndButtonContainer}>
                     <b style={styles.EventTitleTxt}>{event.title}</b>
                     <div style={styles.ButtonContainer}>
-                        <button style={styles.EditButtonStyle} onClick={gotoEditEvent}>
+                        <button style={styles.EditButtonStyle} onClick={() => handleEdit(event)}>
                             <img style={styles.editIcon} src = {edit_icon}/>
                             Edit
                         </button>

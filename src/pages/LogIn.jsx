@@ -13,7 +13,6 @@ const LogInScreen = () => {
         navigate('/dashboard'); // This will navigate to Dashboard when called
     };
 
-
     return (
         <div style={styles.mainContainer}>
             <div style={styles.mainContentContainer}>
@@ -41,20 +40,15 @@ const LogInScreen = () => {
                                     />
                                 </div>
                             </div>
+                            <div style={styles.checkboxContainer}>
+                                <input type="checkbox" id="rememberMe" />
+                                <label style={styles.rememberMeText} htmlFor="rememberMe">Remember me</label>
+                            </div>
                         </div>
                         <div style={styles.bottomContainer}>
-                            <div style={styles.bottomContentContainer}>
-                                <div style={styles.bottomLeftContent}>
-                                    <input type="checkbox" />
-                                    <p style={styles.remeberMeText}>Remember me</p>
-                                </div>
-                                <div style={styles.bottomRightContent}>
-                                    <a style={styles.forgotText} href="#">Forgot password?</a>
-                                </div>
-                            </div>
                             <div>
-                            <button style={styles.siginButton} onClick={handleSignIn}>
-                                <div style={styles.siginText}>Sign in</div>
+                                <button style={styles.siginButton} onClick={handleSignIn}>
+                                    <div style={styles.siginText}>Sign in</div>
                                 </button>
                             </div>
                         </div>
@@ -163,6 +157,14 @@ const styles = {
         width: '100%',
         height: "100%"
     },
+    checkboxContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'flex-start',
+        marginTop: '10px',
+    },
     bottomContainer: {
         display: 'flex',
         flexDirection: 'column',
@@ -214,10 +216,9 @@ const styles = {
         textAlign: 'center'
     },
     
-    
-    remeberMeText: {
-       // lineHeight: 22,
+    rememberMeText: {
         fontSize: 12,
+        marginLeft: '8px',
     },
     forgotText:{
         lineHeight: '22px',
@@ -268,6 +269,19 @@ const styles = {
     },
     label: {
         fontSize: 10,
-    }
+    },
+    checkboxContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        justifyContent: 'flex-start',
+        marginTop: '10px',
+    },
+    rememberMeText: {
+        fontSize: 12,
+        marginLeft: '8px',
+    },
+    
 }
 export default LogInScreen

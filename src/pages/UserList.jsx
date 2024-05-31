@@ -1,7 +1,7 @@
-import React, { forwardRef } from "react";
+import React, { useState } from "react";
 import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { useNavigate } from 'react-router-dom';
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 
 const UserList = [
@@ -19,81 +19,40 @@ const UserList = [
         password:'1234567890',
         role: 'User'
     },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
+    // ... (other users)
 ];
 
-const UserDatabaseScreen = () =>{
-
-    const navigate = useNavigate(); // Hook for navigation
+const UserDatabaseScreen = () => {
+    const navigate = useNavigate();
 
     const handleBack = () => {
-        navigate('/dashboard'); // This will navigate to Dashboard when called
+        navigate('/dashboard');
+    };
+
+    const [users, setUsers] = useState(UserList);
+    const [editIndex, setEditIndex] = useState(null);
+
+    const handleEdit = (index) => {
+        setEditIndex(index);
+    };
+
+    const handleRoleChange = (index, newRole) => {
+        const updatedUsers = users.map((user, idx) =>
+            idx === index ? { ...user, role: newRole } : user
+        );
+        setUsers(updatedUsers);
+        setEditIndex(null);
     };
 
     return (
         <div style={styles.mainContainer}>
             <div style={styles.mainContentContainer}>
                 <div style={styles.SecondMContainer}>
-                    <img style={styles.topLogoPawslink} src = {top_logo} />
+                    <img style={styles.topLogoPawslink} src={top_logo} alt="Pawslink Logo" />
                     <div style={styles.ContentContainer}>
-                        <div style = {styles.buttonContainer}>
+                        <div style={styles.buttonContainer}>
                             <button style={styles.BackButton} onClick={handleBack}>
-                                <img style={styles.keyboardBackspace1} src = {back_button}/>
+                                <img style={styles.keyboardBackspace1} src={back_button} alt="Back" />
                             </button>
                             <b style={styles.UserTextStyle}>
                                 Users
@@ -101,9 +60,9 @@ const UserDatabaseScreen = () =>{
                         </div>
                         <div style={styles.UserDatabaseContainer}>
                             <div style={styles.UserHeaderName}>
-                                <div style = {styles.UserHeaderContainer}>
+                                <div style={styles.UserHeaderContainer}>
                                     <div style={styles.UserContentContainer}>
-                                        <div style = {styles.UserTitleHolderContainer}>
+                                        <div style={styles.UserTitleHolderContainer}>
                                             <b style={styles.UserHeaderTitle}>
                                                 NAME
                                             </b>
@@ -119,34 +78,44 @@ const UserDatabaseScreen = () =>{
                                             <b style={styles.UserHeaderTitle}>
                                                 ROLE
                                             </b>
-                                        </div>                                
-                                        <div style = {styles.UserTable}>
-                                            <div style = {styles.UserTableContent}>
-                                                {UserList.map((user, index) => (
-                                                    <div key={index}> 
-                                                        <div style = {styles.UserDetails}> 
-                                                            <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.UsertxtDetails}> {user.name} </div>
+                                        </div>
+                                        <div style={styles.UserTable}>
+                                            <div style={styles.UserTableContent}>
+                                                {users.map((user, index) => (
+                                                    <div key={index}>
+                                                        <div style={styles.UserDetails}>
+                                                            <div style={styles.UserDisplayContent}>
+                                                                <div style={styles.UsertxtDetails}>{user.name}</div>
                                                             </div>
-                                                            <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.UsertxtDetails}> {user.username} </div>
+                                                            <div style={styles.UserDisplayContent}>
+                                                                <div style={styles.UsertxtDetails}>{user.username}</div>
                                                             </div>
-                                                            <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.EmailtxtDetails}> {user.email} </div>
+                                                            <div style={styles.UserDisplayContent}>
+                                                                <div style={styles.EmailtxtDetails}>{user.email}</div>
                                                             </div>
-                                                            <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.UserPasstxtDetails}> {user.password} </div>
+                                                            <div style={styles.UserDisplayContent}>
+                                                                <div style={styles.UserPasstxtDetails}>{user.password}</div>
                                                             </div>
-                                                            <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.RolesTxtDetails}> {user.role} </div>
+                                                            <div style={styles.UserDisplayContent}>
+                                                                {editIndex === index ? (
+                                                                    <select
+                                                                        value={user.role}
+                                                                        onChange={(e) => handleRoleChange(index, e.target.value)}
+                                                                        style={styles.dropdown}
+                                                                    >
+                                                                        <option value="Admin">Admin</option>
+                                                                        <option value="User">User</option>
+                                                                    </select>
+                                                                ) : (
+                                                                    <div style={styles.RolesTxtDetails}>{user.role}</div>
+                                                                )}
                                                             </div>
-                                                            <button style={styles.UserEditButton}>
+                                                            <button style={styles.UserEditButton} onClick={() => handleEdit(index)}>
                                                                 Edit
                                                             </button>
                                                         </div>
                                                     </div>
                                                 ))}
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -156,8 +125,9 @@ const UserDatabaseScreen = () =>{
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    );
+};
 
 const styles = {
     mainContainer:{
@@ -351,7 +321,8 @@ const styles = {
         alignItems: 'center',
         lineHeight: '20px',
         marginLeft: '20px',
-        backgroundColor: Color. colorWhitesmoke
+        backgroundColor: Color.colorWhitesmoke,
+        position: 'relative',
     },
     RolesTxtDetails: {
         width: '80px',
@@ -367,6 +338,22 @@ const styles = {
         justifyContent: 'space-evenly',
         alignItems: 'center',
         backgroundColor: 'rgba(144, 238, 144, 0.5)',
+        borderRadius: '15px',
+        whiteSpace: 'nowrap',
+    },
+    dropdown: {
+        width: '80px',
+        height: '20px',
+        fontSize: 12,
+        FontFamily: FontFamily.epilogueBold,
+        textAlign: 'center',
+        flexDirection: 'row',
+        flex: 1,
+        display: 'inline-block',
+        justifyContent: 'center',
+        marginLeft: '55px',
+        justifyContent: 'space-evenly',
+        alignItems: 'center',
         borderRadius: '15px',
         whiteSpace: 'nowrap',
     },
@@ -408,4 +395,4 @@ const styles = {
         flexDirection: 'row',
     },
 }
-export default UserDatabaseScreen
+export default UserDatabaseScreen;
