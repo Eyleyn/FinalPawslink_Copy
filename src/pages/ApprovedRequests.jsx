@@ -106,9 +106,6 @@ const ApprovedRequests = () => {
                     <button style={styles.ArchiveButtonStyle} onClick={goToApproved}>
                       Approved Requests
                     </button>
-                    <button style={styles.ArchiveButtonStyle} onClick={goToADeclined}>
-                      Declined Requests
-                    </button>
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ import back_button from "../assets/keyboard-backspace-1.svg";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 
 
-const AddEvent = () => {
+const EditEvent = () => {
 
   const navigate = useNavigate(); // Initialize the navigate function
 
@@ -137,4 +137,4 @@ const AddEvent = () => {
   );
 };
 
-export default AddEvent;
+export default EditEvent;

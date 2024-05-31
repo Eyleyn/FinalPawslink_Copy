@@ -6,48 +6,41 @@ import comment_icon from "../assets/comment-2.svg";
 import upload_photo from "../assets/image-38@3x.png";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
-import event1 from "../assets/imageDog.png";
-import event2 from "../assets/image@2x.png";
 import delete_icon from "../assets/E delete.png";
 import edit_icon from "../assets/Edit.png";
 import { borderColor, borderRadius, color, display, fontSize, height, margin, positions, textAlign } from "@mui/system";
 
-const EventData = [
-    {
-        photo: [event1],
-        eventTitle: 'Emotional Support Furries',
-        eventDate: 'May 28, 2024 | 4:30 PM | CDH',
-        eventContent: ' "Emotional Support Furries" is a cozy campus event where students can unwind with campus dogs during exams. Its a pause for cuddles and playtime with furry friends who bring unconditional love and support. Need a stress break or miss your pet? Join us for some pawsitive vibes to boost your exam spirits!',
-    },
-    {
-        photo: [upload_photo],
-        eventTitle: 'Paws & Relax',
-        eventDate: 'May 21, 2024 | 3:00 PM | TLRC',
-        eventContent: ' "Take a paws from studying and join us for a relaxing session with our therapy dogs! This calming event is perfect for students needing a little love and comfort during exam time. Let our friendly dogs wag away your worries with their joyous energy. Its the ideal way to recharge and smile, right here on campus. Snacks, pets, and smiles guaranteed! Support Furries" is a cozy campus event where students can unwind with campus dogs during exams. Its a pause for cuddles and playtime with furry friends who bring unconditional love and support. Need a stress break or miss your pet? Join us for some pawsitive vibes to boost your exam spirits!',
-    },
-    {
-        photo: [event2],
-        eventTitle: 'Kitty Cuddle Corner',
-        eventDate: 'April 29, 2024 | 2:00 PM | TLRC',
-        eventContent: ' This delightful event invites students to snuggle with our adorable campus cats, offering a furry escape from exam stress. Feel the stress melt away as you pet and play with our gentle felines. Its a meow-velous way to find joy and relaxation amidst the exam craze. Join us for a dose of kitty cuddles and leave with your heart full and spirits lifted!'
-    },
-    {
-        photo: [event2],
-        eventTitle: 'Kitty Cuddle Corner Part 2',
-        eventDate: 'April 29, 2024 | 2:00 PM | TLRC',
-        eventContent: ' This delightful event invites students to snuggle with our adorable campus cats, offering a furry escape from exam stress. Feel the stress melt away as you pet and play with our gentle felines. Its a meow-velous way to find joy and relaxation amidst the exam craze. Join us for a dose of kitty cuddles and leave with your heart full and spirits lifted!'
-    },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { localMachineIpAddress } from "./EventFile";
 
-const EventScreen = () =>{
+const EventScreen = () => {
+    const [eventList, setEvList] = useState([]);
+
+    useEffect(()=>{
+        getViewList();
+    }, []);
+
+    const getViewList = async () =>{
+        await axios.get(`http://localhost:3030/api/getEvent?all=true`)
+        .then(result =>{
+            console.log(result)
+            if(result && result.data && result.data.data){
+                setEvList(result.data.data);
+            }else{
+                setEvList(result.data)
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+
     const navigate = useNavigate(); // Hook for navigation
+
 
     const handleBack = () => {
         navigate('/dashboard'); // This will navigate to Dashboard when called
-    };
-
-    const gotoEditEvent = () => {
-        navigate('/edit-event'); // This will navigate to Dashboard when called
     };
 
     return (
@@ -65,44 +58,93 @@ const EventScreen = () =>{
                             </b>
                         </div>
                         <div style={styles.MainForumContainer}>
-                            {EventData.map((event, index) => (
-                                <div key={index}> 
-                                    <div style={styles.EventContainer}>
-                                        <div style={styles.ImageUploadFrame}>
-                                            {event.photo && event.photo.map((photo, idx) => (
-                                                <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
-                                            ))}
-                                        </div>
-                                        <div style={styles.EventContentContainer}>
-                                            <div style={styles.TitleAndButtonContainer}>
-                                                <b style={styles.EventTitleTxt}>{event.eventTitle}</b>
-                                                <div style={styles.ButtonContainer}>
-                                                    <button style={styles.EditButtonStyle} onClick={gotoEditEvent}>
-                                                        <img style={styles.editIcon} src = {edit_icon}/>
-                                                        Edit
-                                                    </button>
-                                                    <button style={styles.DeleteButtonStyle}>
-                                                        <img style={styles.deleteIcon} src = {delete_icon}/>
-                                                        Delete
-                                                    </button>
-                                                </div>
-                                                <div style={styles.DateTimePlace}>
-                                                    <p>{event.eventDate}</p>
-                                                </div>
-                                                <div style={styles.EventContent}>
-                                                    <p>{event.eventContent}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                            {eventList.map((event) => {
+                                    return (
+                                        <EventComponentBox event = {event}/>
+                                    );
+                            })
+                        }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    );
+};
+
+const EventComponentBox = ({event}) =>{
+    const navigate = useNavigate(); // Hook for navigation
+
+    console.log(event);
+    const [imgUrl, setImgUrl] = useState("");
+
+    const gotoEditEvent = () => {
+        navigate('/edit-event'); // This will navigate to Dashboard when called
+    };
+
+    useEffect(() =>{
+        if(event.contentImgUrl){
+            console.log("true")
+            getImageUrl()
+        }
+    },[]);
+    const getImageUrl = async () => {
+    await axios
+      .get(`http://localhost:3030/api/getImageUrl?objectKey=${event.contentImgUrl}`)
+      .then((result) => {
+        console.log(result.data.data);
+        if(result && result.data && result.data.data){
+            setImgUrl(result.data.data);
+        }else{
+            setImgUrl(result.data)
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    };
+
+    const deleteItem = async (event) => {
+        try {
+          const response = await axios.delete(`http://localhost:3030/api/deleteEvent?_id=${event}`);
+        } catch (error) {
+          console.error('Error deleting item:', error);
+        }
+        navigate("/dashboard");
+    };
+
+    return (
+        <div key={event.id}> 
+        <div style={styles.EventContainer}>
+            <div style={styles.ImageUploadFrame}>
+                <img style={styles.UploadedPhoto} alt="" src={imgUrl.length?imgUrl:""} />
+            </div>
+            <div style={styles.EventContentContainer}>
+                <div style={styles.TitleAndButtonContainer}>
+                    <b style={styles.EventTitleTxt}>{event.title}</b>
+                    <div style={styles.ButtonContainer}>
+                        <button style={styles.EditButtonStyle} onClick={gotoEditEvent}>
+                            <img style={styles.editIcon} src = {edit_icon}/>
+                            Edit
+                        </button>
+                        <button style={styles.DeleteButtonStyle} onClick={() => deleteItem(event._id)}>
+                            <img style={styles.deleteIcon} src = {delete_icon}/>
+                            Delete
+                        </button>
+                    </div>
+                    <div style={styles.DateTimePlace}>
+                        <p>{event.date}</p>
+                        <p>{event.location}</p>
+                    </div>
+                    <div style={styles.EventContent}>
+                        <p>{event.content}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     )
+
 }
 
 const styles = {
@@ -192,7 +234,7 @@ const styles = {
         flex: 1,
         justifyContent: 'column',
         marginLeft: '45px',
-        marginTop: '20px',
+        marginTop: '10px',
         backgroundColor: 'white',
         borderRadius: '6px'
     },
@@ -215,19 +257,18 @@ const styles = {
         borderRadius: '5px',
         borderColor: Color.colorWhitesmoke,
         backgroundColor: Color.colorWhitesmoke,
-        justifyContent: 'center',
-        alignItems: 'center',
         marginLeft: '20px',
         marginTop: '10px',
-        objectFit: 'cover'
+        overflow: 'hidden',
+        position: 'relative',
     },
     UploadedPhoto: {
-        width: '140px',
-        height: '100px',
-        objectFit: 'cover',
+        width: '100%',
+        height: '100%',
         marginLeft: '10px',
         marginTop: '10px',
-        objectFit: 'cover'
+        position: 'absolute',
+        objectFit: 'cover',
     },  
     EventContentContainer: {
         width: '550px',

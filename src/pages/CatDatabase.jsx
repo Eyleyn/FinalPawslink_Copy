@@ -7,165 +7,49 @@ import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyle
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 import QRCode from 'react-qr-code';
 import { toPng } from 'html-to-image';
-
-const catsData = [
-    {
-      name: "Bingo",
-      location: 'Dorm',
-      age: "3",
-      vaccinationDate: "08/01/2021",
-      dewormDate: "12/11/2022",
-      status: "ON CAMPUS",
-      neuterspayDate: "30/01/2023"
-    },
-    {
-      name: "Boyplen",
-      age: "1",
-      location: 'Dorm',
-      vaccinationDate: "26/08/2020",
-      dewormDate: "14/08/2022",
-      status: "ON CAMPUS",
-      neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Betty",
-        age: "2",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Blep",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Catfish",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Coli",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Goldi",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Katy Perry",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Ginger",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Mother Litob",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Nella",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Kabi",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Staphy",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Tanjiro",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Tiger",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Tina",
-        age: "1",
-        location: 'Dorm',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-  ];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CatDatabaseScreen = () =>{
 
+    const [animalList, setAnimalList] = useState([])
+
+    useEffect(()=>{
+        getAnimalList();
+    }, []);
+
+    const getAnimalList = async () =>{
+        // ?species=cat
+        await axios.get('http://localhost:3030/api/getanimals?species=cat')
+        .then(result =>{
+            console.log(result.data)
+            if(result && result.data){
+                setAnimalList(result.data);
+            }else{
+                throw new Error("No Animal Found")
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
     const navigate = useNavigate(); // Hook for navigation
 
     const handleBack = () => {
         navigate('/dashboard'); // This will navigate to Dashboard when called
     };
 
-    const goToEdit = () => {
-        navigate('/edit-animal'); // Navigate to the login route on logout
+    const handleEdit = (cat) => {
+        console.log('pressed')
+        navigate('/edit-animal', { state: { ...cat } }); // Navigate to the edit-animal route with dog data
     };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return isNaN(date) ? 'N/A' : date.toLocaleDateString('en-GB');
+    };
+    
+
     return (
         <div style={styles.mainContainer}>
             <div style={styles.mainContentContainer}>
@@ -212,17 +96,13 @@ const CatDatabaseScreen = () =>{
                                                 </b>
                                             </div>
                                         </div>                                
-                                        {/* DOG DATABASE HERE */}
                                         <div style = {styles.CatTable}>
                                             <div style = {styles.CatTableContent}>
-                                                {catsData.map((cat, index) => (
+                                                {animalList.map((cat, index) => (
                                                     <div key={index}> 
-                                                        <div style = {styles.imgFrame}>
-                                                            <img style={styles.imageIcon} src={cat_image} />
-                                                        </div>
                                                         <div style = {styles.CatDetails}> 
                                                         <div style = {styles.DisplayContent}>
-                                                                <div style={styles.txtDetails}> {cat.name} </div>
+                                                                <div style={styles.txtDetails}> {cat.mainName} </div>
                                                             </div>
                                                             <div style = {styles.DisplayContent}>
                                                                 <div style={styles.statusTxtDetails}> {cat.status} </div>
@@ -234,23 +114,21 @@ const CatDatabaseScreen = () =>{
                                                                 <div style={styles.agetxtDetails}> {cat.age} </div>
                                                             </div>
                                                             <div style = {styles.DisplayContent}>
-                                                                <div style={styles.dewormtxtDetails}> {cat.dewormDate} </div>
+                                                                <div style={styles.dewormtxtDetails}> {formatDate(cat.dewormingDate)} </div>
                                                             </div>
                                                             <div style = {styles.DisplayContent}>
-                                                                <div style={styles.vaxtxtDetails}> {cat.vaccinationDate} </div>
+                                                                <div style={styles.vaxtxtDetails}> {formatDate(cat.vaccinationDate)} </div>
                                                             </div>
                                                             <div style = {styles.DisplayContent}>
-                                                                <div style={styles.neutxtDetails}> {cat.neuterspayDate} </div>
+                                                                <div style={styles.neutxtDetails}> {formatDate(cat.sterilizationDate)} </div>
                                                             </div>
-                                                            <div style = {styles.DisplayContent} onClick={goToEdit}>
-                                                                <button style={styles.editButton} onClick={goToEdit}>
-                                                                    Edit
-                                                                </button>
-                                                            </div>
-                                                            <div style={styles.DisplayContent} onClick={() =>
-                                                                navigate("/qr-code-download", {state: cat.name})
-                                                                }>
-                                                                <img style={styles.qrcodeStyle} src={qr_code} />
+                                                            <button style={styles.editButton} onClick={() => handleEdit(cat)}>
+                                                                Edit
+                                                            </button>
+                                                            <div style={styles.DisplayContent}>
+                                                                <img style={styles.qrcodeStyle} onClick={() =>
+                                                                navigate("/qr-code-download", {state: cat._id})
+                                                            } src={qr_code} />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -564,7 +442,7 @@ const styles = {
     qrcodeStyle: {
         width: '15px',
         height: '15px',
-        marginLeft: '100px',
+        marginLeft: '50px',
         cursor: 'pointer',
     }
 }

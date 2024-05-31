@@ -4,6 +4,22 @@
   left: 80px;
   line-height: 56px;
 }
+.hiddenFileInput {
+  display: none;
+}
+
+.customFileUpload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: transparent; /* or any color you want */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 55px;
+  margin-top: 3px;
+}
+
 .image38Icon,
 .keyboardBackspace1 {
   position: absolute;
@@ -28,10 +44,17 @@
   left: calc(50% - 41.5px);
   line-height: 22px;
 }
+headerContainer {
+  height: 40px;
+  width: 100px;
+  margin-top: 44px;
+  margin-left: 7px;
+  background-color: aqua;
+}
 .dataUploadIcon {
   position: absolute;
-  margin-top: 7px;
-  margin-left: 20px;
+  margin-top: 8px;
+  margin-left: 30px;
   width: 16px;
   height: 16px;
   overflow: hidden;
@@ -101,8 +124,8 @@
 .textbox151,
 .textbox16 {
   position: absolute;
-  margin-top: 124px;
-  margin-left: 330px;
+  margin-top: 84px;
+  margin-left: -20px;
   border-radius: var(--br-9xs);
   background-color: var(--color-white);
   border: 1px solid var(--color-lightslategray);
@@ -114,12 +137,12 @@
 
 .textbox151,
 .textbox16 {
-  margin-top: 125px;
-  margin-left: 540px;
+  margin-top: 85px;
+  margin-left: 90px;
 }
 .textbox151 {
-  margin-top: 125px;
-  margin-left: 750px;
+  margin-top: 85px;
+  margin-left: 200px;
 }
 .traitsAndPersonality {
   position: absolute;
@@ -163,18 +186,18 @@
 }
 .textarea1,
 .textarea11 {
-  margin-left: 330px;
+  margin-left: -20px;
   background-color: var(--color-gray-200);
   width: 630px;
   font-size: var(--font-size-sm);
 }
 .textarea1 {
   position: absolute;
-  margin-top: 200px;
+  margin-top: 110px;
   height: 213px;
 }
 .textarea11 {
-  margin-top: 430px;
+  margin-top: 300px;
   height: 121px;
 }
 .button22,
@@ -183,21 +206,27 @@
   position: absolute;
 }
 .save {
-  top: calc(50% - 11px);
-  left: calc(50% - 16.5px);
+  top: 8px;
+  left: 50px;
   line-height: 22px;
+  background-color: transparent;
+  border: palevioletred;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
 }
+
 .button22 {
   cursor: pointer;
-  top: 630px;
-  left: 842px;
+  margin-top: 630px;
+  margin-left: 842px;
   box-shadow: 0 0 2px rgba(23, 26, 31, 0.12), 0 8px 17px rgba(23, 26, 31, 0.15);
   border-radius: var(--br-9xs);
   background-color: var(--color-palevioletred-100);
   width: 146px;
   height: 38px;
   overflow: hidden;
-  font-size: var(--font-size-sm);
+  font-size: 12px;
   color: var(--color-white);
 }
 .cancel {
@@ -239,7 +268,7 @@
   height: 40px;
   width: 100px;
   margin-top: 44px;
-  margin-left: 787px;
+  margin-left: 85px;
   border-radius: var(--br-9xs);
   background-color: var(--color-white);
   border: 1px solid var(--color-lightslategray);
@@ -254,7 +283,7 @@
 }
 .textbox13 {
   margin-top: 44px;
-  margin-left: 330px;
+  margin-left: -20px;
   border-radius: var(--br-9xs);
   background-color: var(--color-white);
   border: 1px solid var(--color-lightslategray);
@@ -264,7 +293,7 @@
 }
 .textboxLocation {
   top: 44px;
-  left: 490px;
+  left: -10px;
   border-radius: var(--br-9xs);
   background-color: var(--color-white);
   border: 1px solid var(--color-lightslategray);
@@ -308,7 +337,7 @@
 .textbox131 {
   position: absolute;
   top: 44px;
-  left: 700px;
+  left: 90px;
   border-radius: var(--br-9xs);
   background-color: var(--color-white);
   border: 1px solid var(--color-lightslategray);
@@ -319,12 +348,12 @@
 .dropdownButton11,
 .dropdownButton12,
 .textbox131 {
-  left: 620px;
+  left:65px;
   width: 69px;
 }
 .dropdownButton11,
 .dropdownButton12 {
-  left: 890px;
+  left: 90px;
   width: 90px;
 }
 .dropdownButton12 {
@@ -382,5 +411,255 @@
   padding: 10px;
   z-index: 1000;
 }
+
+.fieldContainerName {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px; 
+  width: 70px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerVaccination {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px; 
+  margin-top: 40px;
+  width: 200px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerTraits {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px; 
+  margin-top: 90px;
+  width: 200px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerNotes {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 350px; 
+  margin-top: 150px;
+  width: 200px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerSterilization {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 450px; 
+  margin-top: 40px;
+  width: 200px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerDeworming {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 550px; 
+  margin-top: 40px;
+  width: 200px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerLoc {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 500px; 
+  width: 70px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+.fieldContainerAge {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 550px; 
+  width: 70px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerStatus {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 600px; 
+  width: 70px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerSex {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 700px; 
+  width: 70px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldContainerSpecies {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-left: 800px; 
+  width: 70px;
+  height: 30px;
+  background-color: transparent;
+  position: absolute;
+}
+
+.fieldLabelSpecies {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: 90px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 25px;
+}
+.fieldLabelSex {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: 85px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 25px;
+}
+
+.fieldLabelAge {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: 70px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 25px;
+}
+
+.fieldLabelStatus {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: 90px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 25px;
+} 
+
+.fieldLabelName {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: -20px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 25px;
+}
+
+.fieldLabelVaccination {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: -20px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 65px;
+}
+
+.fieldLabelSterilization {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: 90px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 65px;
+  white-space: nowrap;
+}
+
+.fieldLabelTraits {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: -20px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 90px;
+  white-space: nowrap;
+}
+
+.fieldLabelNotes {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: -20px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 280px;
+  white-space: nowrap;
+}
+
+.fieldLabelDeworming {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: 200px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 65px;
+  white-space: nowrap;
+}
+
+.fieldLabelLoc {
+  font-size: 14px; /* Adjust as needed */
+  font-weight: bold; /* Adjust as needed */
+  margin-left: -10px; /* Adjust as needed */
+  color: var(--color-darkslategray); /* Adjust as needed */
+  margin-top: 25px;
+}
+.loadingContainer {
+  width: 200px;
+  height: 100px;
+  margin-top: 100px;
+  margin-left: 600px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1000;
+}
+
+.loadingCircle {
+  border: 16px solid #f3f3f3; 
+  border-top: 16px solid #6a0dad; /* Purple */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  margin-top: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
 
 

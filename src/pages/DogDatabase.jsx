@@ -7,328 +7,49 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate from react
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 import QRCode from 'react-qr-code';
 import { toPng } from 'html-to-image';
+import { localMachineIpAddress } from "./EventFile";
 
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const dogsData = [
-    {
-      name: "Ampon",
-      age: "3",
-      location: 'CDH',
-      vaccinationDate: "08/01/2021",
-      dewormDate: "12/11/2022",
-      status: "ON CAMPUS",
-      neuterspayDate: "30/01/2023"
-    },
-    {
-      name: "Bella",
-      age: "1",
-      location: 'CUB',
-      vaccinationDate: "26/08/2020",
-      dewormDate: "14/08/2022",
-      status: "ON CAMPUS",
-      neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Betty",
-        age: "2",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Blythe",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Box 1",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Brownie",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Butterscotch",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Carrot Cake",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "CM",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Data",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Ducky",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Four",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Iska",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Jewel",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Cassy",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Saki",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Ligaya",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Maan",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Mama Caramel",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Mathilda",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Mikay",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Milo",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Mimi",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Molly",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Odette",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Oliver",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Paquito Sr.",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Isko",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Puppy",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Putot",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Scar",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Caramel",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Trixie",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
-    },
-    {
-        name: "Yeye",
-        age: "1",
-        location: 'CDH',
-        vaccinationDate: "26/08/2020",
-        dewormDate: "14/08/2022",
-        status: "ON CAMPUS",
-        neuterspayDate: "28/10/2021"
+const DogDatabaseScreen = () => {
+    const [animalList, setAnimalList] = useState([])
 
-        //ENCODE ALL ANIMALS HERE
-    },
-  ];
-  const DogDatabaseScreen = () => {
+    useEffect(()=>{
+        getAnimalList();
+    }, []);
+
+    const getAnimalList = async () =>{
+        // ?species=dog
+        await axios.get(`http://localhost:3030/api/getanimals?species=dog`)
+        .then(result =>{
+            console.log(result)
+            if(result && result.data){
+                setAnimalList(result.data);
+            }else{
+                throw new Error("No Animal Found")
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
     const navigate = useNavigate(); // Hook for navigation
 
     const handleBack = () => {
         navigate('/dashboard'); // This will navigate to Dashboard when called
     };
 
-    const goToEdit = () => {
-        navigate('/edit-animal'); // Navigate to the login route on logout
+    const handleEdit = (dog) => {
+        console.log('pressed')
+        navigate('/edit-animal', { state: { ...dog } }); // Navigate to the edit-animal route with dog data
     };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return isNaN(date) ? 'N/A' : date.toLocaleDateString('en-GB');
+    };
+
 
     return (
         <div style={styles.mainContainer}>
@@ -378,15 +99,12 @@ const dogsData = [
                                         </div>
                                         <div style={styles.DogTable}>
                                             <div style={styles.DogTableContent}>
-                                                {dogsData.map((dog, index) => {
+                                                {animalList.map((dog, index) => {
                                                     return (
-                                                        <div key={index}>
-                                                            <div style={styles.imgFrame}>
-                                                                <img style={styles.imageIcon} src={dog_image} />
-                                                            </div>
+                                                        <div key={dog.id}>
                                                             <div style={styles.DogDetails}>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.txtDetails}> {dog.name} </div>
+                                                                    <div style={styles.txtDetails}> {dog.mainName} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
                                                                     <div style={styles.statusTxtDetails}> {dog.status} </div>
@@ -398,23 +116,21 @@ const dogsData = [
                                                                     <div style={styles.agetxtDetails}> {dog.age} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.dewormtxtDetails}> {dog.dewormDate} </div>
+                                                                    <div style={styles.dewormtxtDetails}> {formatDate(dog.dewormingDate)} </div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.vaxtxtDetails}> {dog.vaccinationDate} </div>
+                                                                    <div style={styles.vaxtxtDetails}> {formatDate(dog.vaccinationDate)}</div>
                                                                 </div>
                                                                 <div style={styles.DisplayContent}>
-                                                                    <div style={styles.neutxtDetails}> {dog.neuterspayDate} </div>
+                                                                    <div style={styles.neutxtDetails}> {formatDate(dog.sterilizationDate)} </div>
                                                                 </div>
-                                                                <div style={styles.DisplayContent} onClick={goToEdit}>
-                                                                    <button style={styles.editButton} onClick={goToEdit}>
-                                                                        Edit
-                                                                    </button>
-                                                                </div>
-                                                                <div style={styles.DisplayContent} onClick={() =>
-                                                                    navigate("/qr-code-download", {state: dog.name})
-                                                                }>
-                                                                    <img style={styles.qrcodeStyle} src={qr_code} />
+                                                                <button style={styles.editButton} onClick={() => handleEdit(dog)}>
+                                                                    Edit
+                                                                </button>
+                                                                <div style={styles.DisplayContent}>
+                                                                    <img style={styles.qrcodeStyle} onClick={() =>
+                                                                    navigate("/qr-code-download", {state: dog._id})
+                                                                } src={qr_code} />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -583,7 +299,7 @@ const styles = {
     },
     editButton: {
         width: '40px',
-        height: '29px',
+        height: '20px',
         fontSize: 12,
         textAlign: 'center',
         color: Color.colorWhite,
@@ -736,7 +452,7 @@ const styles = {
     qrcodeStyle: {
         width: '15px',
         height: '15px',
-        marginLeft: '100px',
+        marginLeft: '40px',
         cursor: 'pointer',
     },
     QrCodeHeader: {
@@ -747,3 +463,4 @@ const styles = {
     }
 }
 export default DogDatabaseScreen
+
