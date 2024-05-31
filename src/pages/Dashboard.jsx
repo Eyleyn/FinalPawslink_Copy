@@ -13,7 +13,7 @@ const DashboardScreen = () => {
   const navigate = useNavigate(); // Initialize the navigate function
 
   const handleLogout = () => {
-    navigate("/login"); // Navigate to the login route on logout
+    navigate("/"); // Navigate to the login route on logout
   };
 
   const navigateToDogs = () => {
