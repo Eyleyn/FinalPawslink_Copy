@@ -35,15 +35,15 @@ const ViewRequest = () => {
       await axios.get(`http://localhost:3030/api/getAdoptionRequest?all=true`)
       .then(result =>{
           console.log(result)
-          if(result && result.data){
-            setUserList(result.data);
-          }else{
-              throw new Error("No User Found")
-          }
-      })
-      .catch(err =>{
-          console.log(err)
-      })
+          if(result && result.data && result.data.data){
+            setUserList(result.data.data);
+        }else{
+          setUserList(result.data)
+        }
+    })
+    .catch(err =>{
+        console.log(err)
+    })
   }
   return (
     <div style={styles.mainContainer}>

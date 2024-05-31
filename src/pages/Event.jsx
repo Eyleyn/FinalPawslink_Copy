@@ -104,6 +104,15 @@ const EventComponentBox = ({event}) =>{
       });
     };
 
+    const deleteItem = async (event) => {
+        try {
+          const response = await axios.delete(`http://localhost:3030/api/deleteEvent?_id=${event}`);
+        } catch (error) {
+          console.error('Error deleting item:', error);
+        }
+        navigate("/dashboard");
+    };
+
     return (
         <div key={event.id}> 
         <div style={styles.EventContainer}>
@@ -118,7 +127,7 @@ const EventComponentBox = ({event}) =>{
                             <img style={styles.editIcon} src = {edit_icon}/>
                             Edit
                         </button>
-                        <button style={styles.DeleteButtonStyle}>
+                        <button style={styles.DeleteButtonStyle} onClick={() => deleteItem(event._id)}>
                             <img style={styles.deleteIcon} src = {delete_icon}/>
                             Delete
                         </button>
