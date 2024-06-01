@@ -14,7 +14,7 @@ const AdoptionData = [
     monthAdopted: "04/04/2024",
     adopterName: "alexander",
     dewormDate: "12/11/2022",
-    status: "Alive", 
+    status: "Adopted", 
   },
 ];
 const MonthlyData = [
@@ -256,7 +256,7 @@ const styles = {
     alignItems: 'center',
     whiteSpace: 'nowrap',
     marginTop: '70px',
-    marginLeft:'-40px',
+    marginLeft:'-60px',
   },
   messageButtonStyle:{
     cursor: 'pointer',
