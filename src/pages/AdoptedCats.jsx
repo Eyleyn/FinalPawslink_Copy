@@ -13,7 +13,7 @@ const catsData = [
     age: "3",
     vaccinationDate: "08/01/2021",
     dewormDate: "12/11/2022",
-    status: "ON CAMPUS",
+    status: "ADOPTED",
     neuterspayDate: "30/01/2023"
   },
   {
@@ -22,7 +22,7 @@ const catsData = [
     sterilization: 'SPAYED',
     vaccinationDate: "26/08/2020",
     dewormDate: "14/08/2022",
-    status: "OWNED",
+    status: "ADOPTED",
     neuterspayDate: "28/10/2021"
   },
   {
@@ -31,7 +31,7 @@ const catsData = [
       sterilization: 'SPAYED',
       vaccinationDate: "26/08/2020",
       dewormDate: "14/08/2022",
-      status: "OWNED",
+      status: "ADOPTED",
       neuterspayDate: "28/10/2021"
   },
   {
@@ -40,7 +40,7 @@ const catsData = [
       sterilization: 'SPAYED',
       vaccinationDate: "26/08/2020",
       dewormDate: "14/08/2022",
-      status: "OWNED",
+      status: "ADOPTED",
       neuterspayDate: "28/10/2021"
   },
 ];

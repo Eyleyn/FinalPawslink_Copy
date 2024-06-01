@@ -128,7 +128,7 @@ const EditAnimal = () => {
       {loading && <Loading />} {/* Show loading indicator */}
       <div className={styles.editAnimal}>
         <div className={styles.container3}>
-          <b className={styles.animalInfo}>Edit Animal</b>
+          <b className={styles.animalInfo}>Edit Animal Details</b>
           <img
             className={styles.keyboardBackspace1}
             onClick={handleCancel}
@@ -136,7 +136,7 @@ const EditAnimal = () => {
             src="/keyboard-backspace-1@2x.png"
           />
           <div className={styles.container31}>
-            <img className={styles.image38Icon} alt="" src={imageSrc} />
+            <img className={styles.image38Icon} alt="" src={imgUrl} />
             <div className={styles.button19}>
               <input
                 type="file"
