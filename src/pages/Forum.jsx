@@ -7,58 +7,31 @@ import upload_photo from "../assets/image-38@3x.png";
 import { useNavigate } from 'react-router-dom';
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 
-const PostData = [
-    {
-        username: '@Jonah',
-        postTitle: 'this is a question',
-        postContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        comments: '5 comments',
-        datePosted: '03-18-2023',
-    },
-    {
-        username: '@SophiaDe1st',
-        postTitle: 'this is a question',
-        postContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        comments: '20 comments',
-        datePosted: '03-18-2023',
-    },
-    {
-        username: '@Ellien',
-        postTitle: 'this is a question?',
-        postContent: 'Its nice, he is so cute',
-        comments: '3 comments',
-        datePosted: '03-18-2023',
-        photo: [upload_photo],
-    },
-    {
-        username: '@HeyItsMe',
-        postTitle: '#GoodDay',
-        postContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        comments: '3 comments',
-        datePosted: '03-18-2023',
-    },
-    {
-        username: '@HeyItsMe',
-        postTitle: '#GoodDay',
-        postContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        comments: '3 comments',
-        datePosted: '03-18-2023',
-    },
-    {
-        username: '@HeyItsMe',
-        postTitle: '#GoodDay',
-        postContent: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        comments: '3 comments',
-        datePosted: '03-18-2023',
-    },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ForumScreen = () => {
-    const navigate = useNavigate();
+    const [forumList, setForumList] = useState([])
 
-    const viewForum = () => {
-        navigate("/view-forum");
+    useEffect(()=>{
+        getForumList();
+    }, []);
+
+    const getForumList = async () =>{
+        await axios.get(`http://localhost:3030/api/createPost?all=true`)
+        .then(result =>{
+            console.log(result)
+            if(result && result.data && result.data.data){
+                setForumList(result.data.data);
+            }else{
+                setForumList(result.data)
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
     }
+    const navigate = useNavigate();
 
     const handleBack = () => {
         navigate('/dashboard');
@@ -79,49 +52,87 @@ const ForumScreen = () => {
                             </b>
                         </div>
                         <div style={styles.MainForumContainer}>
-                            {PostData.map((post, index) => (
-                                <div key={index} style={styles.ForumContainer}>
-                                    <div style={styles.ScrollablePostContainer}>
-                                        <div style={styles.PostContainer}>
-                                            <div style={styles.imgFrame}>
-                                                <img style={styles.imageIcon} src={user_icon} alt="User Icon" />
-                                                <p style={styles.UsernameTxtStyle}>{post.username}</p>
-                                            </div>
-                                            <div style={styles.TxtContainer}>
-                                                <div style={styles.TitleStyle}>
-                                                    <b style={styles.TitleText}>{post.postTitle}</b>
-                                                </div>
-                                                <div style={styles.PostStyle}>
-                                                    <p style={styles.PostTxtStyle}>{post.postContent}</p>
-                                                </div>
-                                                <div style={styles.ImageUploadFrame}>
-                                                    {post.photo && post.photo.map((photo, idx) => (
-                                                        <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
-                                                    ))}
-                                                </div>
-                                                <div style={styles.BottomPostStyle}>
-                                                    <div style={styles.CommentIconContainer}>
-                                                        <img style={styles.Comment} src={comment_icon} alt="Comment Icon" />
-                                                    </div>
-                                                    <p style={styles.CommentText}>{post.comments}</p>
-                                                    <p style={styles.DateText}>{post.datePosted}</p>
-                                                    <div style={styles.ViewButtonContainer} onClick={viewForum}>
-                                                        <button style={styles.ViewButton}>
-                                                            View
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
+                            {forumList.map((post) => {
+                                return (
+                                    <ForumComponent post={post} />
+                                );
+                            })}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     )
+}
+
+const ForumComponent = ({post}) =>  {
+    const navigate = useNavigate();
+
+    const viewForum = () => {
+        navigate("/view-forum");
+    }
+
+    const [entryImageURL, setImgURL] = useState("");
+
+    useEffect(() => {
+        if(post.entryImageURL){
+            console.log("true")
+            getImageURL()
+        }
+    },[]);
+
+    const getImageURL = async () => {
+        await axios
+            .get(`http://localhost:3030/api/getImageUrl?objectKey=${post.entryImageURL}`)
+            .then((result) => {
+                console.log(result.data.data);
+                if(result && result.data && result.data.data){
+                    setImgURL(result.data.data);
+                }
+                else{
+                    setImgURL(result.data)
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    return (
+        <div key={post.id} style={styles.ForumContainer}>
+            <div style={styles.ScrollablePostContainer}>
+                <div style={styles.PostContainer}>
+                    <div style={styles.imgFrame}>
+                        <img style={styles.imageIcon} src={user_icon} alt="User Icon" />
+                        <p style={styles.UsernameTxtStyle}>{post.username}</p>
+                    </div>
+                    <div style={styles.TxtContainer}>
+                        <div style={styles.TitleStyle}>
+                            <b style={styles.TitleText}>{post.title}</b>
+                        </div>
+                        <div style={styles.PostStyle}>
+                            <p style={styles.PostTxtStyle}>{post.content}</p>
+                        </div>
+                        <div style={styles.ImageUploadFrame}>
+                            <img style={styles.UploadedPhoto} alt="" src={entryImageURL.length?entryImageURL:""} />
+                        </div>
+                        <div style={styles.BottomPostStyle}>
+                            <div style={styles.CommentIconContainer}>
+                                <img style={styles.Comment} src={comment_icon} alt="Comment Icon" />
+                            </div>
+                            <p style={styles.CommentText}>{post.commentNum}</p>
+                            <p style={styles.DateText}>{post.datePosted}</p>
+                            <div style={styles.ViewButtonContainer} onClick={viewForum}>
+                                <button style={styles.ViewButton}>
+                                    View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        );
 }
 
 const styles = {
