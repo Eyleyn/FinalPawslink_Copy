@@ -77,11 +77,7 @@ const EventComponentBox = ({event}) =>{
 
     console.log(event);
     const [imgUrl, setImgUrl] = useState("");
-
-    const gotoEditEvent = () => {
-        navigate('/edit-event'); // This will navigate to Dashboard when called
-    };
-
+    
     useEffect(() =>{
         if(event.contentImgUrl){
             console.log("true")

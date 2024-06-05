@@ -4,49 +4,40 @@ import back_button from "../assets/keyboard-backspace-1.svg";
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
-const LogList = [
-    {
-        date: '09/01/2024',
-        user: 'Daniel Jockson',
-        activity: 'Change Password',
-    },
-    {
-        date: '09/01/2024',
-        user: 'Charles Darwin',
-        activity: 'Posted New Picture',
-    },
-    {
-        date: '09/01/2024',
-        user: 'Daniel Padilla',
-        activity: 'Update Info',
-    },
-    {
-        date: '09/01/2024',
-        user: 'Bong Padilla',
-        activity: 'Lorem ipsum dolor sit amet, consectetur adipiscing eli',
-    },
-    {
-        date: '09/01/2024',
-        user: 'Bong Padilla',
-        activity: 'Lorem ipsum dolor sit amet, consectetur adipiscing eli',
-    },
-    {
-        date: '09/01/2024',
-        user: 'Bong Padilla',
-        activity: 'Lorem ipsum dolor sit amet, consectetur adipiscing elidsdv',
-    },
-    {
-        date: '09/01/2024',
-        user: 'Bong Padilla',
-        activity: 'Lorem ipsum dolor sit amet, consectetur adipiscing eli',
-    },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const LogDatabaseScreen = () =>{
+    const [LogList, setLogList] = useState([])
     const navigate = useNavigate(); // Hook for navigation
+
+    useEffect(()=>{
+        getLogList();
+    }, []);
+
+    const getLogList = async () =>{
+        // ?species=dog
+        await axios.get(`http://localhost:3030/api/getAdminLog?all=true`)
+        .then(result =>{
+            console.log(result)
+            if(result && result.data){
+                setLogList(result.data);
+            }else{
+                throw new Error("No Log Found")
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
 
     const handleBack = () => {
         navigate('/dashboard'); // This will navigate to Dashboard when called
+    };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return isNaN(date) ? 'N/A' : date.toLocaleDateString('en-GB');
     };
 
     return (
@@ -80,21 +71,23 @@ const LogDatabaseScreen = () =>{
                                         </div>                                
                                         <div style = {styles.UserTable}>
                                             <div style = {styles.UserTableContent}>
-                                                {LogList.map((log, index) => (
-                                                    <div key={index}> 
+                                                {LogList.map((log, index) => {
+                                                    return (
+                                                    <div key={log.id}> 
                                                         <div style = {styles.UserDetails}> 
                                                             <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.DatetxtDetails}> {log.date} </div>
+                                                                <div style={styles.DatetxtDetails}> {formatDate(log.dateCreated)} </div>
                                                             </div>
                                                             <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.UsertxtDetails}> {log.user} </div>
+                                                                <div style={styles.UsertxtDetails}> {log.collectionName} </div>
                                                             </div>
                                                             <div style = {styles.UserDisplayContent}>
-                                                                <div style={styles.EmailtxtDetails}> {log.activity} </div>
+                                                                <div style={styles.EmailtxtDetails}> {log.method} </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                ))}
+                                                    );
+                                                })}
                                                 </div>
                                             </div>
                                         </div>

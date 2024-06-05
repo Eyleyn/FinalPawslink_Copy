@@ -6,128 +6,123 @@ import qr_code from "../assets/pen.png";
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
 
-const catsData = [
-  {
-    name: "Bingo",
-    sterilization: 'SPAYED',
-    age: "3",
-    vaccinationDate: "08/01/2021",
-    dewormDate: "12/11/2022",
-    status: "ON CAMPUS",
-    neuterspayDate: "30/01/2023"
-  },
-  {
-    name: "Boyplen",
-    age: "1",
-    sterilization: 'SPAYED',
-    vaccinationDate: "26/08/2020",
-    dewormDate: "14/08/2022",
-    status: "OWNED",
-    neuterspayDate: "28/10/2021"
-  },
-  {
-      name: "Betty",
-      age: "2",
-      sterilization: 'SPAYED',
-      vaccinationDate: "26/08/2020",
-      dewormDate: "14/08/2022",
-      status: "OWNED",
-      neuterspayDate: "28/10/2021"
-  },
-  {
-      name: "Blep",
-      age: "1",
-      sterilization: 'SPAYED',
-      vaccinationDate: "26/08/2020",
-      dewormDate: "14/08/2022",
-      status: "OWNED",
-      neuterspayDate: "28/10/2021"
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 const AdoptedDogs = () => {
+    const [adoptedAnimalList, setAdoptedAnimalList] = useState([])
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    useEffect(()=>{
+        getAnimalList();
+    }, []);
 
-  const handleBack = () => {
-    navigate('/adopted-animals'); // This will navigate to Dashboard when called
-  };
+    const getAnimalList = async () =>{
+        // ?species=dog
+        await axios.get(`http://localhost:3030/api/getanimals?species=dog&status=adopted`)
+        .then(result =>{
+            console.log(result)
+            if(result && result.data){
+                setAdoptedAnimalList(result.data);
+            }else{
+                throw new Error("No Animal Found")
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
 
-  const viewAdopted = () => {
-    navigate('/animal-adoption-details'); // This will navigate to Dashboard when called
-  };
-  return (
-    <div style={styles.mainContainer}>
-        <div style={styles.mainContentContainer}>
-            <div style={styles.SecondMContainer}>
-                <img style={styles.topLogoPawslink} src = {top_logo} />
-                <div style={styles.ContentContainer}>
-                    <div style = {styles.buttonContainer}>
-                    <button style={styles.BackButton} onClick={handleBack}>
-                            <img style={styles.keyboardBackspace1} src = {back_button}/>
-                        </button>
-                        <b style={styles.CatTextStyle}>
-                            Adopted Cats
-                        </b>
-                    </div>
-                    <div style={styles.DatabaseContainer}>
-                        <div style={styles.HeaderName}>
-                            <div style = {styles.HeaderContainer}>
-                                <div style={styles.CatContentContainer}>
-                                    <div style = {styles.TitleHolderContainer}>
-                                        <b style={styles.HeaderTitle}>
-                                            NAME
-                                        </b>
-                                        <b style={styles.HeaderTitle}>
-                                            STATUS
-                                        </b>
-                                        <b style={styles.HeaderTitle}>
-                                            STERILIZATION
-                                        </b>
-                                        <b style={styles.HeaderTitle}>
-                                            AGE
-                                        </b>
-                                        <b style={styles.HeaderTitle}>
-                                            DEWORM DATE
-                                        </b>
-                                        <b style={styles.HeaderTitle}>
-                                            VACCINATION
-                                        </b>
-                                    </div>                                
-                                    {/* DOG DATABASE HERE */}
-                                    <div style = {styles.CatTable}>
-                                        <div style = {styles.CatTableContent}>
-                                            {catsData.map((cat, index) => (
-                                                <div key={index}> 
-                                                    <div style = {styles.imgFrame}>
-                                                        <img style={styles.imageIcon} src={cat_image} />
+    const viewAdopted = (dog) => {
+        console.log('pressed')
+        navigate('/animal-adoption-details', { state: { ...dog } }); // Navigate to the edit-animal route with dog data
+    };
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return isNaN(date) ? 'N/A' : date.toLocaleDateString('en-GB');
+    };
+
+    const handleBack = () => {
+        navigate('/adopted-animals'); // This will navigate to Dashboard when called
+    };
+
+    return (
+        <div style={styles.mainContainer}>
+            <div style={styles.mainContentContainer}>
+                <div style={styles.SecondMContainer}>
+                    <img style={styles.topLogoPawslink} src = {top_logo} />
+                    <div style={styles.ContentContainer}>
+                        <div style = {styles.buttonContainer}>
+                        <button style={styles.BackButton} onClick={handleBack}>
+                                <img style={styles.keyboardBackspace1} src = {back_button}/>
+                            </button>
+                            <b style={styles.CatTextStyle}>
+                                Adopted Dogs
+                            </b>
+                        </div>
+                        <div style={styles.DatabaseContainer}>
+                            <div style={styles.HeaderName}>
+                                <div style = {styles.HeaderContainer}>
+                                    <div style={styles.CatContentContainer}>
+                                        <div style = {styles.TitleHolderContainer}>
+                                            <b style={styles.HeaderTitle}>
+                                                NAME
+                                            </b>
+                                            <b style={styles.HeaderTitle}>
+                                                STATUS
+                                            </b>
+                                            <b style={styles.HeaderTitle}>
+                                                STERILIZATION
+                                            </b>
+                                            <b style={styles.HeaderTitle}>
+                                                AGE
+                                            </b>
+                                            <b style={styles.HeaderTitle}>
+                                                DEWORM DATE
+                                            </b>
+                                            <b style={styles.HeaderTitle}>
+                                                VACCINATION
+                                            </b>
+                                        </div>                                
+                                        {/* DOG DATABASE HERE */}
+                                        <div style = {styles.CatTable}>
+                                            <div style = {styles.CatTableContent}>
+                                                {adoptedAnimalList.map((dog) => {
+                                                    return (
+                                                    <div key={dog.id}> 
+                                                        <div style = {styles.imgFrame}>
+                                                            <img style={styles.imageIcon} src={cat_image} />
+                                                        </div>
+                                                        <div style = {styles.CatDetails}> 
+                                                        <div style = {styles.DisplayContent}>
+                                                                <div style={styles.txtDetails}> {dog.mainName} </div>
+                                                            </div>
+                                                            <div style = {styles.DisplayContent}>
+                                                                <div style={styles.statusTxtDetails}> {dog.status} </div>
+                                                            </div>
+                                                            <div style = {styles.DisplayContent}>
+                                                                <div style={styles.LoctxtDetails}> {formatDate(dog.sterilizationDate)} </div>
+                                                            </div>
+                                                            <div style = {styles.DisplayContent}>
+                                                                <div style={styles.agetxtDetails}> {dog.age} </div>
+                                                            </div>
+                                                            <div style = {styles.DisplayContent}>
+                                                                <div style={styles.dewormtxtDetails}> {formatDate(dog.dewormingDate)} </div>
+                                                            </div>
+                                                            <div style = {styles.DisplayContent}>
+                                                                <div style={styles.vaxtxtDetails}> {formatDate(dog.vaccinationDate)} </div>
+                                                            </div>
+                                                            <div style = {styles.DisplayContent}>
+                                                                <button style={styles.editButton} onClick={viewAdopted}>
+                                                                    View
+                                                                </button>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div style = {styles.CatDetails}> 
-                                                    <div style = {styles.DisplayContent}>
-                                                            <div style={styles.txtDetails}> {cat.name} </div>
-                                                        </div>
-                                                        <div style = {styles.DisplayContent}>
-                                                            <div style={styles.statusTxtDetails}> {cat.status} </div>
-                                                        </div>
-                                                        <div style = {styles.DisplayContent}>
-                                                            <div style={styles.LoctxtDetails}> {cat.sterilization} </div>
-                                                        </div>
-                                                        <div style = {styles.DisplayContent}>
-                                                            <div style={styles.agetxtDetails}> {cat.age} </div>
-                                                        </div>
-                                                        <div style = {styles.DisplayContent}>
-                                                            <div style={styles.dewormtxtDetails}> {cat.dewormDate} </div>
-                                                        </div>
-                                                        <div style = {styles.DisplayContent}>
-                                                            <div style={styles.vaxtxtDetails}> {cat.vaccinationDate} </div>
-                                                        </div>
-                                                        <div style = {styles.DisplayContent}>
-                                                            <button style={styles.editButton} onClick={viewAdopted}>
-                                                                View
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                                                    );
+                                                })}
                                                 </div>
-                                            ))}
                                             </div>
                                         </div>
                                     </div>
@@ -137,9 +132,8 @@ const AdoptedDogs = () => {
                     </div>
                 </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
 
 const styles = {
     mainContainer:{
