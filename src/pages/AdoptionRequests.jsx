@@ -1,32 +1,15 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
 import { useNavigate } from 'react-router-dom';
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 import user_icon from "../assets/rectangle-1@2x.png";
-import user_icon2 from "../assets/rectangle-2@2x.png";
-
-const RequestData = [
-  {
-    photo: [user_icon],
-    username: 'sopeepay',
-    animalToAdopt: 'Paquito Jr.',
-  },
-  {
-    photo: [user_icon2],
-    username: 'ellaine',
-    animalToAdopt: 'Butterscotch',
-  },
-  {
-    photo: [user_icon],
-    username: 'joannah',
-    animalToAdopt: 'Butterscotch',
-  },
-];
+import axios from "axios";
 
 const AdoptionRequests = () => {
   const navigate = useNavigate();
+  const [userList, setUserList] = useState([]);
 
   const goToApproved = () => {
     navigate("/approved-request");
@@ -36,8 +19,42 @@ const AdoptionRequests = () => {
     navigate('/dashboard');
   };
 
-  const viewRequest = () => {
-    navigate("/view-request");
+  const viewRequest = (id) => {
+    navigate(`/view-request/${id}`);
+  };
+  
+
+  useEffect(() => {
+    getUserList();
+  }, []);
+
+  const getAnimalNameById = async (id) => {
+    try {
+      const result = await axios.get(`http://localhost:3030/api/getanimals`, {
+        params: { id }
+      });
+      const animal = result?.data?.find((animal) => animal._id === id);
+      return animal?.mainName || 'Unknown';
+    } catch (err) {
+      console.log(err);
+      return 'Unknown';
+    }
+  };
+
+  const getUserList = async () => {
+    try {
+      const result = await axios.get(`http://localhost:3030/api/getAdoptionRequest?all=true`);
+      if (result?.data?.data) {
+        const userList = result.data.data;
+        const updatedUserList = await Promise.all(userList.map(async (user) => {
+          const animalName = await getAnimalNameById(user.animalId);
+          return { ...user, animalName: animalName || 'Unknown' };
+        }));
+        setUserList(updatedUserList);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -50,23 +67,19 @@ const AdoptionRequests = () => {
               <button style={styles.BackButton} onClick={handleBack}>
                 <img style={styles.keyboardBackspace1} src={back_button} />
               </button>
-              <b style={styles.EventTextStyle}>
-                Adoption Requests
-              </b>
+              <b style={styles.EventTextStyle}>Adoption Requests</b>
             </div>
             <div style={styles.RequestSection}>
               <div style={styles.RequestList}>
-                {RequestData.map((request, index) => (
-                  <div key={index}>
+                {userList.map((request) => (
+                  <div key={request.id}>
                     <div style={styles.RequestListContainer}>
                       <div style={styles.RequestContainer}>
-                        {request.photo && request.photo.map((photo, idx) => (
-                          <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
-                        ))}
+                        <img src={user_icon} alt="Uploaded" style={styles.UploadedPhoto} />
                         <div style={styles.RequestDetails}>
-                          <p><b>{request.username}</b> wants to adopt <b>{request.animalToAdopt}</b>
+                        <p><b>{request.fname}</b> wants to adopt <b>{request.animalName}</b>
                             <div style={styles.ViewButtonContainer}>
-                              <button style={styles.ButtonStyle} onClick={viewRequest}>
+                              <button style={styles.ButtonStyle} onClick={() => viewRequest(request.id)}>
                                 View Request
                               </button>
                             </div>
@@ -261,21 +274,21 @@ const styles = {
     color: 'purple',
   },
   ArchiveButtons: {
-    width: '100%',
-    height: 'auto',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    width: '100%',
+    height: 'auto',
   },
   ArchiveButtonStyle: {
-    cursor: 'pointer',
-    backgroundColor: 'transparent',
-    borderColor: 'none',
-    border: 'none',
-    color: Color.colorPalevioletred,
+    width: '200px',
+    height: '40px',
+    backgroundColor: Color.colorPalevioletred,
+    color: 'white',
+    borderRadius: '5px',
+    borderColor: 'white',
     fontSize: 14,
-    textAlign: 'left',
-    padding: '5px 0', // Add padding for better spacing
+    cursor: 'pointer',
+    marginBottom: '10px',
   },
 };
 

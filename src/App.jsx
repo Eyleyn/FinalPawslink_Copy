@@ -105,7 +105,7 @@ function App() {
       <Route path="/adoption-requests" element={<AdoptionRequests />} />
       <Route path="/approved-request" element={<ApprovedRequests />} />
       <Route path="/declined-request" element={<DeclinedRequests />} />
-      <Route path="/view-request" element={<ViewRequest />} />
+      <Route path="/view-request/:id" element={<ViewRequest />} />
       <Route path="/see-adoption-form" element={<SeeFormsAdoptionForm />} />
       <Route path="/view-form-approval" element={<ViewFormApprovalForm />} />
       <Route path="/animal-adoption-details" element={<AnimalAdoptionDetails />} />

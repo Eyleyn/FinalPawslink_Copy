@@ -1,35 +1,40 @@
-import React, { useState } from "react";
+import React, { forwardRef } from "react";
 import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
 import { useNavigate } from 'react-router-dom';
 import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
 
-const UserList = [
-    {
-        name: 'Jonah Bell',
-        username: '@Jonah',
-        email: 'jonah56@gmail.com',
-        password:'1234567890',
-        role: 'Admin'
-    },
-    {
-        name: 'Sophia Ferst',
-        username: '@sopee',
-        email: 'sferst@gmail.com',
-        password:'1234567890',
-        role: 'User'
-    },
-    // ... (other users)
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const UserDatabaseScreen = () => {
     const navigate = useNavigate();
+    const [userList, setUserList] = useState([])
+
+    useEffect(()=>{
+        getUserList();  
+    }, []);
+
+    const getUserList = async () =>{
+        // ?species=dog
+        await axios.get(`http://localhost:3030/api/getUser?all=true`)
+        .then(result =>{
+            console.log(result)
+            if(result && result.data){
+                setUserList(result.data);
+            }else{
+                throw new Error("No Animal Found")
+            }
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
 
     const handleBack = () => {
         navigate('/dashboard');
     };
 
-    const [users, setUsers] = useState(UserList);
     const [editIndex, setEditIndex] = useState(null);
 
     const handleEdit = (index) => {
@@ -81,20 +86,21 @@ const UserDatabaseScreen = () => {
                                         </div>
                                         <div style={styles.UserTable}>
                                             <div style={styles.UserTableContent}>
-                                                {users.map((user, index) => (
-                                                    <div key={index}>
+                                                {userList.map((user) => {
+                                                    return (
+                                                    <div key={user.id}>
                                                         <div style={styles.UserDetails}>
                                                             <div style={styles.UserDisplayContent}>
-                                                                <div style={styles.UsertxtDetails}>{user.name}</div>
+                                                                <div style={styles.UsertxtDetails}>{user.userName}</div>
                                                             </div>
                                                             <div style={styles.UserDisplayContent}>
-                                                                <div style={styles.UsertxtDetails}>{user.username}</div>
+                                                                <div style={styles.UsertxtDetails}>{user.userName}</div>
                                                             </div>
                                                             <div style={styles.UserDisplayContent}>
                                                                 <div style={styles.EmailtxtDetails}>{user.email}</div>
                                                             </div>
                                                             <div style={styles.UserDisplayContent}>
-                                                                <div style={styles.UserPasstxtDetails}>{user.password}</div>
+                                                                <div style={styles.UserPasstxtDetails}>{user.appPassword}</div>
                                                             </div>
                                                             <div style={styles.UserDisplayContent}>
                                                                 {editIndex === index ? (
@@ -115,7 +121,8 @@ const UserDatabaseScreen = () => {
                                                             </button>
                                                         </div>
                                                     </div>
-                                                ))}
+                                                    );
+                                                })}
                                             </div>
                                         </div>
                                     </div>
