@@ -18,7 +18,7 @@ const ForumScreen = () => {
     }, []);
 
     const getForumList = async () =>{
-        await axios.get(`http://localhost:3030/api/createPost?all=true`)
+        await axios.get(`http://localhost:3030/api/getForumEntry?all=true`)
         .then(result =>{
             console.log(result)
             if(result && result.data && result.data.data){

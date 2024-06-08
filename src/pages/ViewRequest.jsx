@@ -1,252 +1,155 @@
-import React, { forwardRef } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
+import axios from "axios";
 import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
 import IDupload from "../assets/rectangle-2@2x.png";
-import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyles";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-import { color, display, fontSize, height, margin, maxHeight, positions, textAlign, width } from "@mui/system";
-import { grey, pink } from "@mui/material/colors";
-import { Dropdown, Input } from "@mui/base";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { Color, FontFamily } from "../assets/login/GlobalStyles";
 
 const ViewRequest = () => {
   const navigate = useNavigate();
-  const [userList, setUserList] = useState([])
+  const { id } = useParams(); // Access route parameter
+  const [requestDetails, setRequestDetails] = useState(null);
 
-    const goToApproved = () => {
-        navigate("/approved-request"); 
-      };
+  const goToApproved = () => {
+    navigate("/approved-request");
+  };
 
-    const goToADeclined = () => {
-        navigate("/declined-request");
-    };
+  const goToDeclined = () => {
+    navigate("/declined-request");
+  };
 
-    const handleBack = () => {
-      navigate('/adoption-requests'); // This will navigate to Dashboard when called
-    };
+  const handleBack = () => {
+    navigate('/adoption-requests');
+  };
 
-    useEffect(()=>{
-      getUserList();
-    }, []);
+  useEffect(() => {
+    if (id) {
+      console.log(id)
+      fetchRequestDetails(id); // Fetch request details using the ID
+    } else {
+      console.error('No ID found in route params');
+    }
+  }, [id]);
 
-    const getUserList = async () =>{
-      // ?species=dog
-      await axios.get(`http://localhost:3030/api/getAdoptionRequest?all=true`)
-      .then(result =>{
-          console.log(result)
-          if(result && result.data && result.data.data){
-            setUserList(result.data.data);
-        }else{
-          setUserList(result.data)
-        }
-    })
-    .catch(err =>{
-        console.log(err)
-    })
-  }
+  const fetchRequestDetails = async (requestId) => {
+    try {
+      const result = await axios.get(`http://localhost:3030/api/getAdoptionRequest/${requestId}`);
+      console.log(result.data)
+      setRequestDetails(result.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const approveRequest = async (requestId) => {
+    try {
+      await axios.put("http://localhost:3030/api/updateAdoptionRequest", {
+        _id: requestId,
+        approve: true
+      });
+      goToApproved();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div style={styles.mainContainer}>
       <div style={styles.mainContentContainer}>
         <div style={styles.SecondMContainer}>
-          <img style={styles.topLogoPawslink} src = {top_logo} />
+          <img style={styles.topLogoPawslink} src={top_logo} alt="Top Logo" />
           <div style={styles.EventScreenContainer}>
-            <div style = {styles.buttonContainer}>
+            <div style={styles.buttonContainer}>
               <button style={styles.BackButton} onClick={handleBack}>
-                <img style={styles.keyboardBackspace1} src = {back_button}/>
+                <img style={styles.keyboardBackspace1} src={back_button} alt="Back" />
               </button>
-              <b style={styles.EventTextStyle}>
-                User Request
-              </b>
-              </div>
+              <b style={styles.EventTextStyle}>User Request</b>
             </div>
-            <div style={styles.UserInfomationContainer}>
-              {userList.map((info, index) => {
-                return (
-                  <div key={info.id}> 
-                    <div style={styles.BasicInfo}>
-                      <b style={styles.HeaderStyle}>Basic Info</b>
+          </div>
+          <div style={styles.UserInformationContainer}>
+            {requestDetails ? (
+              <>
+                <div style={styles.BasicInfo}>
+                  <b style={styles.HeaderStyle}>Basic Info</b>
+                  <div style={styles.FnameToFBContainer}>
+                    <div style={styles.SubHeaderTextStyle}>
+                      <b>First name</b>
+                      <div style={styles.InputContainer}>{requestDetails.fname}</div>
                     </div>
-                    <div style={styles.FnameToFBContainer}>
-                      <div style={styles.fnameContainer}>
-                        <div style={styles.SubHeaderTextStyle}>
-                          <b>First name</b>
-                          <div style={styles.InputContainer}>
-                              {info.fname}
-                          </div>
-                        </div>
-                        <div style={styles.SubHeaderTextStyle2}>
-                          <b>Last name</b>
-                          <div style={styles.InputContainer}>
-                            {info.lname}
-                          </div>
-                        </div>
-                        <div style={styles.SubHeaderTextStyle3}>
-                          <b>Age</b>
-                          <div style={styles.InputContainer}>
-                            {info.age}
-                          </div>
-                        </div>
-                        <div style={styles.SubHeaderTextStyle4}>
-                          <b>Student?</b>
-                          <div style={styles.InputContainer}>
-                            {info.student}
-                          </div>
-                        </div>
-                        <div style={styles.SubHeaderTextStyle5}>
-                          <b>Contact Number</b>
-                          <div style={styles.InputContainer}>
-                            {info.contactNumber}
-                          </div>
-                        </div>
-                        <div style={styles.SubHeaderTextStyle6}>
-                          <b>Email Address</b>
-                          <div style={styles.InputContainer}>
-                            {info.email}
-                          </div>
-                        </div>
-                        <div style={styles.SubHeaderTextStyle7}>
-                          <b>Facebook</b>
-                          <div style={styles.InputContainer}>
-                            {info.facebookLink}
-                          </div>
-                        </div>
-                      </div>
+                    <div style={styles.SubHeaderTextStyle}>
+                      <b>Last name</b>
+                      <div style={styles.InputContainer}>{requestDetails.lname}</div>
                     </div>
-                    <div style={styles.AddressesContainer}>
-                      <div style={styles.SubHeaderTextStyle}>
-                        <b>Complete Home Address</b>
-                        <div style={styles.InputContainer}>
-                          {info.completeHomeAddress}
-                        </div>
-                      </div>
-                      <div style={styles.SubHeaderTextStyle5}>
-                        <b>Current Home Address</b>
-                        <div style={styles.InputContainer}>
-                          {info.completeCurrentAddress}
-                        </div>
-                      </div>
+                    <div style={styles.SubHeaderTextStyle}>
+                      <b>Age</b>
+                      <div style={styles.InputContainer}>{requestDetails.age}</div>
                     </div>
-                    <div style={styles.PetHistory}>
-                      <b style={styles.HeaderStyle}>Pet History</b>
-                      <div style={styles.LowerSubHeaderTextStyle}>
-                        <b>No. of pets</b>
-                        <div style={styles.InputContainer}>
-                          {info.noOfPets}
-                        </div>
-                      </div>
-                      <div style={styles.LowerSubHeaderTextStyle2}>
-                        <b>Years of being a pet owner</b>
-                        <div style={styles.InputContainer}>
-                          {info.yearsOfBeingPetOwner}
-                        </div>
-                      </div>
-                      <div style={styles.LowerSubHeaderTextStyle3}>
-                        <b>Age of Oldest Living Pet</b>
-                        <div style={styles.InputContainer}>
-                          {info.ageOfOldestLivingPet}
-                        </div>
-                      </div>
-                      <div style={styles.LowerSubHeaderTextStyle4}>
-                        <b>Neuter/Spaying Awareness</b>
-                        <div style={styles.InputContainer}>
-                          {info.neuterOrSpayAwareness}
-                        </div>
-                      </div>
-                      <div style={styles.LowerSubHeaderTextStyle5}>
-                        <b>Neuter/Spaying Willingness</b>
-                        <div style={styles.InputContainer}>
-                          {info.neuterOrSpayWillingness}
-                        </div>
-                      </div>
-                      <div style={styles.LowerSubHeaderTextStyle6}>
-                        <b>Vet Clinic</b>
-                        <div style={styles.InputContainer}>
-                          {info.regularVetClinin}
-                        </div>
-                      </div>
+                    <div style={styles.SubHeaderTextStyle}>
+                      <b>Student?</b>
+                      <div style={styles.InputContainer}>{requestDetails.student}</div>
                     </div>
-                    <div style={styles.AccomodationContainer}>
-                      <div style={styles.Accomodation}>
-                        <b style={styles.HeaderStyle}>Accomodation</b>
-                        <div style={styles.LowerRightSubHeaderTextStyle}>
-                          <b>Where they will keep the adopted pet?</b>
-                          <div style={styles.InputContainer}>
-                            {info.AdoptedPetFutureAddress}
-                          </div>
-                        </div>
-                        <div style={styles.LowerRightSubHeaderTextStyle1}>
-                          <b>Indoor/Outdoor</b>
-                          <div style={styles.InputContainer}>
-                            {info.indoorOroutdoor}
-                          </div>
-                        </div>
-                        <div style={styles.LowerRightSubHeaderTextStyle2}>
-                          <b>Leashed/Caged</b>
-                          <div style={styles.InputContainer}>
-                            {info.leashORcaged}
-                          </div>
-                        </div>
-                      </div>
+                    <div style={styles.SubHeaderTextStyle}>
+                      <b>Contact Number</b>
+                      <div style={styles.InputContainer}>{requestDetails.contactNumber}</div>
                     </div>
-                    <div style={styles.OthersContainer}>
-                      <div style={styles.Accomodation}>
-                        <b style={styles.HeaderStyle}>Others</b>
-                        <div style={styles.OtherRightSubHeaderTextStyle}>
-                          <b>5 basic necsseties for dogs/cats</b>
-                          <div style={styles.InputContainer}>
-                            {info.basicNecessities}
-                          </div>
-                          <div style={styles.InputContainer}>
-                            {info.basicNecessities}
-                          </div>
-                          <div style={styles.InputContainer}>
-                            {info.basicNecessities}
-                          </div>
-                          <div style={styles.InputContainer}>
-                            {info.basicNecessities}
-                          </div>
-                          <div style={styles.InputContainer}>
-                            {info.basicNecessities}
-                          </div>
-                        </div>
-                        <div style={styles.OtherRightSubHeaderTextStyle2}>
-                          <b>1 enrichment activity for dog/cat</b>
-                          <div style={styles.InputContainer}>
-                            {info.enrichmentActivity}
-                          </div>
-                        </div>
-                        <div style={styles.OtherRightSubHeaderTextStyle3}>
-                          <b>How did you hear about us?</b>
-                          <div style={styles.InputContainer}>
-                            {info.hearAboutUs}
-                          </div>
-                        </div>
-                      </div>
+                    <div style={styles.SubHeaderTextStyle}>
+                      <b>Email Address</b>
+                      <div style={styles.InputContainer}>{requestDetails.email}</div>
                     </div>
-                    <div style={styles.IDVerification}>
-                      <div style={styles.Accomodation}>
-                        <b style={styles.HeaderStyle}>ID Verification</b>
-                        <img style={styles.IDUploadVer} src={IDupload} />
-                        <div style={styles.ButtonContainer}>
-                          <button style={styles.ApproveButtonStyle} onClick={goToApproved}>
-                            Approve
-                          </button>
-                          <button style={styles.DeclineButtonStyle} onClick={goToADeclined}>
-                            Decline
-                          </button>
-                        </div>
-                      </div>
+                    <div style={styles.SubHeaderTextStyle}>
+                      <b>Facebook</b>
+                      <div style={styles.InputContainer}>{requestDetails.facebookLink}</div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+                <div style={styles.AddressesContainer}>
+                  <div style={styles.SubHeaderTextStyle}>
+                    <b>Complete Home Address</b>
+                    <div style={styles.InputContainer}>{requestDetails.completeHomeAddress}</div>
+                  </div>
+                  <div style={styles.SubHeaderTextStyle}>
+                    <b>Current Home Address</b>
+                    <div style={styles.InputContainer}>{requestDetails.completeCurrentAddress}</div>
+                  </div>
+                </div>
+                <div style={styles.PetHistory}>
+                  <b style={styles.HeaderStyle}>Pet History</b>
+                  <div style={styles.SubHeaderTextStyle}>
+                    <b>No. of pets</b>
+                    <div style={styles.InputContainer}>{requestDetails.numberOfPets}</div>
+                  </div>
+                  <div style={styles.SubHeaderTextStyle}>
+                    <b>Had a pet before?</b>
+                    <div style={styles.InputContainer}>{requestDetails.hadPetsBefore}</div>
+                  </div>
+                  <div style={styles.SubHeaderTextStyle}>
+                    <b>What happened to it?</b>
+                    <div style={styles.InputContainer}>{requestDetails.whatHappenedToPet}</div>
+                  </div>
+                </div>
+                <div style={styles.IDContainer}>
+                  <b style={styles.HeaderStyle}>ID</b>
+                  <img src={IDupload} alt="Uploaded" style={styles.UploadedPhoto} />
+                </div>
+                <div style={styles.ButtonContainer}>
+                  <button style={styles.ButtonStyle} onClick={() => approveRequest(requestDetails.id)}>
+                    Approve
+                  </button>
+                  <button style={styles.ButtonStyle} onClick={goToDeclined}>
+                    Decline
+                  </button>
+                </div>
+              </>
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
         </div>
       </div>
-    </div>     
-  )
-}
+    </div>
+  );
+};
 
 const styles = {
   mainContainer:{
