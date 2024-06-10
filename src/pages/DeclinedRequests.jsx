@@ -1,3 +1,11 @@
+{/**PROPERTY OF: 
+                Banes, Ellaine
+                Calugas, Jonathan
+                Cantiller, Sophia Feona
+                BS in Computer Science - IV
+                June 2024
+**/}
+
 import { Button } from "@mui/material";
 import React, { forwardRef } from "react";
 import top_logo from "../assets/image-23@2x.png";

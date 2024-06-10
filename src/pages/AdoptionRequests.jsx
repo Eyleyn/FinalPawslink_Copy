@@ -1,3 +1,11 @@
+{/**PROPERTY OF: 
+                Banes, Ellaine
+                Calugas, Jonathan
+                Cantiller, Sophia Feona
+                BS in Computer Science - IV
+                June 2024
+**/}
+
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import top_logo from "../assets/image-23@2x.png";
@@ -19,10 +27,9 @@ const AdoptionRequests = () => {
     navigate('/dashboard');
   };
 
-  const viewRequest = (id) => {
-    navigate(`/view-request/${id}`);
+  const viewRequest = (requestId) => {
+    navigate(`/view-request`);
   };
-  
 
   useEffect(() => {
     getUserList();
@@ -61,11 +68,11 @@ const AdoptionRequests = () => {
     <div style={styles.mainContainer}>
       <div style={styles.mainContentContainer}>
         <div style={styles.SecondMContainer}>
-          <img style={styles.topLogoPawslink} src={top_logo} />
+          <img style={styles.topLogoPawslink} src={top_logo} alt="Top Logo" />
           <div style={styles.EventScreenContainer}>
             <div style={styles.buttonContainer}>
               <button style={styles.BackButton} onClick={handleBack}>
-                <img style={styles.keyboardBackspace1} src={back_button} />
+                <img style={styles.keyboardBackspace1} src={back_button} alt="Back" />
               </button>
               <b style={styles.EventTextStyle}>Adoption Requests</b>
             </div>
@@ -77,9 +84,10 @@ const AdoptionRequests = () => {
                       <div style={styles.RequestContainer}>
                         <img src={user_icon} alt="Uploaded" style={styles.UploadedPhoto} />
                         <div style={styles.RequestDetails}>
-                        <p><b>{request.fname}</b> wants to adopt <b>{request.animalName}</b>
+                          <p>
+                            <b>{request.fname}</b> wants to adopt <b>{request.animalName}</b>
                             <div style={styles.ViewButtonContainer}>
-                              <button style={styles.ButtonStyle} onClick={() => viewRequest(request.id)}>
+                              <button style={styles.ButtonStyle} onClick={() => viewRequest()}>
                                 View Request
                               </button>
                             </div>
@@ -293,3 +301,4 @@ const styles = {
 };
 
 export default AdoptionRequests;
+

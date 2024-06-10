@@ -1,3 +1,11 @@
+{/**PROPERTY OF: 
+                Banes, Ellaine
+                Calugas, Jonathan
+                Cantiller, Sophia Feona
+                BS in Computer Science - IV
+                June 2024
+**/}
+
 import { useCallback } from "react";
 import { Button } from "@mui/material";
 import styles from "./AdoptedAnimals.module.css";
