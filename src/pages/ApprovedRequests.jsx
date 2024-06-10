@@ -1,3 +1,11 @@
+{/**PROPERTY OF: 
+                Banes, Ellaine
+                Calugas, Jonathan
+                Cantiller, Sophia Feona
+                BS in Computer Science - IV
+                June 2024
+**/}
+
 import { Button } from "@mui/material";
 import React from "react";
 import top_logo from "../assets/image-23@2x.png";
@@ -7,41 +15,45 @@ import { Color, FontSize, FontFamily, Border } from "../assets/login/GlobalStyle
 import user_icon from "../assets/rectangle-1@2x.png";
 import user_icon2 from "../assets/rectangle-2@2x.png";
 
-const ApprovedRequestData = [
-  {
-    photo: [user_icon],
-    username: 'sopeepay',
-    animalToAdopt: 'Paquito Jr.',
-  },
-  {
-    photo: [user_icon2],
-    username: 'ellaine',
-    animalToAdopt: 'Butterscotch',
-  },
-  {
-    photo: [user_icon2],
-    username: 'ellaine',
-    animalToAdopt: 'Butterscotch',
-  },
-  {
-    photo: [user_icon2],
-    username: 'ellaine',
-    animalToAdopt: 'Butterscotch',
-  },
-  {
-    photo: [user_icon2],
-    username: 'ellaine',
-    animalToAdopt: 'Butterscotch',
-  },
-  {
-    photo: [user_icon2],
-    username: 'ellaine',
-    animalToAdopt: 'Butterscotch',
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ApprovedRequests = () => {
+  const [requestList, setRequestList] = useState([])
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    getRequestList();
+  }, []);
+
+  const getRequestList = async () =>{
+    try {
+      const result = await axios.get(`http://localhost:3030/api/getAdoptionRequest?status=pending`);
+      if (result?.data?.data) {
+        const requestList = result.data.data;
+        const updatedUserList = await Promise.all(requestList.map(async (user) => {
+          const animalName = await getAnimalNameById(user.animalId);
+          return { ...user, animalName: animalName || 'Unknown' };
+        }));
+        setRequestList(updatedUserList);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const getAnimalNameById = async (id) => {
+    try {
+      const result = await axios.get(`http://localhost:3030/api/getanimals`, {
+        params: { id }
+      });
+      const animal = result?.data?.find((animal) => animal._id === id);
+      return animal?.mainName || 'Unknown';
+    } catch (err) {
+      console.log(err);
+      return 'Unknown';
+    }
+  };
 
   const goToApproved = () => {
     navigate("/approved-request");
@@ -71,15 +83,13 @@ const ApprovedRequests = () => {
             </div>
             <div style={styles.RequestSection}>
               <div style={styles.RequestList}>
-                {ApprovedRequestData.map((request, index) => (
-                  <div key={index}>
+                {requestList.map((request, index) => (
+                  <div key={request.id}>
                     <div style={styles.RequestListContainer}>
                       <div style={styles.RequestContainer}>
-                        {request.photo && request.photo.map((photo, idx) => (
-                          <img key={idx} src={photo} alt="Uploaded" style={styles.UploadedPhoto} />
-                        ))}
+                        <img src={user_icon} alt="Uploaded" style={styles.UploadedPhoto} />
                         <div style={styles.RequestDetails}>
-                          <p><b>{request.username}</b> has been approved to adopt <b>{request.animalToAdopt}</b>
+                          <p><b>{request.fname}</b> has been approved to adopt <b>{request.animalName}</b>
                             <div style={styles.ViewButtonContainer}>
                               <button style={styles.ButtonStyle} onClick={viewRequest}>
                                 View Request
@@ -90,6 +100,7 @@ const ApprovedRequests = () => {
                       </div>
                     </div>
                   </div>
+                  
                 ))}
               </div>
               <div style={styles.ArchiveContainer}>

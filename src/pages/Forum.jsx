@@ -1,3 +1,11 @@
+{/**PROPERTY OF: 
+                Banes, Ellaine
+                Calugas, Jonathan
+                Cantiller, Sophia Feona
+                BS in Computer Science - IV
+                June 2024
+**/}
+
 import React from "react";
 import top_logo from "../assets/image-23@2x.png";
 import back_button from "../assets/keyboard-backspace-1.svg";
@@ -68,8 +76,8 @@ const ForumScreen = () => {
 const ForumComponent = ({post}) =>  {
     const navigate = useNavigate();
 
-    const viewForum = () => {
-        navigate("/view-forum");
+    const handleView = (post) => {
+        navigate('/view-forum', { state: { ...post } });
     }
 
     const [entryImageURL, setImgURL] = useState("");
@@ -122,7 +130,7 @@ const ForumComponent = ({post}) =>  {
                             </div>
                             <p style={styles.CommentText}>{post.commentNum}</p>
                             <p style={styles.DateText}>{post.datePosted}</p>
-                            <div style={styles.ViewButtonContainer} onClick={viewForum}>
+                            <div style={styles.ViewButtonContainer} onClick={() => handleView(post)}>
                                 <button style={styles.ViewButton}>
                                     View
                                 </button>

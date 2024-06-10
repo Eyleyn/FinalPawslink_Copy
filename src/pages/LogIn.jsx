@@ -1,3 +1,11 @@
+{/**PROPERTY OF: 
+                Banes, Ellaine
+                Calugas, Jonathan
+                Cantiller, Sophia Feona
+                BS in Computer Science - IV
+                June 2024
+**/}
+
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Pawslink_logo from "../assets/image-29@3x.png";

@@ -1,3 +1,11 @@
+{/**PROPERTY OF: 
+                Banes, Ellaine
+                Calugas, Jonathan
+                Cantiller, Sophia Feona
+                BS in Computer Science - IV
+                June 2024
+**/}
+
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
 import top_logo from "../assets/image-23@2x.png";
