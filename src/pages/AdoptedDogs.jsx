@@ -43,9 +43,9 @@ const AdoptedDogs = () => {
         })
     }
 
-    const viewAdopted = (dog) => {
+    const viewAdopted = () => {
         console.log('pressed')
-        navigate('/animal-adoption-details', { state: { ...dog } }); // Navigate to the edit-animal route with dog data
+        navigate('/animal-adoption-details'); // Navigate to the edit-animal route with dog data
     };
 
     const formatDate = (dateString) => {
