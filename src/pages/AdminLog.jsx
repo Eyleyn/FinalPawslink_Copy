@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Display all the admin's activities.
 **/}
 
 import React, { forwardRef } from "react";
