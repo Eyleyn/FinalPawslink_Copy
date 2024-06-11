@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        This displays the list of cats in the database.
 **/}
 
 import React, { forwardRef } from "react";
