@@ -4,6 +4,9 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Displays the list of forum posted by the users. Post includes title, post content and/or pictures. Admin are able to delete post that 
+        is not related to animals.
 **/}
 
 import React from "react";
