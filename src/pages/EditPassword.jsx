@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+      Enable the admin to edit and update its password.
 **/}
 import React, { useState } from "react";
 import styles from "./EditPassword.module.css";
