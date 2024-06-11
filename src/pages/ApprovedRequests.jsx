@@ -5,7 +5,7 @@
                 BS in Computer Science - IV
                 June 2024
     About the code:
-        Display the potential adopter/approved adopter's request. Request includes all the information of the adopter 
+        Display the approved adopter's request. Request includes all the information of the adopter 
         and basic petting knowledge.
 **/}
 
