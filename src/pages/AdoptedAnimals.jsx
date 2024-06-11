@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+      About the code:
+          Acts as a dashboard of the adopted dogs and cats list.
 **/}
 
 import { useCallback } from "react";
