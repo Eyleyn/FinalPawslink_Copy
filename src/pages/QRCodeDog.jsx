@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Generates the QR Code for the animals using its ID.
 **/}
 
 import React, { useRef } from "react";
