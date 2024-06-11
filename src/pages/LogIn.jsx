@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+      About the code:
+        Enable the admin to log in and access the website.
 **/}
 
 import React from "react";
