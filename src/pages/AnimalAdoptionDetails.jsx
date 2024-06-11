@@ -4,6 +4,9 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Displays the adoption details such as the name of the animal, adoption date, the adopter's request and more important is the monthly updates. 
+        The admin are able to message the adopter on this screen.
 **/}
 
 import React, { forwardRef } from "react";

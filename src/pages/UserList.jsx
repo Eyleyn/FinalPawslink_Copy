@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+      About the code:
+        Displays all the users of PAWSlink includes all roles such as admin or ordinary users.
 **/}
 
 import React, { forwardRef } from "react";

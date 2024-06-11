@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+     About the code:
+         Enable the admin to view the list of events.
 **/}
 
 import styles from "./ViewEvents.module.css";

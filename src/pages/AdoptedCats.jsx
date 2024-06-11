@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Display the list of adopted cats.
 **/}
 
 import React, { forwardRef } from "react";
@@ -41,9 +43,9 @@ const AdoptedCats = () => {
         })
     }
 
-    const viewAdopted = (cat) => {
+    const viewAdopted = () => {
         console.log('pressed')
-        navigate('/animal-adoption-details', { state: { ...cat } }); // Navigate to the edit-animal route with dog data
+        navigate('/animal-adoption-details'); // Navigate to the edit-animal route with dog data
     };
 
     const formatDate = (dateString) => {

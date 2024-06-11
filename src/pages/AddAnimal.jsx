@@ -5,7 +5,7 @@
                 BS in Computer Science - IV
                 June 2024
     About the code:
-          Adds animal to the database.
+        Add animal to the database
 **/}
 
 import React, { useState } from "react";

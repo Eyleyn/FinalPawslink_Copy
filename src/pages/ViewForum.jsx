@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        View the forum including the comments in that post.
 **/}
 
 import React, { forwardRef } from "react";

@@ -4,6 +4,9 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Enables the admin to view the forms such as Adoption form and Approval form that is sent to the user if they want 
+        to adopt an animal.
 **/}
 
 import React, { forwardRef } from "react";

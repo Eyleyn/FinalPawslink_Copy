@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+      About the code:
+           Gets the event ID and enable the admin to edit the event information.
 **/}
 
 import { useState } from "react";
