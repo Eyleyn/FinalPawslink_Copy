@@ -4,6 +4,9 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+      About the code:
+          Display all the list of adoption requests. Request includes the user's name and the name of the animal that the user wants to adopt.
+          This screen also ables the admin to view the request, approve and decline that request.
 **/}
 
 import { Button } from "@mui/material";
