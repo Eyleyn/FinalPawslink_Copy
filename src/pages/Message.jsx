@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+      Displays the conversation between the admin and the user.
 **/}
 
 import React, { forwardRef } from "react";
