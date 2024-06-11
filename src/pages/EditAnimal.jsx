@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+      About the code:
+          Gets the animal ID from the database, and enable the admin to edit the information of the animal.
 **/}
 
 import React, { useState, useEffect } from "react";
