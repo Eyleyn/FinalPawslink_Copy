@@ -4,6 +4,8 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Add event to the database
 **/}
 
 import { useState } from "react";
