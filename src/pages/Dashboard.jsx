@@ -4,6 +4,9 @@
                 Cantiller, Sophia Feona
                 BS in Computer Science - IV
                 June 2024
+    About the code:
+        Presents all essential tools and information in a straightforward manner. It features buttons grouped by category, 
+        allowing the admin to efficiently access and manage various functions.
 **/}
 
 import React from "react";
